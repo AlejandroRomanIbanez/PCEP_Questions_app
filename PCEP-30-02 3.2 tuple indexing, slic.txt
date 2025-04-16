@@ -1,0 +1,286 @@
+#SECTION: PCEP-30-02 3.2 tuple indexing, slicing, building, immutability, comparisons with lists, and nested structures
+
+==QUESTION 1==
+How do you create an empty tuple in Python?
+[A] tuple = ()
+[B] tuple = {}
+[C] tuple = []
+[D] tuple = tuple()
+
+CORRECT: A
+EXPLANATION: An empty tuple in Python is created using empty parentheses: tuple = ().
+
+==QUESTION 2==
+What is the output of the following code?
+```python
+t = (1, 2, 3, 4, 5)
+print(t[2])
+```
+[A] 1
+[B] 2
+[C] 3
+[D] 4
+
+CORRECT: C
+EXPLANATION: In Python, indexing starts at 0. So, t[2] refers to the third element of the tuple, which is 3.
+
+==QUESTION 3==
+Which of the following is TRUE about tuples in Python?
+[A] Tuples are mutable
+[B] Tuples are immutable
+[C] Tuples can be modified after creation
+[D] Tuples don't support indexing
+
+CORRECT: B
+EXPLANATION: Tuples in Python are immutable, meaning their contents cannot be changed after creation.
+
+==QUESTION 4==
+What is the result of this operation?
+```python
+(1, 2, 3) + (4, 5, 6)
+```
+[A] (1, 2, 3, 4, 5, 6)
+[B] (5, 7, 9)
+[C] Error
+[D] ((1, 2, 3), (4, 5, 6))
+
+CORRECT: A
+EXPLANATION: The + operator concatenates tuples, creating a new tuple with all elements from both tuples.
+
+==QUESTION 5==
+How do you access the last element of a tuple 't' without knowing its length?
+[A] t[-1]
+[B] t[len(t)]
+[C] t.last()
+[D] t.end()
+
+CORRECT: A
+EXPLANATION: In Python, you can use negative indexing to access elements from the end of a sequence. t[-1] always refers to the last element.
+
+==QUESTION 6==
+What is the output of this code?
+```python
+t = (1, 2, 3, 4, 5)
+print(t[1:4])
+```
+[A] (1, 2, 3)
+[B] (2, 3, 4)
+[C] (2, 3, 4, 5)
+[D] (1, 2, 3, 4)
+
+CORRECT: B
+EXPLANATION: Slicing in Python is inclusive of the start index and exclusive of the end index. So, t[1:4] includes elements at indices 1, 2, and 3.
+
+==QUESTION 7==
+Which of the following will raise an error?
+[A] t = (1, 2, 3)
+[B] t = (1,)
+[C] t = (1)
+[D] t = tuple([1, 2, 3])
+
+CORRECT: C
+EXPLANATION: t = (1) creates an integer, not a tuple. To create a single-element tuple, you need a trailing comma: t = (1,).
+
+==QUESTION 8==
+What is the main difference between tuples and lists?
+[A] Tuples use parentheses, lists use square brackets
+[B] Tuples are immutable, lists are mutable
+[C] Tuples can contain only integers, lists can contain any type
+[D] Tuples are faster to process than lists
+
+CORRECT: B
+EXPLANATION: The main difference is that tuples are immutable (cannot be changed after creation), while lists are mutable.
+
+==QUESTION 9==
+How can you check if an element exists in a tuple?
+[A] if element in tuple:
+[B] if tuple.contains(element):
+[C] if tuple.has(element):
+[D] if element.exists(tuple):
+
+CORRECT: A
+EXPLANATION: In Python, you can use the 'in' operator to check if an element exists in a tuple or any other sequence.
+
+==QUESTION 10==
+What is the output of this code?
+```python
+t = (1, 2, 3, 4, 5)
+print(t[-2:])
+```
+[A] (4, 5)
+[B] (5,)
+[C] (1, 2, 3)
+[D] Error
+
+CORRECT: A
+EXPLANATION: t[-2:] slices the tuple from the second-to-last element to the end, resulting in (4, 5).
+
+==QUESTION 11==
+Which method can be used to count the occurrences of an element in a tuple?
+[A] count()
+[B] index()
+[C] find()
+[D] search()
+
+CORRECT: A
+EXPLANATION: The count() method is used to count the number of occurrences of an element in a tuple.
+
+==QUESTION 12==
+What happens when you try to modify a tuple?
+[A] The tuple is updated
+[B] A new tuple is created
+[C] A TypeError is raised
+[D] Nothing happens
+
+CORRECT: C
+EXPLANATION: Since tuples are immutable, attempting to modify a tuple will raise a TypeError.
+
+==QUESTION 13==
+How do you create a tuple with a single element?
+[A] t = (1)
+[B] t = (1,)
+[C] t = 1,
+[D] Both B and C
+
+CORRECT: D
+EXPLANATION: Both t = (1,) and t = 1, create a single-element tuple. The comma is crucial to distinguish it from a regular parenthesized expression.
+
+==QUESTION 14==
+What is the output of this code?
+```python
+t1 = (1, 2, 3)
+t2 = (1, 2, 3)
+print(t1 == t2)
+```
+[A] True
+[B] False
+[C] Error
+[D] None
+
+CORRECT: A
+EXPLANATION: Tuples with the same elements in the same order are considered equal in Python, so this comparison returns True.
+
+==QUESTION 15==
+Which of the following is a valid way to unpack a tuple?
+[A] a, b, c = (1, 2, 3)
+[B] (a, b, c) = [1, 2, 3]
+[C] a, b, c = 1, 2, 3
+[D] All of the above
+
+CORRECT: D
+EXPLANATION: All of these methods are valid ways to unpack a tuple in Python. Python's tuple unpacking is flexible and works with various sequence types.
+
+==QUESTION 16==
+What is the result of this operation?
+```python
+(1, 2, 3) * 2
+```
+[A] (2, 4, 6)
+[B] (1, 2, 3, 1, 2, 3)
+[C] ((1, 2, 3), (1, 2, 3))
+[D] Error
+
+CORRECT: B
+EXPLANATION: Multiplying a tuple by an integer repeats the tuple's elements that many times.
+
+==QUESTION 17==
+How can you convert a list to a tuple?
+[A] tuple(list)
+[B] list.to_tuple()
+[C] tuple.from_list(list)
+[D] cast(tuple, list)
+
+CORRECT: A
+EXPLANATION: The tuple() function can be used to convert a list (or any iterable) to a tuple.
+
+==QUESTION 18==
+What is the output of this code?
+```python
+t = ([1, 2], [3, 4])
+t[0][0] = 5
+print(t)
+```
+[A] ([1, 2], [3, 4])
+[B] ([5, 2], [3, 4])
+[C] TypeError
+[D] ([5, 2], [3, 4])
+
+CORRECT: B
+EXPLANATION: While tuples are immutable, their elements can be mutable (like lists). Here, we're modifying the list inside the tuple, which is allowed.
+
+==QUESTION 19==
+Which of the following is TRUE about tuples and lists?
+[A] Tuples can be used as dictionary keys, lists cannot
+[B] Lists can be used as dictionary keys, tuples cannot
+[C] Both tuples and lists can be used as dictionary keys
+[D] Neither tuples nor lists can be used as dictionary keys
+
+CORRECT: A
+EXPLANATION: Tuples can be used as dictionary keys because they are immutable. Lists, being mutable, cannot be used as dictionary keys.
+
+==QUESTION 20==
+What is the output of this code?
+```python
+t = (1, 2, 3, 4, 5)
+print(t[::2])
+```
+[A] (1, 3, 5)
+[B] (2, 4)
+[C] (1, 2, 3)
+[D] (3, 4, 5)
+
+CORRECT: A
+EXPLANATION: t[::2] slices the tuple with a step of 2, resulting in every other element: (1, 3, 5).
+
+==QUESTION 21==
+How can you create a tuple containing elements of different types?
+[A] t = (1, "two", 3.0, [4, 5])
+[B] t = tuple(1, "two", 3.0, [4, 5])
+[C] t = Tuple(1, "two", 3.0, [4, 5])
+[D] This is not possible in Python
+
+CORRECT: A
+EXPLANATION: In Python, tuples can contain elements of different types. You can create such a tuple by simply listing the elements within parentheses.
+
+==QUESTION 22==
+What is the result of this operation?
+```python
+len((1, 2, 3, (4, 5)))
+```
+[A] 4
+[B] 5
+[C] 6
+[D] Error
+
+CORRECT: A
+EXPLANATION: The len() function returns the number of top-level elements in the tuple. The nested tuple (4, 5) counts as a single element.
+
+==QUESTION 23==
+Which of the following is a correct way to create a nested tuple?
+[A] t = ((1, 2), (3, 4))
+[B] t = [(1, 2), (3, 4)]
+[C] t = {(1, 2), (3, 4)}
+[D] Both A and B
+
+CORRECT: D
+EXPLANATION: Both A and B are correct ways to create nested structures. A creates a tuple of tuples, while B creates a list of tuples.
+
+==QUESTION 24==
+What happens when you try to sort a tuple?
+[A] The tuple is sorted in-place
+[B] A new sorted tuple is returned
+[C] A TypeError is raised
+[D] Nothing happens
+
+CORRECT: C
+EXPLANATION: Tuples don't have a sort method, and they can't be modified in-place. Attempting to sort a tuple will raise a TypeError.
+
+==QUESTION 25==
+How can you concatenate two tuples t1 and t2?
+[A] t1.extend(t2)
+[B] t1 + t2
+[C] t1.append(t2)
+[D] concat(t1, t2)
+
+CORRECT: B
+EXPLANATION: Tuples can be concatenated using the + operator, which creates a new tuple containing all elements from both tuples.

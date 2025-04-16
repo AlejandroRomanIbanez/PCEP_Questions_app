@@ -1,0 +1,251 @@
+#SECTION: PCEP-30-02 4.3 Python's Built-In Exceptions Hierarchy
+
+==QUESTION 1==
+Which of the following is the base class for all built-in exceptions in Python?
+[A] Exception
+[B] BaseException
+[C] StandardError
+[D] Error
+
+CORRECT: B
+EXPLANATION: BaseException is the root class of all built-in exceptions in Python. All other exceptions, including Exception, inherit from BaseException.
+
+==QUESTION 2==
+What is the correct order of inheritance for the KeyError exception?
+[A] BaseException -> Exception -> LookupError -> KeyError
+[B] Exception -> BaseException -> LookupError -> KeyError
+[C] BaseException -> LookupError -> Exception -> KeyError
+[D] LookupError -> Exception -> BaseException -> KeyError
+
+CORRECT: A
+EXPLANATION: The correct inheritance order is BaseException -> Exception -> LookupError -> KeyError. This reflects the hierarchy of exceptions in Python.
+
+==QUESTION 3==
+Which exception is raised when trying to access a list index that doesn't exist?
+[A] KeyError
+[B] IndexError
+[C] ValueError
+[D] TypeError
+
+CORRECT: B
+EXPLANATION: IndexError is raised when trying to access a sequence (like a list) with an invalid index.
+
+==QUESTION 4==
+What exception is raised when a user interrupts the program execution (usually by pressing Ctrl+C)?
+[A] InterruptedError
+[B] SystemExit
+[C] KeyboardInterrupt
+[D] UserInterrupt
+
+CORRECT: C
+EXPLANATION: KeyboardInterrupt is raised when the user presses the interrupt key (usually Ctrl+C or Delete).
+
+==QUESTION 5==
+Which of the following is NOT a subclass of ArithmeticError?
+[A] ZeroDivisionError
+[B] OverflowError
+[C] FloatingPointError
+[D] ValueError
+
+CORRECT: D
+EXPLANATION: ValueError is not a subclass of ArithmeticError. It's a direct subclass of Exception.
+
+==QUESTION 6==
+What exception is raised when a function receives an argument of the wrong type?
+[A] ArgumentError
+[B] ValueError
+[C] TypeError
+[D] InputError
+
+CORRECT: C
+EXPLANATION: TypeError is raised when an operation or function is applied to an object of inappropriate type.
+
+==QUESTION 7==
+Which exception is used to exit the Python interpreter?
+[A] SystemExit
+[B] ExitError
+[C] QuitException
+[D] TerminateError
+
+CORRECT: A
+EXPLANATION: SystemExit is raised by the sys.exit() function to exit the Python interpreter.
+
+==QUESTION 8==
+What is the parent class of both IndexError and KeyError?
+[A] ValueError
+[B] LookupError
+[C] ArithmeticError
+[D] RuntimeError
+
+CORRECT: B
+EXPLANATION: Both IndexError and KeyError are subclasses of LookupError.
+
+==QUESTION 9==
+Which exception is raised when a variable is referenced before it has been assigned a value?
+[A] ReferenceError
+[B] NameError
+[C] ValueError
+[D] UnboundLocalError
+
+CORRECT: B
+EXPLANATION: NameError is raised when a local or global name is not found. UnboundLocalError is a subclass of NameError specifically for local variables.
+
+==QUESTION 10==
+What exception is raised when an operation or function is applied to an object of inappropriate type?
+[A] TypeError
+[B] ValueError
+[C] AttributeError
+[D] OperationError
+
+CORRECT: A
+EXPLANATION: TypeError is raised when an operation or function is applied to an object of inappropriate type.
+
+==QUESTION 11==
+Which of the following is an abstract exception?
+[A] Exception
+[B] ArithmeticError
+[C] LookupError
+[D] All of the above
+
+CORRECT: D
+EXPLANATION: Exception, ArithmeticError, and LookupError are all abstract exceptions. They serve as base classes for more specific exceptions.
+
+==QUESTION 12==
+What exception is raised when a key is not found in a dictionary?
+[A] IndexError
+[B] KeyError
+[C] LookupError
+[D] ValueError
+
+CORRECT: B
+EXPLANATION: KeyError is raised when a key is not found in a dictionary.
+
+==QUESTION 13==
+Which exception is raised when an error occurs that doesn't fall into any specific category?
+[A] GenericError
+[B] StandardError
+[C] Exception
+[D] BaseException
+
+CORRECT: C
+EXPLANATION: Exception is a catch-all exception for most built-in, non-system-exiting exceptions.
+
+==QUESTION 14==
+What is the parent class of ArithmeticError?
+[A] LookupError
+[B] ValueError
+[C] Exception
+[D] StandardError
+
+CORRECT: C
+EXPLANATION: ArithmeticError is a direct subclass of Exception.
+
+==QUESTION 15==
+Which exception is raised when an operation or function receives an argument that has the right type but an inappropriate value?
+[A] TypeError
+[B] ValueError
+[C] ArgumentError
+[D] InputError
+
+CORRECT: B
+EXPLANATION: ValueError is raised when a function receives an argument of the correct type but with an inappropriate value.
+
+==QUESTION 16==
+What is the relationship between Exception and BaseException?
+[A] Exception is a subclass of BaseException
+[B] BaseException is a subclass of Exception
+[C] They are sibling classes
+[D] They are not related
+
+CORRECT: A
+EXPLANATION: Exception is a direct subclass of BaseException.
+
+==QUESTION 17==
+Which of the following is NOT a direct subclass of Exception?
+[A] ArithmeticError
+[B] LookupError
+[C] KeyboardInterrupt
+[D] ValueError
+
+CORRECT: C
+EXPLANATION: KeyboardInterrupt is a direct subclass of BaseException, not Exception.
+
+==QUESTION 18==
+What exception is raised when trying to perform an operation on a closed file?
+[A] IOError
+[B] FileError
+[C] ValueError
+[D] OSError
+
+CORRECT: C
+EXPLANATION: ValueError is raised when trying to perform operations on a closed file. In Python 3, IOError and OSError have been merged into OSError.
+
+==QUESTION 19==
+Which exception is raised when a function or method is called with the wrong number of arguments?
+[A] ArgumentError
+[B] TypeError
+[C] ValueError
+[D] SyntaxError
+
+CORRECT: B
+EXPLANATION: TypeError is raised when a function is called with the wrong number of arguments.
+
+==QUESTION 20==
+What is the parent class of ZeroDivisionError?
+[A] ValueError
+[B] LookupError
+[C] ArithmeticError
+[D] MathError
+
+CORRECT: C
+EXPLANATION: ZeroDivisionError is a subclass of ArithmeticError.
+
+==QUESTION 21==
+Which exception is raised when an import statement fails to find the module definition?
+[A] ImportError
+[B] ModuleNotFoundError
+[C] FileNotFoundError
+[D] LookupError
+
+CORRECT: B
+EXPLANATION: ModuleNotFoundError is raised when an import statement fails to find the module definition. It's a subclass of ImportError.
+
+==QUESTION 22==
+What exception is raised when a sequence subscript is out of range?
+[A] KeyError
+[B] IndexError
+[C] RangeError
+[D] SequenceError
+
+CORRECT: B
+EXPLANATION: IndexError is raised when a sequence subscript is out of range.
+
+==QUESTION 23==
+Which of the following is true about SystemExit?
+[A] It's a subclass of BaseException but not Exception
+[B] It's used to request termination of the interpreter
+[C] It's not meant to be caught by except Exception as e
+[D] All of the above
+
+CORRECT: D
+EXPLANATION: All of these statements are true about SystemExit. It's a special exception used to exit the interpreter.
+
+==QUESTION 24==
+What exception is raised when a local or global name is not found?
+[A] ReferenceError
+[B] NameError
+[C] LookupError
+[D] AttributeError
+
+CORRECT: B
+EXPLANATION: NameError is raised when a local or global name is not found.
+
+==QUESTION 25==
+Which exception is raised when an operation runs out of memory?
+[A] OutOfMemoryError
+[B] MemoryError
+[C] ResourceError
+[D] AllocationError
+
+CORRECT: B
+EXPLANATION: MemoryError is raised when an operation runs out of memory.

@@ -1,0 +1,296 @@
+#SECTION: PCEP-30-02 4.1 Working with Functions in Python
+
+==QUESTION 1==
+What is the correct way to define a function in Python?
+[A] function my_function():
+[B] def my_function():
+[C] define my_function():
+[D] func my_function():
+CORRECT: B
+EXPLANATION: In Python, functions are defined using the 'def' keyword followed by the function name and parentheses.
+
+==QUESTION 2==
+What is the output of the following code?
+```python
+def greet(name):
+    print(f"Hello, {name}!")
+
+greet("Alice")
+```
+[A] Hello, Alice!
+[B] Alice
+[C] Nothing (no output)
+[D] Error
+CORRECT: A
+EXPLANATION: The function greet() prints a greeting message with the given name. When called with "Alice", it outputs "Hello, Alice!".
+
+==QUESTION 3==
+Which keyword is used to return a value from a function?
+[A] give
+[B] return
+[C] yield
+[D] send
+CORRECT: B
+EXPLANATION: The 'return' keyword is used to specify the value that a function should return when it's called.
+
+==QUESTION 4==
+What is the output of this code?
+```python
+def add(a, b):
+    return a + b
+
+result = add(3, 4)
+print(result)
+```
+[A] 3
+[B] 4
+[C] 7
+[D] None
+CORRECT: C
+EXPLANATION: The add() function returns the sum of its two arguments. 3 + 4 equals 7, which is then printed.
+
+==QUESTION 5==
+What is a generator function in Python?
+[A] A function that generates random numbers
+[B] A function that uses the 'yield' keyword to return values
+[C] A function that creates other functions
+[D] A function that only returns None
+CORRECT: B
+EXPLANATION: A generator function in Python uses the 'yield' keyword to return values one at a time, allowing for efficient iteration.
+
+==QUESTION 6==
+What is the purpose of the 'None' keyword in Python?
+[A] To represent a null or empty value
+[B] To stop a function execution
+[C] To define a variable without initializing it
+[D] To create an empty list
+CORRECT: A
+EXPLANATION: 'None' in Python represents the absence of a value or a null value. It's often used to indicate that a variable has no value assigned to it.
+
+==QUESTION 7==
+What is recursion in programming?
+[A] A loop that runs infinitely
+[B] A function that calls itself
+[C] A method to sort data
+[D] A way to define multiple functions at once
+CORRECT: B
+EXPLANATION: Recursion is a programming concept where a function calls itself as part of its execution. This allows complex problems to be broken down into simpler sub-problems.
+
+==QUESTION 8==
+What is the output of this recursive function?
+```python
+def countdown(n):
+    if n <= 0:
+        return
+    print(n)
+    countdown(n-1)
+
+countdown(3)
+```
+[A] 3 2 1
+[B] 1 2 3
+[C] 3 3 3
+[D] Error (infinite recursion)
+CORRECT: A
+EXPLANATION: This recursive function prints numbers from n down to 1. With n=3, it prints 3, then calls itself with 2, then 1, resulting in the output "3 2 1".
+
+==QUESTION 9==
+Which of the following is true about Python functions?
+[A] They must always return a value
+[B] They can have multiple return statements
+[C] They can only have one parameter
+[D] They must be defined before the main program
+CORRECT: B
+EXPLANATION: Python functions can have multiple return statements. The function will exit and return a value when it encounters a return statement.
+
+==QUESTION 10==
+What happens if a function doesn't have a return statement?
+[A] It returns 0
+[B] It returns None
+[C] It raises an error
+[D] It returns an empty string
+CORRECT: B
+EXPLANATION: If a function in Python doesn't have a return statement, or if the function reaches its end without encountering a return statement, it implicitly returns None.
+
+==QUESTION 11==
+How do you call a function named 'my_function' with no arguments?
+[A] call my_function
+[B] my_function
+[C] my_function()
+[D] run my_function
+CORRECT: C
+EXPLANATION: To call a function in Python, you use its name followed by parentheses. For a function with no arguments, you use empty parentheses.
+
+==QUESTION 12==
+What is the output of this code?
+```python
+def multiply(a, b=2):
+    return a * b
+
+print(multiply(3))
+```
+[A] 3
+[B] 2
+[C] 6
+[D] Error
+CORRECT: C
+EXPLANATION: The function multiply() has a default value of 2 for the parameter b. When called with only one argument (3), it multiplies 3 by the default value 2, resulting in 6.
+
+==QUESTION 13==
+What is a benefit of using functions in programming?
+[A] They make the code run faster
+[B] They reduce code duplication
+[C] They increase memory usage
+[D] They always improve algorithm efficiency
+CORRECT: B
+EXPLANATION: One of the main benefits of using functions is code reusability, which reduces duplication. Functions allow you to write a piece of code once and use it multiple times.
+
+==QUESTION 14==
+What is the difference between a function and a generator?
+[A] Functions use 'return', generators use 'yield'
+[B] Functions can have parameters, generators cannot
+[C] Generators are faster than functions
+[D] Functions can be recursive, generators cannot
+CORRECT: A
+EXPLANATION: The main difference is that functions use 'return' to send a complete result back to the caller, while generators use 'yield' to produce a series of values over time.
+
+==QUESTION 15==
+What is the output of this code?
+```python
+def greet():
+    return "Hello"
+    print("World")
+
+print(greet())
+```
+[A] Hello
+[B] World
+[C] Hello World
+[D] None
+CORRECT: A
+EXPLANATION: The function returns "Hello" immediately, so the print("World") statement is never reached. The function call print(greet()) thus outputs "Hello".
+
+==QUESTION 16==
+How can you make a function return multiple values?
+[A] Use multiple return statements
+[B] Return a tuple, list, or dictionary
+[C] Use the yield keyword multiple times
+[D] It's not possible in Python
+CORRECT: B
+EXPLANATION: In Python, you can return multiple values from a function by returning a tuple, list, or dictionary containing those values.
+
+==QUESTION 17==
+What is the purpose of the 'global' keyword in a function?
+[A] To create a new global variable
+[B] To use a global variable inside the function
+[C] To prevent the function from accessing global variables
+[D] To make all variables in the function global
+CORRECT: B
+EXPLANATION: The 'global' keyword is used inside a function to indicate that a particular variable is a global variable, allowing the function to modify the global variable.
+
+==QUESTION 18==
+What is the output of this recursive function?
+```python
+def factorial(n):
+    if n == 0:
+        return 1
+    return n * factorial(n-1)
+
+print(factorial(3))
+```
+[A] 3
+[B] 6
+[C] 9
+[D] Error (infinite recursion)
+CORRECT: B
+EXPLANATION: This function calculates the factorial of n. For n=3, it calculates 3 * 2 * 1, which equals 6.
+
+==QUESTION 19==
+Which of the following is not a valid function definition?
+[A] def f():
+[B] def f(a, b, c):
+[C] def f(*args):
+[D] def f(a, b, c,):
+CORRECT: D
+EXPLANATION: While Python allows trailing commas in many contexts, a trailing comma in a function definition's parameter list is not allowed in Python 2 and can cause issues in Python 3.
+
+==QUESTION 20==
+What is the output of this code?
+```python
+def outer():
+    x = "local"
+    def inner():
+        nonlocal x
+        x = "nonlocal"
+    inner()
+    print(x)
+
+outer()
+```
+[A] local
+[B] nonlocal
+[C] Error
+[D] None
+CORRECT: B
+EXPLANATION: The 'nonlocal' keyword allows the inner function to modify the variable 'x' in the outer function's scope. After inner() is called, 'x' is changed to "nonlocal".
+
+==QUESTION 21==
+What is a lambda function in Python?
+[A] A function defined using the 'lambda' keyword
+[B] A function that always returns True or False
+[C] A function that can only have one argument
+[D] A function that is automatically called at program start
+CORRECT: A
+EXPLANATION: A lambda function in Python is a small anonymous function defined using the 'lambda' keyword. It can have any number of arguments but can only have one expression.
+
+==QUESTION 22==
+What is the output of this code?
+```python
+def increment(n):
+    return n + 1
+
+result = increment(5)
+print(result)
+```
+[A] 5
+[B] 6
+[C] None
+[D] Error
+CORRECT: B
+EXPLANATION: The increment() function adds 1 to its argument. When called with 5, it returns 6, which is then printed.
+
+==QUESTION 23==
+Which of the following is true about function arguments in Python?
+[A] All arguments must have default values
+[B] Functions can have a variable number of arguments
+[C] Arguments are always passed by reference
+[D] Functions can have a maximum of 5 arguments
+CORRECT: B
+EXPLANATION: Python functions can have a variable number of arguments using *args for positional arguments and **kwargs for keyword arguments.
+
+==QUESTION 24==
+What does the asterisk (*) do in a function definition?
+[A] It makes the function recursive
+[B] It allows the function to accept any number of positional arguments
+[C] It multiplies the return value by 2
+[D] It makes all arguments optional
+CORRECT: B
+EXPLANATION: When used in a function definition, the asterisk (*) allows the function to accept any number of positional arguments, which are then collected into a tuple.
+
+==QUESTION 25==
+What is the output of this generator function?
+```python
+def countdown(n):
+    while n > 0:
+        yield n
+        n -= 1
+
+for i in countdown(3):
+    print(i, end=' ')
+```
+[A] 1 2 3
+[B] 3 2 1
+[C] 3 3 3
+[D] Error
+CORRECT: B
+EXPLANATION: This generator function yields numbers from n down to 1. When iterated over with n=3, it produces the sequence 3, 2, 1, which is then printed with spaces in between.

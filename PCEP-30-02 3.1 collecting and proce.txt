@@ -1,0 +1,256 @@
+#SECTION: PCEP-30-02 3.1 collecting and processing data using lists in Python
+
+==QUESTION 1==
+What is the correct way to create an empty list in Python?
+[A] list = []
+[B] list = list()
+[C] list = {}
+[D] Both A and B
+CORRECT: D
+EXPLANATION: In Python, you can create an empty list using either list = [] or list = list(). Both methods are valid and produce an empty list.
+
+==QUESTION 2==
+How do you access the third element of a list named 'my_list'?
+[A] my_list[3]
+[B] my_list[2]
+[C] my_list(3)
+[D] my_list.get(3)
+CORRECT: B
+EXPLANATION: In Python, list indexing starts at 0. Therefore, to access the third element, you use the index 2 (my_list[2]).
+
+==QUESTION 3==
+What is the output of the following code?
+```python
+numbers = [1, 2, 3, 4, 5]
+print(numbers[1:4])
+```
+[A] [1, 2, 3]
+[B] [2, 3, 4]
+[C] [2, 3, 4, 5]
+[D] [1, 2, 3, 4]
+CORRECT: B
+EXPLANATION: List slicing in Python is inclusive of the start index and exclusive of the end index. So, numbers[1:4] returns elements from index 1 to 3, which are [2, 3, 4].
+
+==QUESTION 4==
+Which method is used to add an element to the end of a list?
+[A] add()
+[B] insert()
+[C] append()
+[D] extend()
+CORRECT: C
+EXPLANATION: The append() method is used to add a single element to the end of a list in Python.
+
+==QUESTION 5==
+What does the len() function return when applied to a list?
+[A] The memory size of the list
+[B] The number of elements in the list
+[C] The largest element in the list
+[D] The sum of all elements in the list
+CORRECT: B
+EXPLANATION: The len() function, when applied to a list, returns the number of elements in the list.
+
+==QUESTION 6==
+How can you remove the element at index 2 from a list named 'my_list'?
+[A] my_list.remove(2)
+[B] my_list.pop(2)
+[C] del my_list[2]
+[D] Both B and C
+CORRECT: D
+EXPLANATION: Both my_list.pop(2) and del my_list[2] can be used to remove the element at index 2 from the list.
+
+==QUESTION 7==
+What is the output of this code?
+```python
+numbers = [1, 2, 3, 4, 5]
+print(numbers[-2:])
+```
+[A] [4, 5]
+[B] [5]
+[C] [1, 2, 3]
+[D] Error
+CORRECT: A
+EXPLANATION: numbers[-2:] slices the list from the second-to-last element to the end, resulting in [4, 5].
+
+==QUESTION 8==
+Which function can be used to sort a list in ascending order?
+[A] sort()
+[B] sorted()
+[C] order()
+[D] Both A and B
+CORRECT: D
+EXPLANATION: Both sort() (a list method) and sorted() (a built-in function) can be used to sort a list in ascending order.
+
+==QUESTION 9==
+How do you check if an element exists in a list?
+[A] if element in list:
+[B] if list.contains(element):
+[C] if list.has(element):
+[D] if element.exists(list):
+CORRECT: A
+EXPLANATION: In Python, you can use the 'in' operator to check if an element exists in a list.
+
+==QUESTION 10==
+What is the result of this list comprehension?
+```python
+[x**2 for x in range(5)]
+```
+[A] [0, 1, 4, 9, 16]
+[B] [1, 4, 9, 16, 25]
+[C] [0, 2, 4, 6, 8]
+[D] [1, 2, 3, 4, 5]
+CORRECT: A
+EXPLANATION: This list comprehension squares each number in range(5), which includes numbers 0 to 4, resulting in [0, 1, 4, 9, 16].
+
+==QUESTION 11==
+How do you create a shallow copy of a list?
+[A] new_list = list.copy()
+[B] new_list = list[:]
+[C] new_list = list(list)
+[D] All of the above
+CORRECT: D
+EXPLANATION: All three methods - list.copy(), list[:], and list(list) - create a shallow copy of the list.
+
+==QUESTION 12==
+What is the correct way to create a 3x3 matrix using lists?
+[A] matrix = [[0]*3]*3
+[B] matrix = [[0,0,0],[0,0,0],[0,0,0]]
+[C] matrix = [0,0,0,0,0,0,0,0,0]
+[D] Both A and B
+CORRECT: D
+EXPLANATION: Both matrix = [[0]*3]*3 and matrix = [[0,0,0],[0,0,0],[0,0,0]] create a 3x3 matrix, although the first method may lead to unexpected behavior when modifying elements.
+
+==QUESTION 13==
+Which method is used to find the index of an element in a list?
+[A] find()
+[B] search()
+[C] index()
+[D] locate()
+CORRECT: C
+EXPLANATION: The index() method is used to find the index of an element in a list in Python.
+
+==QUESTION 14==
+What happens when you use the '+' operator with two lists?
+[A] It adds the elements of both lists
+[B] It concatenates the two lists
+[C] It raises an error
+[D] It creates a nested list
+CORRECT: B
+EXPLANATION: The '+' operator, when used with two lists, concatenates them to create a new list containing all elements from both lists.
+
+==QUESTION 15==
+How can you reverse a list in-place?
+[A] list.reverse()
+[B] reversed(list)
+[C] list[::-1]
+[D] list.sort(reverse=True)
+CORRECT: A
+EXPLANATION: The reverse() method reverses the list in-place, modifying the original list.
+
+==QUESTION 16==
+What is the output of this code?
+```python
+list1 = [1, 2, 3]
+list2 = list1
+list1.append(4)
+print(list2)
+```
+[A] [1, 2, 3]
+[B] [1, 2, 3, 4]
+[C] [4]
+[D] Error
+CORRECT: B
+EXPLANATION: list2 is assigned the same reference as list1, so any changes to list1 are reflected in list2.
+
+==QUESTION 17==
+Which of the following is NOT a valid list method?
+[A] append()
+[B] extend()
+[C] insert()
+[D] add()
+CORRECT: D
+EXPLANATION: add() is not a valid list method in Python. The other options (append(), extend(), and insert()) are valid list methods.
+
+==QUESTION 18==
+How do you remove all occurrences of an element from a list?
+[A] list.remove(element)
+[B] list.removeall(element)
+[C] while element in list: list.remove(element)
+[D] del list[element]
+CORRECT: C
+EXPLANATION: To remove all occurrences of an element, you can use a while loop with the remove() method.
+
+==QUESTION 19==
+What is the result of this operation?
+```python
+[1, 2, 3] * 2
+```
+[A] [2, 4, 6]
+[B] [1, 2, 3, 1, 2, 3]
+[C] [1, 1, 2, 2, 3, 3]
+[D] Error
+CORRECT: B
+EXPLANATION: Multiplying a list by an integer repeats the list that many times.
+
+==QUESTION 20==
+How can you get the last element of a list without knowing its length?
+[A] list[-1]
+[B] list[len(list)]
+[C] list.last()
+[D] list.end()
+CORRECT: A
+EXPLANATION: Using a negative index -1 accesses the last element of a list in Python.
+
+==QUESTION 21==
+What does the following code do?
+```python
+new_list = [x for x in range(10) if x % 2 == 0]
+```
+[A] Creates a list of odd numbers from 0 to 9
+[B] Creates a list of even numbers from 0 to 9
+[C] Creates a list of all numbers from 0 to 9
+[D] Raises an error
+CORRECT: B
+EXPLANATION: This list comprehension creates a list of even numbers from 0 to 9 by filtering numbers that are divisible by 2.
+
+==QUESTION 22==
+How can you concatenate two lists 'list1' and 'list2'?
+[A] list1.add(list2)
+[B] list1.extend(list2)
+[C] list1 + list2
+[D] Both B and C
+CORRECT: D
+EXPLANATION: Both list1.extend(list2) and list1 + list2 can be used to concatenate two lists in Python.
+
+==QUESTION 23==
+What is the output of this code?
+```python
+list = [1, 2, 3, 4, 5]
+print(list[::2])
+```
+[A] [1, 3, 5]
+[B] [2, 4]
+[C] [1, 2, 3]
+[D] [3, 4, 5]
+CORRECT: A
+EXPLANATION: list[::2] slices the list with a step of 2, resulting in every other element: [1, 3, 5].
+
+==QUESTION 24==
+Which of the following will create a list of tuples containing indices and values of a list?
+[A] zip(list)
+[B] enumerate(list)
+[C] index(list)
+[D] tuple(list)
+CORRECT: B
+EXPLANATION: The enumerate() function returns an iterator of tuples where each tuple contains the index and value from the list.
+
+==QUESTION 25==
+What is the result of this operation?
+```python
+[1, 2, 3] == [1, 2, 3]
+```
+[A] True
+[B] False
+[C] Error
+[D] None
+CORRECT: A
+EXPLANATION: In Python, two lists with the same elements in the same order are considered equal, so this comparison returns True.

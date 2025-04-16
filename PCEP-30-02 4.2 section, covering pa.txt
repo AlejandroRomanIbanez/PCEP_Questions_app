@@ -1,0 +1,325 @@
+#SECTION: PCEP-30-02 4.2 Parameters and Arguments
+
+==QUESTION 1==
+What is the difference between parameters and arguments in Python functions?
+[A] Parameters are defined in the function, arguments are passed when calling the function
+[B] Arguments are defined in the function, parameters are passed when calling the function
+[C] They are the same thing
+[D] Parameters are for built-in functions, arguments are for user-defined functions
+
+CORRECT: A
+EXPLANATION: Parameters are the variables listed in the function definition, while arguments are the actual values passed to the function when it is called.
+
+==QUESTION 2==
+Which of the following is an example of positional argument passing?
+[A] func(x=5, y=10)
+[B] func(5, 10)
+[C] func(*args)
+[D] func(**kwargs)
+
+CORRECT: B
+EXPLANATION: Positional arguments are passed to a function in the order they are defined. In this case, func(5, 10) passes 5 and 10 as positional arguments.
+
+==QUESTION 3==
+What is the output of this code?
+```python
+def greet(name, greeting="Hello"):
+    print(f"{greeting}, {name}!")
+
+greet("Alice")
+```
+
+[A] Hello, Alice!
+[B] Alice, Hello!
+[C] Error
+[D] None
+
+CORRECT: A
+EXPLANATION: The function greet() has a default parameter for greeting. When called with only "Alice", it uses the default greeting "Hello".
+
+==QUESTION 4==
+Which of the following is an example of keyword argument passing?
+[A] func(5, 10)
+[B] func(x=5, y=10)
+[C] func(5, y=10)
+[D] func(*[5, 10])
+
+CORRECT: B
+EXPLANATION: Keyword arguments are passed to a function by explicitly stating the parameter names. func(x=5, y=10) is passing both arguments as keyword arguments.
+
+==QUESTION 5==
+What is the output of this code?
+```python
+def func(a, b, c=3):
+    print(a, b, c)
+
+func(1, c=5, b=2)
+```
+[A] 1 2 5
+[B] 1 5 2
+[C] Error
+[D] 1 2 3
+
+CORRECT: A
+EXPLANATION: The function is called with a mix of positional and keyword arguments. 'a' gets 1, 'b' gets 2 (via keyword argument), and 'c' gets 5 (overriding the default value).
+
+==QUESTION 6==
+Which of the following allows a function to accept any number of keyword arguments?
+[A] def func(**kwargs):
+[B] def func(*args):
+[C] def func(args):
+[D] def func(...):
+
+CORRECT: A
+EXPLANATION: The **kwargs syntax in a function definition allows it to accept any number of keyword arguments, which are then packed into a dictionary.
+
+==QUESTION 7==
+What is the purpose of default parameter values?
+[A] To make parameters optional
+[B] To increase function performance
+[C] To prevent errors
+[D] To override global variables
+
+CORRECT: A
+EXPLANATION: Default parameter values allow a function to have optional parameters. If no value is provided for a parameter with a default value, the default value is used.
+
+==QUESTION 8==
+What is the output of this code?
+```python
+x = 10
+def func():
+    x = 20
+    print(x)
+
+func()
+print(x)
+```
+[A] 20, 20
+[B] 20, 10
+[C] 10, 10
+[D] Error
+
+CORRECT: B
+EXPLANATION: The function func() creates a local variable x, which shadows the global x. Inside the function, x is 20, but outside it remains 10.
+
+==QUESTION 9==
+Which of the following is an example of mixed argument passing?
+[A] func(1, 2, 3)
+[B] func(a=1, b=2, c=3)
+[C] func(1, b=2, c=3)
+[D] func(*args)
+
+CORRECT: C
+EXPLANATION: Mixed argument passing involves using both positional and keyword arguments in the same function call. func(1, b=2, c=3) passes 1 as a positional argument and b and c as keyword arguments.
+
+==QUESTION 10==
+What happens if you provide fewer arguments than parameters in a function call?
+[A] The function uses default values for missing arguments if available
+[B] The function always raises a TypeError
+[C] The function ignores the missing arguments
+[D] The function returns None
+
+CORRECT: A
+EXPLANATION: If a function is called with fewer arguments than it has parameters, it will use default values for the missing arguments if they are available. If there are no default values, a TypeError is raised.
+
+==QUESTION 11==
+What is name shadowing in Python?
+[A] When a local variable has the same name as a global variable
+[B] When a function has the same name as a variable
+[C] When two functions have the same name
+[D] When a variable is not defined
+
+CORRECT: A
+EXPLANATION: Name shadowing occurs when a local variable has the same name as a global variable. The local variable "shadows" or hides the global variable within its scope.
+
+==QUESTION 12==
+Which keyword is used to modify a global variable from within a function?
+[A] global
+[B] nonlocal
+[C] extern
+[D] public
+
+CORRECT: A
+EXPLANATION: The 'global' keyword is used to indicate that a variable inside a function is referring to a global variable, allowing the function to modify the global variable.
+
+==QUESTION 13==
+What is the output of this code?
+```python
+def func(a, b, *, c):
+    print(a, b, c)
+
+func(1, 2, c=3)
+```
+[A] 1 2 3
+[B] Error
+[C] 1 2
+[D] None
+
+CORRECT: A
+EXPLANATION: The * in the function definition indicates that all parameters after it must be passed as keyword arguments. This call correctly passes 'c' as a keyword argument.
+
+==QUESTION 14==
+What does the * operator do when used in a function definition?
+[A] It multiplies the parameters
+[B] It allows the function to accept any number of positional arguments
+[C] It makes all parameters optional
+[D] It raises the parameters to a power
+
+CORRECT: B
+EXPLANATION: When used in a function definition, the * operator allows the function to accept any number of positional arguments, which are then collected into a tuple.
+
+==QUESTION 15==
+What is the output of this code?
+```python
+x = 10
+def func():
+    global x
+    x = 20
+    print(x)
+
+func()
+print(x)
+```
+[A] 20, 20
+[B] 20, 10
+[C] 10, 10
+[D] Error
+
+CORRECT: A
+EXPLANATION: The 'global' keyword allows the function to modify the global variable x. After the function call, x is changed to 20 both inside and outside the function.
+
+==QUESTION 16==
+Which of the following is true about default parameter values?
+[A] They must be immutable objects
+[B] They are evaluated every time the function is called
+[C] They can be any Python expression
+[D] They can only be used with keyword arguments
+
+CORRECT: A
+EXPLANATION: Default parameter values should be immutable objects to avoid unexpected behavior. Mutable default values are evaluated only once at function definition time, which can lead to surprising results.
+
+==QUESTION 17==
+What is the output of this code?
+```python
+def func(a, b=2, *args, **kwargs):
+    print(a, b, args, kwargs)
+
+func(1, 3, 4, 5, x=6, y=7)
+```
+[A] 1 3 (4, 5) {'x': 6, 'y': 7}
+[B] 1 2 (3, 4, 5) {'x': 6, 'y': 7}
+[C] Error
+[D] 1 3 4 5 {'x': 6, 'y': 7}
+
+CORRECT: A
+EXPLANATION: In this call, 1 is assigned to a, 3 to b (overriding the default), 4 and 5 are collected into args as a tuple, and x and y are collected into kwargs as a dictionary.
+
+==QUESTION 18==
+What happens if you try to modify a mutable default argument in a function?
+[A] It raises an error
+[B] The change is reflected in subsequent function calls
+[C] The change is only local to that function call
+[D] It creates a new copy of the argument
+
+CORRECT: B
+EXPLANATION: Modifying a mutable default argument changes it for all subsequent function calls. This is because default arguments are evaluated only once when the function is defined.
+
+==QUESTION 19==
+What is the purpose of the nonlocal keyword?
+[A] To access global variables
+[B] To create a new global variable
+[C] To modify a variable in the nearest enclosing scope
+[D] To prevent variable shadowing
+
+CORRECT: C
+EXPLANATION: The 'nonlocal' keyword is used to indicate that a variable refers to a name in the nearest enclosing scope that is not global.
+
+==QUESTION 20==
+What is the output of this code?
+```python
+def outer():
+    x = "local"
+    def inner():
+        nonlocal x
+        x = "nonlocal"
+    inner()
+    print(x)
+
+outer()
+```
+[A] local
+[B] nonlocal
+[C] Error
+[D] None
+
+CORRECT: B
+EXPLANATION: The 'nonlocal' keyword allows the inner function to modify the variable x in the outer function's scope. After inner() is called, x is changed to "nonlocal".
+
+==QUESTION 21==
+Which of the following is true about positional-only parameters?
+[A] They must be the first parameters in a function definition
+[B] They can be mixed with keyword parameters
+[C] They are indicated by / in the function definition
+[D] They cannot have default values
+
+CORRECT: C
+EXPLANATION: Positional-only parameters are indicated by a / in the function definition. Arguments before the / must be passed positionally and cannot be used as keyword arguments.
+
+==QUESTION 22==
+What is the output of this code?
+```python
+def func(a, b, **kwargs):
+    print(a, b, kwargs.get('c', 3))
+
+func(1, 2)
+```
+[A] 1 2 3
+[B] 1 2 None
+[C] Error
+[D] 1 2
+
+CORRECT: A
+EXPLANATION: The function uses kwargs.get('c', 3) which returns 3 if 'c' is not in kwargs. Since no 'c' is passed, it returns the default value 3.
+
+==QUESTION 23==
+What happens if you provide more positional arguments than parameters in a function call?
+[A] The extra arguments are ignored
+[B] The function raises a TypeError
+[C] The extra arguments are packed into a tuple if *args is used
+[D] The function returns None
+
+CORRECT: B
+EXPLANATION: If you provide more positional arguments than the function has parameters (and it doesn't use *args), Python raises a TypeError.
+
+==QUESTION 24==
+What is the purpose of the * in a function call?
+[A] To unpack a list or tuple into separate arguments
+[B] To indicate variable-length arguments
+[C] To multiply arguments
+[D] To make arguments optional
+
+CORRECT: A
+EXPLANATION: When used in a function call, the * operator unpacks a list or tuple into separate positional arguments.
+
+==QUESTION 25==
+What is the output of this code?
+```python
+x = 10
+def func():
+    x = 20
+    def inner():
+        global x
+        x = 30
+    inner()
+    print(x)
+
+func()
+print(x)
+```
+[A] 20, 30
+[B] 20, 10
+[C] 30, 30
+[D] 20, 20
+
+CORRECT: C
+EXPLANATION: The inner function uses the 'global' keyword, so it modifies the global x. The outer function's local x remains 20, but the global x is changed to 30.

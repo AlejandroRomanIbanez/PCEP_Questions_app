@@ -1,0 +1,316 @@
+#SECTION: PCEP-30-02 2.1 decision-making and branching with the if instruction
+
+==QUESTION 1==
+Which keyword is used to start a conditional statement in Python?
+[A] when
+[B] if
+[C] switch
+[D] case
+CORRECT: B
+EXPLANATION: In Python, the 'if' keyword is used to start a conditional statement. It's one of the fundamental control flow structures in the language.
+
+==QUESTION 2==
+What is the correct syntax for an if-else statement in Python?
+[A] if condition:
+      code
+   else:
+      code
+[B] if (condition) {
+      code
+   } else {
+      code
+   }
+[C] if condition then
+      code
+   else
+      code
+   endif
+[D] if condition:
+      code
+   elseif:
+      code
+CORRECT: A
+EXPLANATION: Python uses indentation to define code blocks. The correct syntax for an if-else statement in Python is option A, which uses colons and indentation to define the structure.
+
+==QUESTION 3==
+How many branches can an if-elif-else statement have?
+[A] Only 2
+[B] Exactly 3
+[C] At least 2, but no upper limit
+[D] At most 3
+CORRECT: C
+EXPLANATION: An if-elif-else statement in Python can have multiple 'elif' branches. It must have at least one 'if' branch, can have any number of 'elif' branches (including zero), and may optionally have one 'else' branch at the end.
+
+==QUESTION 4==
+What happens if none of the conditions in an if-elif-else statement are true?
+[A] The program crashes
+[B] The else block is executed
+[C] Nothing happens
+[D] The first if block is executed by default
+CORRECT: B
+EXPLANATION: If none of the conditions in an if-elif-else statement are true, the else block (if present) is executed. This serves as a default or catch-all case.
+
+==QUESTION 5==
+Which of the following is NOT a valid comparison operator in Python?
+[A] ==
+[B] !=
+[C] <>
+[D] >=
+CORRECT: C
+EXPLANATION: The '<>' operator is not a valid comparison operator in Python. It was used in Python 2 as an alternative to '!=', but it has been removed in Python 3. The other options (==, !=, >=) are all valid comparison operators.
+
+==QUESTION 6==
+What is the output of the following code?
+```python
+x = 5
+if x > 0:
+    print("Positive")
+elif x < 0:
+    print("Negative")
+else:
+    print("Zero")
+```
+[A] Positive
+[B] Negative
+[C] Zero
+[D] No output
+CORRECT: A
+EXPLANATION: In this code, x is 5, which is greater than 0. Therefore, the condition 'x > 0' is true, and "Positive" will be printed.
+
+==QUESTION 7==
+How do you write a nested if statement in Python?
+[A] By using curly braces {}
+[B] By using the 'nested' keyword
+[C] By indenting the inner if statement
+[D] It's not possible to nest if statements in Python
+CORRECT: C
+EXPLANATION: In Python, nested if statements are created by indenting the inner if statement further than the outer one. This maintains Python's use of indentation to define code blocks.
+
+==QUESTION 8==
+What is the purpose of the 'pass' statement in Python?
+[A] To skip the rest of the code in a block
+[B] To indicate an empty block of code
+[C] To pass control to the next iteration of a loop
+[D] To raise an exception
+CORRECT: B
+EXPLANATION: The 'pass' statement in Python is used to indicate an empty block of code. It's a null operation; when it's executed, nothing happens. It's useful as a placeholder when a statement is required syntactically, but no code needs to be executed.
+
+==QUESTION 9==
+Which logical operator is used to combine conditions in Python?
+[A] && and ||
+[B] AND and OR
+[C] and and or
+[D] & and |
+CORRECT: C
+EXPLANATION: In Python, the logical operators 'and' and 'or' are used to combine conditions. These are written as words rather than symbols, which is different from some other programming languages.
+
+==QUESTION 10==
+What will be the output of this code?
+```python
+a = 10
+b = 20
+if a > b:
+    print("a is greater")
+else:
+    print("b is greater or equal")
+```
+[A] a is greater
+[B] b is greater or equal
+[C] No output
+[D] Syntax error
+CORRECT: B
+EXPLANATION: In this code, a (10) is not greater than b (20). Therefore, the else block is executed, and "b is greater or equal" is printed.
+
+==QUESTION 11==
+How can you write a one-line if-else statement in Python?
+[A] if condition: statement1 else: statement2
+[B] condition ? statement1 : statement2
+[C] statement1 if condition else statement2
+[D] (condition) ? (statement1) : (statement2)
+CORRECT: C
+EXPLANATION: In Python, a one-line if-else statement (also known as a ternary operator) is written as 'statement1 if condition else statement2'. This concise format allows for conditional assignment or execution in a single line.
+
+==QUESTION 12==
+What is the correct way to check if a variable x is between 10 and 20 (inclusive)?
+[A] if x >= 10 and x <= 20:
+[B] if 10 <= x <= 20:
+[C] if x in range(10, 21):
+[D] All of the above
+CORRECT: D
+EXPLANATION: All of the given options are valid ways to check if x is between 10 and 20 (inclusive) in Python. Option A uses explicit comparisons, B uses Python's chained comparison feature, and C uses the range function.
+
+==QUESTION 13==
+What will be the output of this code?
+```python
+x = 5
+y = 10
+z = 15
+if x < y < z:
+    print("Y is between X and Z")
+else:
+    print("Y is not between X and Z")
+```
+[A] Y is between X and Z
+[B] Y is not between X and Z
+[C] Syntax error
+[D] No output
+CORRECT: A
+EXPLANATION: This code uses Python's chained comparison feature. The condition 'x < y < z' is true because 5 < 10 < 15. Therefore, "Y is between X and Z" is printed.
+
+==QUESTION 14==
+Which of the following is a valid way to start an elif statement?
+[A] elseif condition:
+[B] else if condition:
+[C] elif condition:
+[D] elsif condition:
+CORRECT: C
+EXPLANATION: In Python, the correct keyword for an "else if" statement is 'elif'. This is followed by a condition and a colon, just like an 'if' statement.
+
+==QUESTION 15==
+What is the output of this code?
+```python
+x = True
+y = False
+if x or y:
+    print("At least one is True")
+else:
+    print("Both are False")
+```
+[A] At least one is True
+[B] Both are False
+[C] Syntax error
+[D] No output
+CORRECT: A
+EXPLANATION: The condition 'x or y' evaluates to True because x is True (and in an 'or' operation, if one operand is True, the entire expression is True). Therefore, "At least one is True" is printed.
+
+==QUESTION 16==
+How can you check if a variable is None in Python?
+[A] if variable == None:
+[B] if variable is None:
+[C] if Not variable:
+[D] if variable.isNone():
+CORRECT: B
+EXPLANATION: In Python, the recommended way to check if a variable is None is to use the 'is' operator: 'if variable is None:'. This checks for identity rather than equality, which is more appropriate for None.
+
+==QUESTION 17==
+What will be the output of this code?
+```python
+x = 10
+if x > 5:
+    print("Greater than 5")
+if x > 8:
+    print("Greater than 8")
+if x > 15:
+    print("Greater than 15")
+```
+[A] Greater than 5
+[B] Greater than 8
+[C] Greater than 5
+   Greater than 8
+[D] Greater than 5
+   Greater than 8
+   Greater than 15
+CORRECT: C
+EXPLANATION: This code has three separate 'if' statements, not an if-elif chain. x (10) is greater than 5 and 8, but not 15. Therefore, the first two print statements execute, resulting in "Greater than 5" and "Greater than 8" being printed.
+
+==QUESTION 18==
+Which of the following is NOT a valid way to write an if statement in Python?
+[A] if (x > 0): print("Positive")
+[B] if x > 0: print("Positive")
+[C] if x > 0 then print("Positive")
+[D] if x > 0:
+       print("Positive")
+CORRECT: C
+EXPLANATION: Option C is not valid Python syntax. Python does not use the 'then' keyword in if statements. All other options are valid ways to write an if statement in Python.
+
+==QUESTION 19==
+What is the purpose of the 'not' operator in conditional statements?
+[A] To combine conditions
+[B] To negate a condition
+[C] To compare equality
+[D] To check for membership
+CORRECT: B
+EXPLANATION: The 'not' operator in Python is used to negate a condition. It reverses the boolean value of its operand: True becomes False, and False becomes True.
+
+==QUESTION 20==
+What will be the output of this code?
+```python
+x = 5
+if x == 5:
+    print("Five")
+elif x == 5:
+    print("Also Five")
+else:
+    print("Not Five")
+```
+[A] Five
+[B] Also Five
+[C] Not Five
+[D] Five
+   Also Five
+CORRECT: A
+EXPLANATION: In an if-elif-else chain, only the first true condition is executed. Here, the first condition (x == 5) is true, so "Five" is printed, and the rest of the chain is skipped.
+
+==QUESTION 21==
+How can you check if a variable is either 5, 10, or 15?
+[A] if x == 5 or 10 or 15:
+[B] if x == 5 or x == 10 or x == 15:
+[C] if x in (5, 10, 15):
+[D] Both B and C
+CORRECT: D
+EXPLANATION: Both options B and C are correct ways to check if x is either 5, 10, or 15. Option B uses explicit comparisons, while option C uses the 'in' operator with a tuple of values.
+
+==QUESTION 22==
+What is the output of this code?
+```python
+x = 0
+if x:
+    print("Truthy")
+else:
+    print("Falsy")
+```
+[A] Truthy
+[B] Falsy
+[C] 0
+[D] No output
+CORRECT: B
+EXPLANATION: In Python, 0 is considered a "falsy" value. When used in a boolean context (like an if statement), it evaluates to False. Therefore, the else block is executed and "Falsy" is printed.
+
+==QUESTION 23==
+Which of the following is a valid way to start an else statement?
+[A] else:
+[B] else():
+[C] else {}:
+[D] otherwise:
+CORRECT: A
+EXPLANATION: In Python, the correct way to start an else statement is simply 'else:'. It doesn't require parentheses, curly braces, or any other special syntax.
+
+==QUESTION 24==
+What will be the output of this code?
+```python
+x = 10
+y = 20
+if x > y:
+    print("X is greater")
+elif x == y:
+    print("X and Y are equal")
+elif x < y:
+    print("Y is greater")
+else:
+    print("This won't be printed")
+```
+[A] X is greater
+[B] X and Y are equal
+[C] Y is greater
+[D] This won't be printed
+CORRECT: C
+EXPLANATION: In this code, x (10) is less than y (20). Therefore, the third condition (x < y) is true, and "Y is greater" is printed. The else block is not reached because a true condition was found earlier in the chain.
+
+==QUESTION 25==
+How can you write a conditional expression that assigns 10 to x if y is greater than 0, and 20 otherwise?
+[A] x = 10 if y > 0 else 20
+[B] x = y > 0 ? 10 : 20
+[C] x = (y > 0) && 10 || 20
+[D] if y > 0 then x = 10 else x = 20
+CORRECT: A
+EXPLANATION: In Python, the ternary operator is written as 'value_if_true if condition else value_if_false'. Therefore, 'x = 10 if y > 0 else 20' is the correct way to write this conditional expression.

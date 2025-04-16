@@ -1,0 +1,277 @@
+#SECTION: PCEP-30-02 4.4 - Basics of Python Exception Handling
+
+==QUESTION 1==
+What is the purpose of a try-except block in Python?
+[A] To define a function
+[B] To create a loop
+[C] To handle exceptions
+[D] To import modules
+
+CORRECT: C
+EXPLANATION: The purpose of a try-except block in Python is to handle exceptions. It allows you to catch and manage errors that might occur during the execution of your code.
+
+==QUESTION 2==
+Which keyword is used to specify the code that might raise an exception?
+[A] catch
+[B] try
+[C] except
+[D] finally
+
+CORRECT: B
+EXPLANATION: The 'try' keyword is used to specify the block of code that might raise an exception. This block is followed by one or more 'except' blocks to handle potential exceptions.
+
+==QUESTION 3==
+What happens if an exception occurs in a try block and there's no matching except block?
+[A] The program continues execution
+[B] The exception is ignored
+[C] The program terminates with an error
+[D] The exception is automatically handled
+
+CORRECT: C
+EXPLANATION: If an exception occurs in a try block and there's no matching except block, the program will terminate with an error. Unhandled exceptions cause the program to stop execution.
+
+==QUESTION 4==
+Which of the following is the correct syntax for a basic try-except block?
+[A] try { } except { }
+[B] try: ... except:
+[C] try ... catch ...
+[D] try() except()
+
+CORRECT: B
+EXPLANATION: The correct syntax for a basic try-except block in Python is 'try: ... except:'. Python uses colons and indentation to define blocks, not curly braces or parentheses.
+
+==QUESTION 5==
+What does the following code print if x is not defined?
+```python
+try:
+    print(x)
+except NameError:
+    print("Variable x is not defined")
+```
+[A] Nothing
+[B] Variable x is not defined
+[C] NameError
+[D] None of the above
+
+CORRECT: B
+EXPLANATION: If x is not defined, this code will print "Variable x is not defined". The NameError exception is caught and handled by the except block.
+
+==QUESTION 6==
+How can you catch multiple exception types in a single except clause?
+[A] except (TypeError, ValueError):
+[B] except TypeError, ValueError:
+[C] except [TypeError, ValueError]:
+[D] except {TypeError, ValueError}:
+
+CORRECT: A
+EXPLANATION: To catch multiple exception types in a single except clause, you use parentheses to group them, like this: 'except (TypeError, ValueError):'.
+
+==QUESTION 7==
+What is the correct order for handling exceptions?
+[A] Most specific to most general
+[B] Most general to most specific
+[C] The order doesn't matter
+[D] Alphabetical order
+
+CORRECT: A
+EXPLANATION: The correct order for handling exceptions is from most specific to most general. This ensures that more specific exceptions are caught before their more general parent exceptions.
+
+==QUESTION 8==
+Which of the following is true about the except clause without any specified exception?
+[A] It catches all exceptions
+[B] It's a syntax error
+[C] It only catches built-in exceptions
+[D] It doesn't catch any exceptions
+
+CORRECT: A
+EXPLANATION: An except clause without any specified exception (i.e., 'except:') catches all exceptions. However, this is generally not recommended as it can mask unexpected errors.
+
+==QUESTION 9==
+What does the following code print if x is 0?
+```python
+try:
+    result = 10 / x
+except ZeroDivisionError:
+    print("Cannot divide by zero")
+else:
+    print("Result:", result)
+```
+[A] Result: 0
+[B] Cannot divide by zero
+[C] ZeroDivisionError
+[D] Nothing
+
+CORRECT: B
+EXPLANATION: If x is 0, this code will print "Cannot divide by zero". The division by zero raises a ZeroDivisionError, which is caught by the except block.
+
+==QUESTION 10==
+How can you access the details of the caught exception?
+[A] Using the as keyword in the except clause
+[B] Using the with keyword
+[C] Exceptions don't have details
+[D] Using the get_details() method
+
+CORRECT: A
+EXPLANATION: You can access the details of the caught exception using the 'as' keyword in the except clause. For example: 'except ZeroDivisionError as e:'.
+
+==QUESTION 11==
+What is the purpose of the finally clause in a try-except block?
+[A] To specify the main code to be executed
+[B] To handle specific exceptions
+[C] To execute code regardless of whether an exception occurred
+[D] To raise custom exceptions
+
+CORRECT: C
+EXPLANATION: The purpose of the finally clause is to execute code regardless of whether an exception occurred or not. It's often used for cleanup operations that must be performed under all circumstances.
+
+==QUESTION 12==
+How do you propagate an exception to the calling function?
+[A] Use the propagate keyword
+[B] Re-raise the exception using raise
+[C] Use the pass statement
+[D] Exceptions are automatically propagated
+
+CORRECT: B
+EXPLANATION: To propagate an exception to the calling function, you can re-raise the exception using the 'raise' statement without arguments inside an except block.
+
+==QUESTION 13==
+What happens when an exception is not handled in a function?
+[A] The program terminates
+[B] The exception is ignored
+[C] The exception propagates to the calling function
+[D] A default exception handler is called
+
+CORRECT: C
+EXPLANATION: When an exception is not handled in a function, it propagates to the calling function. If it's not handled anywhere in the call stack, the program will eventually terminate.
+
+==QUESTION 14==
+Which of the following is NOT a valid way to handle exceptions?
+[A] try-except
+[B] try-finally
+[C] try-catch
+[D] try-except-else
+
+CORRECT: C
+EXPLANATION: 'try-catch' is not a valid way to handle exceptions in Python. Python uses 'try-except', not 'try-catch' like some other languages.
+
+==QUESTION 15==
+What does the following code print?
+```python
+try:
+    print(1/0)
+except:
+    print("An error occurred")
+```
+[A] 1/0
+[B] ZeroDivisionError
+[C] An error occurred
+[D] Nothing
+
+CORRECT: C
+EXPLANATION: This code will print "An error occurred". The division by zero raises a ZeroDivisionError, which is caught by the general except clause, and the error message is printed.
+
+==QUESTION 16==
+How can you get the name of the exception that was raised?
+[A] exception.name
+[B] str(exception)
+[C] type(exception).__name__
+[D] exception.type()
+
+CORRECT: C
+EXPLANATION: You can get the name of the exception that was raised using 'type(exception).__name__'. This returns the name of the exception class as a string.
+
+==QUESTION 17==
+What is the purpose of the else clause in a try-except block?
+[A] To handle exceptions
+[B] To execute if no exceptions were raised
+[C] To always execute, regardless of exceptions
+[D] To raise custom exceptions
+
+CORRECT: B
+EXPLANATION: The purpose of the else clause in a try-except block is to execute code if no exceptions were raised in the try block. It provides a way to specify what should happen when the try block succeeds.
+
+==QUESTION 18==
+Which statement is used to manually raise an exception?
+[A] throw
+[B] raise
+[C] except
+[D] error
+
+CORRECT: B
+EXPLANATION: The 'raise' statement is used to manually raise an exception in Python. For example: 'raise ValueError("Invalid input")'.
+
+==QUESTION 19==
+What happens if an exception is raised in the except block?
+[A] It's automatically caught
+[B] The program terminates
+[C] It propagates to the outer try-except block
+[D] It's ignored
+
+CORRECT: C
+EXPLANATION: If an exception is raised in the except block, it propagates to the outer try-except block (if there is one). If there's no outer try-except block, the program will terminate.
+
+==QUESTION 20==
+How can you catch all exceptions except for keyboard interrupts and system exits?
+[A] except Exception:
+[B] except BaseException:
+[C] except:
+[D] except *:
+
+CORRECT: A
+EXPLANATION: To catch all exceptions except for keyboard interrupts and system exits, you can use 'except Exception:'. This catches all exceptions that inherit from Exception, but not SystemExit, KeyboardInterrupt, and GeneratorExit, which inherit directly from BaseException.
+
+==QUESTION 21==
+What is the correct way to define a custom exception?
+[A] class MyException(Exception):
+[B] def MyException(Exception):
+[C] exception MyException:
+[D] create exception MyException
+
+CORRECT: A
+EXPLANATION: The correct way to define a custom exception is to create a new class that inherits from Exception or one of its subclasses. For example: 'class MyException(Exception):'.
+
+==QUESTION 22==
+Which of the following is true about exception handling in Python?
+[A] It's optional and not recommended
+[B] It's mandatory for all programs
+[C] It helps make programs more robust
+[D] It always slows down program execution
+
+CORRECT: C
+EXPLANATION: Exception handling in Python helps make programs more robust by allowing them to gracefully handle errors and unexpected situations, rather than crashing.
+
+==QUESTION 23==
+What does the following code print if x is not defined?
+```python
+try:
+    print(x)
+except NameError as e:
+    print(type(e).__name__)
+```
+[A] x
+[B] NameError
+[C] Exception
+[D] None
+
+CORRECT: B
+EXPLANATION: If x is not defined, this code will print "NameError". The NameError exception is caught, and type(e).__name__ returns the name of the exception class.
+
+==QUESTION 24==
+How can you handle an exception and still get its traceback?
+[A] Use the traceback module
+[B] Exceptions don't have tracebacks
+[C] Use the sys.exc_info() function
+[D] Both A and C
+
+CORRECT: D
+EXPLANATION: You can handle an exception and still get its traceback using either the traceback module or the sys.exc_info() function. Both methods provide ways to access the traceback information.
+
+==QUESTION 25==
+What is the purpose of delegating responsibility for handling exceptions?
+[A] To improve code organization
+[B] To handle exceptions at the appropriate level
+[C] To simplify error handling logic
+[D] All of the above
+
+CORRECT: D
+EXPLANATION: Delegating responsibility for handling exceptions serves multiple purposes: it improves code organization, allows exceptions to be handled at the appropriate level of abstraction, and can simplify error handling logic. All of these contribute to more maintainable and robust code.

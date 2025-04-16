@@ -1,0 +1,251 @@
+#SECTION: PCEP-30-02 1.4 operators and data types
+
+==QUESTION 1==
+What is the result of 5 ** 2?
+[A] 25
+[B] 10
+[C] 7
+[D] 52
+
+CORRECT: A
+EXPLANATION: In Python, the ** operator is used for exponentiation. 5 ** 2 means 5 raised to the power of 2, which equals 25.
+
+==QUESTION 2==
+Which operator is used for floor division in Python?
+[A] /
+[B] //
+[C] %
+[D] **
+
+CORRECT: B
+EXPLANATION: The // operator in Python is used for floor division, which performs division and rounds down to the nearest integer.
+
+==QUESTION 3==
+What is the output of "Python" * 2?
+[A] PythonPython
+[B] Python2
+[C] Error
+[D] Python * 2
+
+CORRECT: A
+EXPLANATION: In Python, multiplying a string by an integer repeats the string that many times. So "Python" * 2 results in "PythonPython".
+
+==QUESTION 4==
+Which of the following is a valid shortcut operator in Python?
+[A] x =+ 5
+[B] x += 5
+[C] x =+ = 5
+[D] x + = 5
+
+CORRECT: B
+EXPLANATION: x += 5 is a valid shortcut operator in Python, equivalent to x = x + 5.
+
+==QUESTION 5==
+What is the result of 10 % 3?
+[A] 3
+[B] 1
+[C] 0
+[D] 3.33
+
+CORRECT: B
+EXPLANATION: The % operator in Python returns the remainder of division. 10 divided by 3 is 3 with a remainder of 1.
+
+==QUESTION 6==
+Which operator has higher precedence?
+[A] +
+[B] *
+[C] //
+[D] %
+
+CORRECT: B
+EXPLANATION: The * (multiplication) operator has higher precedence than + (addition), // (floor division), and % (modulo).
+
+==QUESTION 7==
+What is the output of 5 & 3?
+[A] 8
+[B] 1
+[C] 2
+[D] 15
+
+CORRECT: B
+EXPLANATION: The & operator performs a bitwise AND operation. In binary, 5 is 101 and 3 is 011. The result of 101 & 011 is 001, which is 1 in decimal.
+
+==QUESTION 8==
+Which of the following is the correct way to perform a bitwise left shift?
+[A] 5 << 1
+[B] 5 >> 1
+[C] 5 < 1
+[D] 5 > 1
+
+CORRECT: A
+EXPLANATION: The << operator performs a bitwise left shift. 5 << 1 shifts the bits of 5 to the left by 1 position.
+
+==QUESTION 9==
+What is the result of not True and False?
+[A] True
+[B] False
+[C] None
+[D] Error
+
+CORRECT: B
+EXPLANATION: The 'not' operator has higher precedence than 'and'. So this expression is equivalent to (not True) and False, which evaluates to False and False, resulting in False.
+
+==QUESTION 10==
+Which of the following is NOT a relational operator in Python?
+[A] ==
+[B] !=
+[C] <>
+[D] >=
+
+CORRECT: C
+EXPLANATION: <> is not a relational operator in Python. It was used in Python 2 as an alternative to !=, but it's not valid in Python 3.
+
+==QUESTION 11==
+What is the output of 0.1 + 0.2 == 0.3?
+[A] True
+[B] False
+[C] Error
+[D] None
+
+CORRECT: B
+EXPLANATION: Due to the way floating-point numbers are represented in binary, 0.1 + 0.2 is not exactly equal to 0.3 in most programming languages, including Python.
+
+==QUESTION 12==
+How do you convert an integer to a float in Python?
+[A] int(x)
+[B] float(x)
+[C] str(x)
+[D] complex(x)
+
+CORRECT: B
+EXPLANATION: The float() function is used to convert a number or string to a floating-point number.
+
+==QUESTION 13==
+What is the result of 5 ^ 3?
+[A] 6
+[B] 8
+[C] 2
+[D] 15
+
+CORRECT: A
+EXPLANATION: In Python, the ^ operator performs a bitwise XOR operation. 5 in binary is 101, and 3 is 011. The result of 101 ^ 011 is 110, which is 6 in decimal.
+
+==QUESTION 14==
+Which operator is used for string concatenation?
+[A] &
+[B] +
+[C] *
+[D] ,
+
+CORRECT: B
+EXPLANATION: In Python, the + operator is used for string concatenation.
+
+==QUESTION 15==
+What is the output of 10 // 3?
+[A] 3
+[B] 3.33
+[C] 3.0
+[D] 4
+
+CORRECT: A
+EXPLANATION: The // operator performs floor division, which returns the largest integer less than or equal to the result. 10 divided by 3 is 3 with a remainder, so 10 // 3 returns 3.
+
+==QUESTION 16==
+Which of the following has the highest precedence?
+[A] ()
+[B] **
+[C] *
+[D] +
+
+CORRECT: A
+EXPLANATION: Parentheses () have the highest precedence in Python, allowing you to override the default order of operations.
+
+==QUESTION 17==
+What is the result of True or False and not True?
+[A] True
+[B] False
+[C] None
+[D] Error
+
+CORRECT: A
+EXPLANATION: The 'and' and 'not' operators have higher precedence than 'or'. This expression is equivalent to True or (False and (not True)), which evaluates to True or False, resulting in True.
+
+==QUESTION 18==
+Which bitwise operator inverts all the bits?
+[A] ~
+[B] ^
+[C] |
+[D] &
+
+CORRECT: A
+EXPLANATION: The ~ operator in Python is the bitwise NOT operator, which inverts all the bits of its operand.
+
+==QUESTION 19==
+What is the output of 5 > 3 > 1?
+[A] True
+[B] False
+[C] Error
+[D] None
+
+CORRECT: A
+EXPLANATION: In Python, this is a chained comparison. It's equivalent to (5 > 3) and (3 > 1), which is True and True, resulting in True.
+
+==QUESTION 20==
+How do you perform integer division in Python 3?
+[A] /
+[B] //
+[C] %
+[D] int()
+
+CORRECT: B
+EXPLANATION: The // operator performs floor division (integer division) in Python 3, always returning an integer result.
+
+==QUESTION 21==
+What is the result of 2 << 2?
+[A] 4
+[B] 8
+[C] 16
+[D] 1
+
+CORRECT: B
+EXPLANATION: The << operator performs a left shift. 2 in binary is 10. Shifting it left by 2 positions gives 1000, which is 8 in decimal.
+
+==QUESTION 22==
+Which of the following is NOT a valid assignment operator in Python?
+[A] +=
+[B] -=
+[C] *=
+[D] =+
+
+CORRECT: D
+EXPLANATION: =+ is not a valid assignment operator in Python. It would be interpreted as assigning a positive value, not as a compound assignment operator.
+
+==QUESTION 23==
+What is the output of 3 * "2" + "4"?
+[A] 10
+[B] 224
+[C] 222
+[D] Error
+
+CORRECT: B
+EXPLANATION: In Python, multiplying a string by an integer repeats the string. So 3 * "2" results in "222". Then "222" + "4" concatenates the strings, resulting in "224".
+
+==QUESTION 24==
+What is the result of 7 | 2?
+[A] 5
+[B] 7
+[C] 2
+[D] 9
+
+CORRECT: B
+EXPLANATION: The | operator performs a bitwise OR operation. 7 in binary is 111, and 2 is 010. The result of 111 | 010 is 111, which is 7 in decimal.
+
+==QUESTION 25==
+How do you convert a float to an integer in Python?
+[A] int(x)
+[B] floor(x)
+[C] round(x)
+[D] ceil(x)
+
+CORRECT: A
+EXPLANATION: The int() function converts a number or string to an integer. When used on a float, it truncates the decimal part (rounds towards zero).

@@ -1,0 +1,266 @@
+#SECTION: PCEP-30-02 1.5 Input/Output console operations
+
+==QUESTION 1==
+What is the output of the following code?
+```python
+print("Hello", "World", sep="-")
+```
+[A] Hello-World
+[B] Hello World
+[C] HelloWorld
+[D] Hello-World-
+
+CORRECT: A
+EXPLANATION: The sep="-" parameter in the print() function specifies that the separator between the arguments should be a hyphen, resulting in "Hello-World".
+
+==QUESTION 2==
+How do you print "Hello" and "World" on separate lines using a single print() function?
+[A] print("Hello\nWorld")
+[B] print("Hello", "World", sep="\n")
+[C] print("Hello", end="\n"); print("World")
+[D] Both A and B are correct
+
+CORRECT: D
+EXPLANATION: Both options A and B will print "Hello" and "World" on separate lines. A uses the newline character \n within the string, while B uses the sep parameter to specify a newline as the separator.
+
+==QUESTION 3==
+What does the end parameter do in the print() function?
+[A] It adds text at the end of the printed string
+[B] It specifies what character(s) to print at the end
+[C] It terminates the program
+[D] It has no effect
+
+CORRECT: B
+EXPLANATION: The end parameter in the print() function specifies what character(s) to print at the end of the output. By default, it's set to "\n" (newline).
+
+==QUESTION 4==
+How do you take user input as an integer?
+[A] input("Enter a number: ")
+[B] int(input("Enter a number: "))
+[C] float(input("Enter a number: "))
+[D] str(input("Enter a number: "))
+
+CORRECT: B
+EXPLANATION: The int() function is used to convert the string input from input() to an integer.
+
+==QUESTION 5==
+What is the output of the following code?
+```python
+print("Python", "is", "awesome", sep="**")
+```
+[A] Python is awesome
+[B] Python**is**awesome
+[C] Python****is****awesome
+[D] Pythonisawesome
+
+CORRECT: B
+EXPLANATION: The sep="**" parameter sets the separator between each argument to be two asterisks, resulting in "Python**is**awesome".
+
+==QUESTION 6==
+Which of the following will print "Hello" without a newline at the end?
+[A] print("Hello", end="")
+[B] print("Hello", end="\n")
+[C] print("Hello", sep="")
+[D] print("Hello", flush=True)
+
+CORRECT: A
+EXPLANATION: Setting end="" in the print() function will prevent the default newline from being added at the end of the output.
+
+==QUESTION 7==
+What is the result of float("3.14")?
+[A] "3.14"
+[B] 3
+[C] 3.14
+[D] Error
+
+CORRECT: C
+EXPLANATION: The float() function converts the string "3.14" to the floating-point number 3.14.
+
+==QUESTION 8==
+How do you print the values 1, 2, and 3 separated by commas?
+[A] print(1, 2, 3)
+[B] print(1, 2, 3, sep=",")
+[C] print("1,2,3")
+[D] print("1", "2", "3", sep=",")
+
+CORRECT: D
+EXPLANATION: Using print("1", "2", "3", sep=",") will print the values as strings separated by commas.
+
+==QUESTION 9==
+What does the sep parameter do in the print() function?
+[A] It separates multiple print statements
+[B] It specifies the separator between multiple arguments
+[C] It adds a separator at the end of the printed string
+[D] It has no effect
+
+CORRECT: B
+EXPLANATION: The sep parameter in the print() function specifies the separator to use between multiple arguments.
+
+==QUESTION 10==
+What is the output of the following code?
+```python
+print("a", "b", "c", sep="", end="**")
+print("d", "e", "f")
+```
+[A] abc**def
+[B] a b c**d e f
+[C] abcdef
+[D] abc**
+   def
+
+CORRECT: A
+EXPLANATION: The first print() outputs "abc" (no separator) followed by "**" (specified end). The second print() continues on the same line, outputting "def" with default separators.
+
+==QUESTION 11==
+How do you convert user input to a float?
+[A] input("Enter a number: ")
+[B] int(input("Enter a number: "))
+[C] float(input("Enter a number: "))
+[D] str(input("Enter a number: "))
+
+CORRECT: C
+EXPLANATION: The float() function is used to convert the string input from input() to a floating-point number.
+
+==QUESTION 12==
+What is the output of print(1, 2, 3, sep="->", end=".")?
+[A] 1->2->3
+[B] 1->2->3.
+[C] 1 2 3.
+[D] 1,2,3.
+
+CORRECT: B
+EXPLANATION: The sep="->" parameter sets the separator between arguments, and end="." adds a period at the end instead of a newline.
+
+==QUESTION 13==
+Which of the following will raise a ValueError?
+[A] int("42")
+[B] int("3.14")
+[C] float("3.14")
+[D] float("42")
+
+CORRECT: B
+EXPLANATION: int("3.14") will raise a ValueError because int() cannot convert a string containing a decimal point to an integer.
+
+==QUESTION 14==
+What is the result of int(3.99)?
+[A] 3
+[B] 4
+[C] 3.99
+[D] Error
+
+CORRECT: A
+EXPLANATION: The int() function truncates the decimal part of a float, always rounding towards zero. So int(3.99) results in 3.
+
+==QUESTION 15==
+How do you print a backslash (\) character?
+[A] print("\")
+[B] print("\\")
+[C] print("\\\")
+[D] print("\b")
+
+CORRECT: B
+EXPLANATION: To print a literal backslash, you need to escape it with another backslash: "\\".
+
+==QUESTION 16==
+What is the output of the following code?
+```python
+x = input("Enter a number: ")
+print(type(x))
+```
+[A] <class 'int'>
+[B] <class 'float'>
+[C] <class 'str'>
+[D] Depends on user input
+
+CORRECT: C
+EXPLANATION: The input() function always returns a string, regardless of what the user enters. So type(x) will always be <class 'str'>.
+
+==QUESTION 17==
+How do you print multiple variables on the same line?
+[A] print(var1 + var2 + var3)
+[B] print(var1, var2, var3)
+[C] print(var1); print(var2); print(var3)
+[D] print(var1 & var2 & var3)
+
+CORRECT: B
+EXPLANATION: Using print(var1, var2, var3) will print all variables on the same line, separated by spaces by default.
+
+==QUESTION 18==
+What is the output of print("Python"[2:4])?
+[A] Py
+[B] th
+[C] tho
+[D] yt
+
+CORRECT: B
+EXPLANATION: String slicing [2:4] returns characters from index 2 (inclusive) to 4 (exclusive), which are "th" in "Python".
+
+==QUESTION 19==
+How do you print a variable's value along with some text?
+[A] print("Value: " + variable)
+[B] print("Value:", variable)
+[C] print(f"Value: {variable}")
+[D] Both B and C are correct
+
+CORRECT: D
+EXPLANATION: Both options B and C are correct ways to print a variable's value along with text. B uses the default separator, and C uses an f-string.
+
+==QUESTION 20==
+What happens if you try to convert a non-numeric string to int?
+[A] It returns 0
+[B] It returns None
+[C] It raises a ValueError
+[D] It converts to ASCII value
+
+CORRECT: C
+EXPLANATION: Attempting to convert a non-numeric string to int using int() will raise a ValueError.
+
+==QUESTION 21==
+What is the output of print("Hello", end="", flush=True)?
+[A] Hello
+[B] Hello with no newline
+[C] Nothing (empty output)
+[D] Error
+
+CORRECT: B
+EXPLANATION: This will print "Hello" without a newline at the end. The flush=True parameter ensures the output is immediately written to the console.
+
+==QUESTION 22==
+How do you take multiple inputs on a single line?
+[A] input("Enter values: ").split()
+[B] [input() for _ in range(3)]
+[C] input(), input(), input()
+[D] All of the above
+
+CORRECT: A
+EXPLANATION: input("Enter values: ").split() will take a single line of input and split it into multiple values based on whitespace.
+
+==QUESTION 23==
+What is the result of float("inf")?
+[A] Error
+[B] 0
+[C] A very large number
+[D] Positive infinity
+
+CORRECT: D
+EXPLANATION: float("inf") returns positive infinity, which is a special floating-point value representing infinity.
+
+==QUESTION 24==
+How do you print a dictionary's keys and values?
+[A] print(dict)
+[B] print(dict.items())
+[C] for k, v in dict.items(): print(k, v)
+[D] Both B and C are correct
+
+CORRECT: D
+EXPLANATION: Both options B and C are correct ways to print a dictionary's keys and values. B prints the dict_items object, while C iterates over the items and prints them.
+
+==QUESTION 25==
+What is the output of print(f"{3.14159:.2f}")?
+[A] 3.14159
+[B] 3.14
+[C] 3.142
+[D] Error
+
+CORRECT: B
+EXPLANATION: The format specifier .2f in the f-string rounds the number to 2 decimal places, resulting in 3.14.

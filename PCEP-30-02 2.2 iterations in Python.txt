@@ -1,0 +1,299 @@
+#SECTION: PCEP-30-02 2.2 iterations in Python
+
+==QUESTION 1==
+What is the purpose of the `pass` statement in Python?
+[A] To skip the rest of the loop
+[B] To continue to the next iteration
+[C] To do nothing and act as a placeholder
+[D] To exit the loop immediately
+
+CORRECT: C
+EXPLANATION: The `pass` statement in Python is a null operation; it does nothing. It's used as a placeholder where syntactically some code is required but no action is desired.
+
+==QUESTION 2==
+Which of the following is a valid `while` loop in Python?
+[A] `while x < 10:`
+[B] `while (x < 10)`
+[C] `while x < 10 do:`
+[D] Both A and B
+
+CORRECT: D
+EXPLANATION: In Python, both `while x < 10:` and `while (x < 10)` are valid syntax for a while loop. The parentheses are optional.
+
+==QUESTION 3==
+How many times will the following loop iterate?
+```python
+for i in range(5):
+    print(i)
+```
+[A] 4 times
+[B] 5 times
+[C] 6 times
+[D] Infinite times
+
+CORRECT: B
+EXPLANATION: The `range(5)` function generates numbers from 0 to 4, so the loop will iterate 5 times.
+
+==QUESTION 4==
+What will be the output of the following code?
+```python
+for letter in "Python":
+    if letter == "h":
+        continue
+    print(letter, end="")
+```
+[A] Python
+[B] Pyton
+[C] Pythn
+[D] Pyto
+
+CORRECT: B
+EXPLANATION: The `continue` statement skips the rest of the loop for that iteration. When `letter` is "h", it's skipped, so "Pyton" is printed.
+
+==QUESTION 5==
+Which statement is used to immediately terminate a loop in Python?
+[A] stop
+[B] exit
+[C] break
+[D] end
+
+CORRECT: C
+EXPLANATION: The `break` statement is used to exit a loop prematurely in Python.
+
+==QUESTION 6==
+What does the `else` clause in a `for` loop do?
+[A] It executes if the loop completes normally (without a break)
+[B] It always executes after the loop
+[C] It executes if the loop is empty
+[D] It executes if an exception occurs in the loop
+
+CORRECT: A
+EXPLANATION: The `else` clause in a `for` loop executes if the loop completes all iterations without encountering a `break` statement.
+
+==QUESTION 7==
+How can you iterate through a list in reverse order?
+[A] `for item in list.reverse():`
+[B] `for item in reversed(list):`
+[C] `for item in list[::-1]:`
+[D] Both B and C
+
+CORRECT: D
+EXPLANATION: Both `reversed(list)` and `list[::-1]` can be used to iterate through a list in reverse order.
+
+==QUESTION 8==
+What will be the output of this nested loop?
+```python
+for i in range(3):
+    for j in range(2):
+        print(i, j)
+```
+[A] 0 0, 0 1, 1 0, 1 1, 2 0, 2 1
+[B] 0 0, 1 0, 2 0, 0 1, 1 1, 2 1
+[C] 0 0, 0 1, 1 1, 1 2, 2 2, 2 3
+[D] 0 0, 1 1, 2 2
+
+CORRECT: A
+EXPLANATION: The outer loop runs 3 times (0, 1, 2) and for each iteration, the inner loop runs twice (0, 1), resulting in the output 0 0, 0 1, 1 0, 1 1, 2 0, 2 1.
+
+==QUESTION 9==
+Which of the following is NOT a valid way to iterate through a list in Python?
+[A] `for item in my_list:`
+[B] `for i in range(len(my_list)):`
+[C] `while my_list:`
+[D] `for index, value in my_list:`
+
+CORRECT: D
+EXPLANATION: `for index, value in my_list:` is not a valid way to iterate through a list. To get both index and value, you would use `enumerate(my_list)`.
+
+==QUESTION 10==
+What does the `enumerate()` function do in a for loop?
+[A] It counts the number of iterations
+[B] It provides both the index and value of each item
+[C] It enumerates the list items
+[D] It creates an enumerated type
+
+CORRECT: B
+EXPLANATION: The `enumerate()` function returns both the index and value of each item in the iterable, allowing you to loop over both simultaneously.
+
+==QUESTION 11==
+How can you create an infinite loop in Python?
+[A] `while True:`
+[B] `for i in range(infinity):`
+[C] `loop:`
+[D] `repeat:`
+
+CORRECT: A
+EXPLANATION: `while True:` creates an infinite loop in Python, as the condition is always true.
+
+==QUESTION 12==
+What will be the output of this code?
+```python
+x = 0
+while x < 5:
+    x += 1
+    if x == 3:
+        continue
+    print(x, end=" ")
+```
+[A] 1 2 3 4 5
+[B] 1 2 4 5
+[C] 1 2 3 4
+[D] 1 2 4
+
+CORRECT: B
+EXPLANATION: The loop prints numbers from 1 to 5, but skips 3 due to the `continue` statement when x is 3.
+
+==QUESTION 13==
+Which of the following is a correct way to iterate through a dictionary in Python?
+[A] `for key in dict:`
+[B] `for key, value in dict.items():`
+[C] `for key in dict.keys():`
+[D] All of the above
+
+CORRECT: D
+EXPLANATION: All of these are valid ways to iterate through a dictionary in Python, though they provide different information (keys only, or both keys and values).
+
+==QUESTION 14==
+What does the `range(1, 10, 2)` function call produce?
+[A] 1, 3, 5, 7, 9
+[B] 1, 2, 3, 4, 5, 6, 7, 8, 9
+[C] 2, 4, 6, 8
+[D] 1, 3, 5, 7
+
+CORRECT: A
+EXPLANATION: `range(1, 10, 2)` produces numbers from 1 to 9 (10 is exclusive) with a step of 2, resulting in 1, 3, 5, 7, 9.
+
+==QUESTION 15==
+In a nested loop structure, which statement will break out of the innermost loop only?
+[A] break
+[B] continue
+[C] pass
+[D] return
+
+CORRECT: A
+EXPLANATION: The `break` statement will exit only the innermost loop in which it appears.
+
+==QUESTION 16==
+What will be the output of this code?
+```python
+for i in range(3):
+    print(i)
+else:
+    print("Done")
+```
+[A] 0 1 2
+[B] 0 1 2 Done
+[C] 0 1 2 3 Done
+[D] Done
+
+CORRECT: B
+EXPLANATION: The loop prints 0, 1, 2, and then the else clause prints "Done" because the loop completed normally.
+
+==QUESTION 17==
+Which of the following is NOT a valid loop control statement in Python?
+[A] break
+[B] continue
+[C] pass
+[D] skip
+
+CORRECT: D
+EXPLANATION: "skip" is not a valid loop control statement in Python. The valid ones are break, continue, and pass.
+
+==QUESTION 18==
+What does the `zip()` function do when used in a for loop?
+[A] It compresses the loop
+[B] It iterates over two or more sequences in parallel
+[C] It creates a zip file
+[D] It speeds up the loop execution
+
+CORRECT: B
+EXPLANATION: The `zip()` function allows you to iterate over two or more sequences simultaneously, pairing up corresponding elements.
+
+==QUESTION 19==
+How can you create a loop that iterates 5 times, starting from 1?
+[A] `for i in range(1, 6):`
+[B] `for i in range(5):`
+[C] `for i in range(1, 5):`
+[D] `for i in range(0, 5):`
+
+CORRECT: A
+EXPLANATION: `range(1, 6)` generates numbers from 1 to 5 (6 is exclusive), which gives 5 iterations starting from 1.
+
+==QUESTION 20==
+What will be the output of this code?
+```python
+i = 0
+while i < 5:
+    print(i, end=" ")
+    i += 1
+else:
+    print("Done")
+```
+[A] 0 1 2 3 4
+[B] 0 1 2 3 4 Done
+[C] 1 2 3 4 5 Done
+[D] 0 1 2 3 4 5 Done
+
+CORRECT: B
+EXPLANATION: The while loop prints numbers from 0 to 4, and then the else clause prints "Done" because the loop completed normally.
+
+==QUESTION 21==
+Which statement is used to skip the rest of the code inside a loop for the current iteration only?
+[A] break
+[B] continue
+[C] pass
+[D] skip
+
+CORRECT: B
+EXPLANATION: The `continue` statement skips the rest of the code in the current iteration and moves to the next iteration of the loop.
+
+==QUESTION 22==
+What will be the output of this comprehension?
+```python
+[x for x in range(10) if x % 2 == 0]
+```
+[A] [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+[B] [0, 2, 4, 6, 8]
+[C] [1, 3, 5, 7, 9]
+[D] [2, 4, 6, 8]
+
+CORRECT: B
+EXPLANATION: This list comprehension generates even numbers from 0 to 9, resulting in [0, 2, 4, 6, 8].
+
+==QUESTION 23==
+How can you iterate over both the keys and values of a dictionary simultaneously?
+[A] `for k, v in dict:`
+[B] `for k, v in dict.items():`
+[C] `for k, v in dict.keys(), dict.values():`
+[D] `for k, v in enumerate(dict):`
+
+CORRECT: B
+EXPLANATION: `dict.items()` returns key-value pairs, allowing you to iterate over both keys and values simultaneously.
+
+==QUESTION 24==
+What will be the output of this nested conditional in a loop?
+```python
+for i in range(3):
+    if i == 1:
+        if i + 1 == 2:
+            print("Yes")
+        else:
+            print("No")
+```
+[A] Yes
+[B] No
+[C] Yes No
+[D] No Yes
+
+CORRECT: A
+EXPLANATION: When i is 1, both conditions (i == 1 and i + 1 == 2) are true, so "Yes" is printed once.
+
+==QUESTION 25==
+Which of the following is true about the `pass` statement in Python?
+[A] It raises an exception
+[B] It terminates the program
+[C] It does nothing and is used as a placeholder
+[D] It skips to the next iteration of the loop
+
+CORRECT: C
+EXPLANATION: The `pass` statement in Python is a null operation; it does nothing and is typically used as a placeholder where syntactically some code is required.

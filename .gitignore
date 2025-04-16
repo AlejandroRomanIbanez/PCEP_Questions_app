@@ -45,4 +45,3 @@ users.json
 
 # Ignore exam/study materials if unnecessary in version control
 *.pdf
-*.txt

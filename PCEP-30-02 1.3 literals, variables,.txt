@@ -1,0 +1,269 @@
+#SECTION: PCEP-30-02 1.3 literals, variables, and numeral systems
+
+==QUESTION 1==
+Which of the following is a valid Boolean literal in Python?
+[A] TRUE
+[B] true
+[C] True
+[D] "True"
+
+CORRECT: C
+EXPLANATION: In Python, Boolean literals are case-sensitive. 'True' (with a capital T) is the correct representation of a Boolean true value.
+
+==QUESTION 2==
+What is the output of the following code?
+```python
+print(0.1 + 0.2 == 0.3)
+```
+[A] True
+[B] False
+[C] Error
+[D] None
+
+CORRECT: B
+EXPLANATION: Due to the way floating-point numbers are represented in binary, 0.1 + 0.2 is not exactly equal to 0.3 in most programming languages, including Python. The result is slightly off, so the comparison returns False.
+
+==QUESTION 3==
+How do you represent the number 5.3 x 10^8 in scientific notation in Python?
+[A] 5.3e8
+[B] 5.3E8
+[C] 5.3 * 10^8
+[D] Both A and B
+
+CORRECT: D
+EXPLANATION: In Python, scientific notation can be represented using either 'e' or 'E'. Both 5.3e8 and 5.3E8 are valid representations of 5.3 x 10^8.
+
+==QUESTION 4==
+Which of the following is a valid string literal in Python?
+[A] 'Hello'
+[B] "Hello"
+[C] '''Hello'''
+[D] All of the above
+
+CORRECT: D
+EXPLANATION: Python allows strings to be enclosed in single quotes (''), double quotes (""), or triple quotes (''' ''' or """ """). All of the given options are valid string literals in Python.
+
+==QUESTION 5==
+What is the binary representation of the decimal number 10?
+[A] 0b1010
+[B] 0b1000
+[C] 0b1100
+[D] 0b1110
+
+CORRECT: A
+EXPLANATION: The decimal number 10 is represented as 1010 in binary. In Python, binary literals are prefixed with '0b', so the correct representation is 0b1010.
+
+==QUESTION 6==
+Which of the following is the correct way to declare a variable in Python?
+[A] var myVar = 10
+[B] int myVar = 10
+[C] myVar = 10
+[D] let myVar = 10
+
+CORRECT: C
+EXPLANATION: In Python, variables are declared by simply assigning a value to a name. There's no need for keywords like 'var', 'int', or 'let'. The correct way is 'myVar = 10'.
+
+==QUESTION 7==
+According to PEP-8, which naming convention should be used for function names?
+[A] camelCase
+[B] PascalCase
+[C] snake_case
+[D] UPPERCASE
+
+CORRECT: C
+EXPLANATION: PEP-8, the style guide for Python code, recommends using snake_case (lowercase words separated by underscores) for function names.
+
+==QUESTION 8==
+What is the hexadecimal representation of the decimal number 255?
+[A] 0xFF
+[B] 0xFE
+[C] 0x11
+[D] 0xFF
+
+CORRECT: A
+EXPLANATION: The decimal number 255 is represented as FF in hexadecimal. In Python, hexadecimal literals are prefixed with '0x', so the correct representation is 0xFF.
+
+==QUESTION 9==
+Which of the following is NOT a valid variable name in Python?
+[A] myVariable
+[B] _my_variable
+[C] 1stVariable
+[D] my_variable_1
+
+CORRECT: C
+EXPLANATION: In Python, variable names cannot start with a number. '1stVariable' is not a valid variable name, while the others are all valid.
+
+==QUESTION 10==
+What is the output of the following code?
+```python
+print(0o10)
+```
+[A] 10
+[B] 8
+[C] 16
+[D] Error
+
+CORRECT: B
+EXPLANATION: In Python, '0o' prefix denotes an octal (base-8) number. 0o10 in octal is equivalent to 8 in decimal.
+
+==QUESTION 11==
+Which of the following is a valid floating-point literal in Python?
+[A] 3.14
+[B] .314
+[C] 3.
+[D] All of the above
+
+CORRECT: D
+EXPLANATION: Python allows flexible notation for floating-point literals. All of the given options (3.14, .314, and 3.) are valid ways to represent floating-point numbers in Python.
+
+==QUESTION 12==
+What is the correct way to declare a constant in Python according to PEP-8?
+[A] CONSTANT_NAME = value
+[B] ConstantName = value
+[C] constantName = value
+[D] Constant_Name = value
+
+CORRECT: A
+EXPLANATION: According to PEP-8, constants should be named using all capital letters with underscores separating words, like CONSTANT_NAME.
+
+==QUESTION 13==
+How do you represent the binary number 1010 as an integer literal in Python?
+[A] 1010b
+[B] 0b1010
+[C] bin(1010)
+[D] binary(1010)
+
+CORRECT: B
+EXPLANATION: In Python, binary literals are prefixed with '0b'. Therefore, the correct way to represent the binary number 1010 is 0b1010.
+
+==QUESTION 14==
+What is the output of the following code?
+```python
+print(type(1 + 1.0))
+```
+[A] <class 'int'>
+[B] <class 'float'>
+[C] <class 'number'>
+[D] Error
+
+CORRECT: B
+EXPLANATION: When an integer is added to a float in Python, the result is always a float. Therefore, the type of 1 + 1.0 is float.
+
+==QUESTION 15==
+Which of the following is NOT a valid way to declare a multiline string in Python?
+[A] '''Multiline
+   string'''
+[B] """Multiline
+   string"""
+[C] "Multiline
+   string"
+[D] Both A and B are valid
+
+CORRECT: C
+EXPLANATION: In Python, multiline strings can be declared using triple quotes (''' or """). Regular single or double quotes cannot span multiple lines without escaping.
+
+==QUESTION 16==
+What is the octal representation of the decimal number 64?
+[A] 0o100
+[B] 0o64
+[C] 0o200
+[D] 0o40
+
+CORRECT: A
+EXPLANATION: The decimal number 64 is represented as 100 in octal. In Python, octal literals are prefixed with '0o', so the correct representation is 0o100.
+
+==QUESTION 17==
+According to PEP-8, what is the maximum line length recommended for Python code?
+[A] 79 characters
+[B] 80 characters
+[C] 100 characters
+[D] 120 characters
+
+CORRECT: B
+EXPLANATION: PEP-8 recommends limiting all lines to a maximum of 79 characters for code and 72 for comments and docstrings. However, the question asks for the maximum line length, which is typically interpreted as 80 characters.
+
+==QUESTION 18==
+Which of the following is a valid complex number literal in Python?
+[A] 3 + 4i
+[B] 3 + 4j
+[C] 3i + 4
+[D] complex(3, 4)
+
+CORRECT: B
+EXPLANATION: In Python, the imaginary part of a complex number is denoted by 'j' or 'J', not 'i'. Therefore, 3 + 4j is the correct way to represent a complex number literal.
+
+==QUESTION 19==
+What is the output of the following code?
+```python
+print(0xA + 0o10)
+```
+[A] 20
+[B] 18
+[C] 16
+[D] Error
+
+CORRECT: B
+EXPLANATION: 0xA is hexadecimal for 10, and 0o10 is octal for 8. So this operation is equivalent to 10 + 8, which equals 18.
+
+==QUESTION 20==
+Which of the following is NOT a recommended practice according to PEP-8?
+[A] Using spaces around operators
+[B] Using camelCase for function names
+[C] Using lowercase letters for module names
+[D] Using uppercase letters for constants
+
+CORRECT: B
+EXPLANATION: PEP-8 recommends using snake_case for function names, not camelCase. The other options are all recommended practices.
+
+==QUESTION 21==
+What is the correct way to declare a variable with a long integer value in Python 3?
+[A] long x = 1234567890L
+[B] x = 1234567890L
+[C] x = 1234567890
+[D] x = long(1234567890)
+
+CORRECT: C
+EXPLANATION: In Python 3, there is no separate 'long' type. All integers are effectively long. You can simply assign a large number without any suffix or type declaration.
+
+==QUESTION 22==
+Which of the following is a valid way to use scientific notation in Python?
+[A] 1.23e-4
+[B] 1.23E-4
+[C] 1.23 * 10^-4
+[D] Both A and B
+
+CORRECT: D
+EXPLANATION: In Python, scientific notation can be represented using either 'e' or 'E'. Both 1.23e-4 and 1.23E-4 are valid ways to represent 1.23 × 10^-4.
+
+==QUESTION 23==
+What is the output of the following code?
+```python
+print(f"{3.14159:.2f}")
+```
+[A] 3.14
+[B] 3.14159
+[C] 3.142
+[D] Error
+
+CORRECT: A
+EXPLANATION: The f-string format specifier :.2f means to format the number as a float with 2 decimal places. Therefore, 3.14159 is rounded to 3.14.
+
+==QUESTION 24==
+According to PEP-8, how should module-level "dunders" (names with two leading and two trailing underscores) be placed in a module?
+[A] At the very top of the file
+[B] After the module docstring
+[C] At the bottom of the file
+[D] Anywhere in the file
+
+CORRECT: B
+EXPLANATION: PEP-8 recommends placing module-level "dunders" (like __all__, __author__, etc.) after the module docstring but before any import statements.
+
+==QUESTION 25==
+What is the correct way to declare a binary literal in Python?
+[A] 0b1010
+[B] binary(1010)
+[C] 1010b
+[D] bin(1010)
+
+CORRECT: A
+EXPLANATION: In Python, binary literals are prefixed with '0b'. Therefore, 0b1010 is the correct way to declare a binary literal representing the decimal number 10.

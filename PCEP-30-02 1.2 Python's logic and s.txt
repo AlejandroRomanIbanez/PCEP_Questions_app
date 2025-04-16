@@ -1,0 +1,261 @@
+#SECTION: PCEP-30-02 1.2 Python's logic and structure
+
+==QUESTION 1==
+Which of the following is not a Python keyword?
+[A] while
+[B] for
+[C] loop
+[D] if
+
+CORRECT: C
+EXPLANATION: "loop" is not a Python keyword. The other options (while, for, if) are all valid Python keywords used for control flow.
+
+==QUESTION 2==
+What is the purpose of indentation in Python?
+[A] To make the code look neat
+[B] To define code blocks
+[C] To increase code execution speed
+[D] To declare variables
+
+CORRECT: B
+EXPLANATION: In Python, indentation is used to define code blocks. It's a crucial part of the language's syntax and determines the structure and scope of code.
+
+==QUESTION 3==
+How do you write a single-line comment in Python?
+[A] // Comment
+[B] /* Comment */
+[C] # Comment
+[D] <!-- Comment -->
+
+CORRECT: C
+EXPLANATION: In Python, single-line comments are written using the hash symbol (#). Everything after # on that line is treated as a comment.
+
+==QUESTION 4==
+Which of the following is a valid Python instruction?
+[A] print "Hello, World!"
+[B] print("Hello, World!")
+[C] echo "Hello, World!"
+[D] console.log("Hello, World!")
+
+CORRECT: B
+EXPLANATION: In Python 3, print is a function and requires parentheses. Therefore, print("Hello, World!") is the correct syntax.
+
+==QUESTION 5==
+What happens if you mix tabs and spaces for indentation in Python?
+[A] Nothing, it works fine
+[B] It raises an IndentationError
+[C] The code runs slower
+[D] It automatically converts all to spaces
+
+CORRECT: B
+EXPLANATION: Mixing tabs and spaces for indentation in Python can lead to an IndentationError. It's recommended to use either all tabs or all spaces (preferably spaces) for consistency.
+
+==QUESTION 6==
+Which keyword is used to define a function in Python?
+[A] function
+[B] def
+[C] define
+[D] func
+
+CORRECT: B
+EXPLANATION: In Python, the 'def' keyword is used to define a function. For example: def function_name():
+
+==QUESTION 7==
+What is the correct way to start an if statement in Python?
+[A] if (condition):
+[B] if condition
+[C] if: condition
+[D] if condition:
+
+CORRECT: D
+EXPLANATION: The correct syntax for an if statement in Python is 'if condition:'. The colon is necessary, and parentheses are optional.
+
+==QUESTION 8==
+How do you write a multi-line comment in Python?
+[A] // Comment //
+[B] /* Comment */
+[C] ''' Comment '''
+[D] <!-- Comment -->
+
+CORRECT: C
+EXPLANATION: Multi-line comments in Python are written using triple quotes (either ''' or """). This allows for comments that span multiple lines.
+
+==QUESTION 9==
+Which of the following is not a valid way to end a Python instruction?
+[A] Newline
+[B] Semicolon
+[C] Colon
+[D] Both A and B are valid
+
+CORRECT: C
+EXPLANATION: In Python, instructions typically end with a newline. Semicolons can be used to separate multiple statements on one line, but are not required. Colons are used for starting new blocks, not ending instructions.
+
+==QUESTION 10==
+What does the `pass` keyword do in Python?
+[A] It skips the rest of the loop
+[B] It acts as a placeholder for future code
+[C] It raises an exception
+[D] It terminates the program
+
+CORRECT: B
+EXPLANATION: The 'pass' keyword in Python is a null operation. It's used as a placeholder where syntactically some code is required, but no action is desired.
+
+==QUESTION 11==
+Which of the following is true about Python's `else` clause?
+[A] It can only be used with if statements
+[B] It can be used with for loops
+[C] It can be used with while loops
+[D] Both B and C are correct
+
+CORRECT: D
+EXPLANATION: In Python, the 'else' clause can be used not only with if statements, but also with for and while loops. In loops, it executes when the loop completes normally (without a break).
+
+==QUESTION 12==
+What is the purpose of the `continue` keyword in Python?
+[A] To exit a loop
+[B] To skip the rest of the current iteration
+[C] To pause the program execution
+[D] To start a new function
+
+CORRECT: B
+EXPLANATION: The 'continue' keyword in Python is used to skip the rest of the code inside a loop for the current iteration and move to the next iteration.
+
+==QUESTION 13==
+How many spaces are recommended for each level of indentation in Python?
+[A] 2
+[B] 3
+[C] 4
+[D] 8
+
+CORRECT: C
+EXPLANATION: The Python Style Guide (PEP 8) recommends using 4 spaces per indentation level. This is not a strict rule, but it's widely adopted in the Python community.
+
+==QUESTION 14==
+Which keyword is used to define a class in Python?
+[A] class
+[B] define
+[C] struct
+[D] object
+
+CORRECT: A
+EXPLANATION: In Python, the 'class' keyword is used to define a class. For example: class ClassName:
+
+==QUESTION 15==
+What is the output of the following code?
+```python
+x = 5
+if x > 0:
+    print("Positive")
+else:
+    print("Non-positive")
+print("Done")
+```
+[A] Positive
+[B] Positive
+   Done
+[C] Non-positive
+   Done
+[D] Done
+
+CORRECT: B
+EXPLANATION: The code will output "Positive" because x (5) is greater than 0. The "Done" print statement is not indented under the else block, so it will always execute regardless of the condition.
+
+==QUESTION 16==
+Which of the following is not a valid loop in Python?
+[A] for loop
+[B] while loop
+[C] do-while loop
+[D] All of the above are valid
+
+CORRECT: C
+EXPLANATION: Python does not have a built-in do-while loop. It has for loops and while loops, but no do-while construct.
+
+==QUESTION 17==
+What is the purpose of the `break` keyword in Python?
+[A] To exit a loop prematurely
+[B] To skip the current iteration
+[C] To define a function
+[D] To raise an exception
+
+CORRECT: A
+EXPLANATION: The 'break' keyword in Python is used to exit a loop prematurely. When encountered inside a loop, it immediately terminates the loop and transfers control to the next statement after the loop.
+
+==QUESTION 18==
+Which of the following is a valid way to import a module in Python?
+[A] #include <module>
+[B] import module
+[C] using module
+[D] require module
+
+CORRECT: B
+EXPLANATION: In Python, modules are imported using the 'import' keyword. The correct syntax is 'import module_name'.
+
+==QUESTION 19==
+What is the correct way to start a while loop in Python?
+[A] while (condition):
+[B] while condition:
+[C] while: condition
+[D] while condition
+
+CORRECT: B
+EXPLANATION: The correct syntax for a while loop in Python is 'while condition:'. The colon is necessary, and parentheses are optional.
+
+==QUESTION 20==
+Which keyword is used to handle exceptions in Python?
+[A] catch
+[B] except
+[C] handle
+[D] try
+
+CORRECT: B
+EXPLANATION: In Python, exceptions are handled using try-except blocks. The 'except' keyword is used to catch and handle exceptions.
+
+==QUESTION 21==
+What is the purpose of the `finally` clause in exception handling?
+[A] To define the main code block
+[B] To specify what to do if no exception occurs
+[C] To execute code regardless of whether an exception occurred
+[D] To raise a custom exception
+
+CORRECT: C
+EXPLANATION: The 'finally' clause in Python's exception handling is used to define a block of code that will be executed regardless of whether an exception occurred or not. It's often used for cleanup operations.
+
+==QUESTION 22==
+How do you define a lambda function in Python?
+[A] lambda: expression
+[B] def lambda(x): expression
+[C] lambda x: expression
+[D] function lambda(x) { expression }
+
+CORRECT: C
+EXPLANATION: In Python, lambda functions are defined using the syntax 'lambda arguments: expression'. They are small anonymous functions that can have any number of arguments but can only have one expression.
+
+==QUESTION 23==
+What does the `global` keyword do in Python?
+[A] Declares a global variable
+[B] Imports a global module
+[C] Creates a global function
+[D] Defines a global constant
+
+CORRECT: A
+EXPLANATION: The 'global' keyword in Python is used to declare that a variable inside a function is global (i.e., it belongs to the global scope). It allows you to modify the global variable from within a function.
+
+==QUESTION 24==
+Which of the following is true about Python's `elif` keyword?
+[A] It's equivalent to "else if" in other languages
+[B] It can only be used once in an if-else chain
+[C] It must always be followed by an else clause
+[D] It can only be used with while loops
+
+CORRECT: A
+EXPLANATION: In Python, 'elif' is short for "else if". It's used to check multiple conditions after an initial 'if' statement, and is equivalent to "else if" constructs in other languages.
+
+==QUESTION 25==
+What is the purpose of the `with` statement in Python?
+[A] To define a new class
+[B] To handle exceptions
+[C] To ensure proper acquisition and release of resources
+[D] To create a new module
+
+CORRECT: C
+EXPLANATION: The 'with' statement in Python is used to ensure proper acquisition and release of resources. It provides a clean way to manage resources like file handles, ensuring they are properly closed or released after use, even if exceptions occur.
