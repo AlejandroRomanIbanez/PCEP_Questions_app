@@ -8,10 +8,12 @@ services:
     env_file:
       - .env
     depends_on:
-      - db
+      db:
+        condition: service_healthy
     volumes:
       - .:/app
       - /app/node_modules
+    entrypoint: ["/wait-for-it.sh", "db:5432", "--", "node", "server.js"]
     networks:
       - app-network
 
@@ -23,6 +25,11 @@ services:
       - db-data:/var/lib/postgresql/data
     networks:
       - app-network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $$POSTGRES_USER -d $$POSTGRES_DB"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
 
 networks:
   app-network:

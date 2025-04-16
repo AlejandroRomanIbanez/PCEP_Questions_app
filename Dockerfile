@@ -7,6 +7,9 @@ WORKDIR /app
 # Copy package.json and package-lock.json (if exists) to install dependencies
 COPY package*.json ./
 
+COPY wait-for-it.sh /wait-for-it.sh
+RUN chmod +x /wait-for-it.sh
+
 # Install dependencies
 RUN npm install
 
