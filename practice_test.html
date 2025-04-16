@@ -1,0 +1,1218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python Practice Test</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #4f46e5; /* Indigo for buttons and accents */
+            --primary-hover-color: #6366f1; /* Lighter indigo for hover */
+            --secondary-color: #06b6d4; /* Cyan for secondary actions */
+            --danger-color: #ef4444; /* Red for logout/return */
+            --background-color: #f8fafc; /* Light gray background */
+            --text-color: #1e293b; /* Dark slate for text */
+            --code-background: #f1f5f9; /* Light slate for code */
+            --code-border: #e2e8f0; /* Subtle border */
+            --container-background: #ffffff; /* White for containers */
+            --modal-background: #ffffff; /* White for modals */
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transition: all 0.2s ease-in-out;
+        }
+
+        body {
+            font-family: 'Inter', system-ui, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 32px;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            transition: var(--transition);
+        }
+
+        .container {
+            max-width: 960px;
+            margin: auto;
+            background: var(--container-background);
+            padding: 24px;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+        }
+
+        h1, h2 {
+            color: var(--text-color);
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+
+        h1 {
+            font-size: 2rem;
+            background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        #question {
+            margin-bottom: 24px;
+            font-size: 1.125rem;
+        }
+
+        .option, .menu-item {
+            margin-bottom: 12px;
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-hover-color));
+            border: none;
+            color: white;
+            padding: 12px 24px;
+            text-align: left;
+            text-decoration: none;
+            display: block;
+            width: 100%;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: var(--transition);
+            box-shadow: var(--shadow);
+        }
+
+        .menu-item {
+            background: var(--container-background);
+            color: var(--text-color);
+            padding: 16px;
+            border: 1px solid var(--code-border);
+        }
+
+        .option:hover, .menu-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        #submit,
+        #next,
+        #back-to-menu,
+        #return-to-menu,
+        #login-button,
+        #register-button,
+        #logout-button,
+        #switch-to-register,
+        #switch-to-login {
+            background: var(--secondary-color);
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            font-size: 1rem;
+            font-weight: 500;
+            margin: 8px 4px;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: var(--transition);
+            box-shadow: var(--shadow);
+        }
+
+        #return-to-menu,
+        #logout-button {
+            background: var(--danger-color);
+        }
+
+        #submit:hover,
+        #next:hover,
+        #back-to-menu:hover,
+        #return-to-menu:hover,
+        #login-button:hover,
+        #register-button:hover,
+        #logout-button:hover,
+        #switch-to-register:hover,
+        #switch-to-login:hover {
+            filter: brightness(1.1);
+            transform: translateY(-1px);
+        }
+
+        #result {
+            margin-top: 24px;
+            font-weight: 600;
+            font-size: 1.125rem;
+            color: var(--primary-color);
+        }
+
+        #progress, #timer {
+            margin-top: 16px;
+            font-size: 1rem;
+            color: var(--text-color);
+            font-weight: 500;
+        }
+
+        pre {
+            white-space: pre-wrap;
+            word-break: break-word;
+            background-color: var(--code-background);
+            padding: 16px;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin-bottom: 12px;
+            border: 1px solid var(--code-border);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9rem;
+        }
+
+        code {
+            font-family: 'JetBrains Mono', monospace;
+            display: block;
+            width: 100%;
+        }
+
+        .option-container {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 12px;
+            background-color: var(--code-background);
+            border-radius: 8px;
+            padding: 8px;
+            border: 1px solid var(--code-border);
+            transition: var(--transition);
+        }
+
+        .option {
+            width: 36px;
+            height: 36px;
+            font-size: 1rem;
+            margin-right: 12px;
+            flex-shrink: 0;
+        }
+
+        .option-text {
+            flex-grow: 1;
+            font-size: 0.9rem;
+            margin: 0;
+            white-space: pre-wrap;
+            word-break: break-word;
+            font-family: 'JetBrains Mono', monospace;
+            padding: 8px;
+        }
+
+        .option-text code {
+            white-space: pre-wrap;
+            word-break: break-word;
+            background-color: var(--code-background);
+            padding: 8px;
+            border-radius: 6px;
+            display: block;
+            margin-top: 8px;
+        }
+
+        .option-letter {
+            width: 36px;
+            height: 36px;
+            font-size: 1rem;
+            margin-right: 12px;
+            flex-shrink: 0;
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 600;
+        }
+
+        .option-letter:hover {
+            background: var(--primary-hover-color);
+            transform: scale(1.05);
+        }
+
+        .option-container pre {
+            margin: 0;
+            flex-grow: 1;
+        }
+
+        #menu, #quiz, #auth-container {
+            display: none;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.5);
+            animation: fadeIn 0.3s ease;
+        }
+
+        .modal-content {
+            background: var(--modal-background);
+            margin: 15% auto;
+            padding: 24px;
+            border: none;
+            width: 80%;
+            max-width: 600px;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            animation: slideIn 0.3s ease;
+        }
+
+        .modal-buttons {
+            text-align: right;
+            margin-top: 24px;
+        }
+
+        .modal-button {
+            margin-left: 12px;
+            padding: 8px 16px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            background: var(--secondary-color);
+            color: white;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .modal-button:hover {
+            filter: brightness(1.1);
+        }
+
+        .menu-item-title {
+            font-weight: 600;
+            font-size: 1.125rem;
+            margin-bottom: 8px;
+        }
+
+        .menu-item-description {
+            font-size: 0.9rem;
+            color: #64748b;
+        }
+
+        .option.correct {
+            background: #22c55e; /* Green for correct */
+        }
+
+        .option.incorrect {
+            background: var(--danger-color);
+        }
+
+        #explanation {
+            margin-top: 24px;
+            padding: 16px;
+            background-color: var(--code-background);
+            border-radius: 8px;
+            border: 1px solid var(--code-border);
+            font-size: 0.9rem;
+        }
+
+        #top-bar {
+            position: fixed;
+            top: 16px;
+            right: 16px;
+            display: flex;
+            gap: 12px;
+            z-index: 999;
+        }
+
+        #dark-mode-toggle, #logout-button {
+            padding: 8px 16px;
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        #logout-button {
+            background: var(--danger-color);
+            display: none;
+        }
+
+        #dark-mode-toggle:hover, #logout-button:hover {
+            filter: brightness(1.1);
+            transform: translateY(-1px);
+        }
+
+        #auth-container {
+            max-width: 480px;
+            margin: 48px auto;
+            padding: 24px;
+            background: var(--container-background);
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+        }
+
+        #auth-form {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        #auth-form input {
+            padding: 12px;
+            border: 1px solid var(--code-border);
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        #auth-form input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.2);
+        }
+
+        #auth-error {
+            color: var(--danger-color);
+            margin-bottom: 16px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            display: none;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideIn {
+            from { transform: translateY(-20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 16px;
+            }
+
+            .container {
+                padding: 16px;
+            }
+
+            .menu-item, .option {
+                margin-bottom: 8px;
+            }
+
+            #timer, #progress {
+                font-size: 0.9rem;
+            }
+
+            #question, #result {
+                font-size: 1rem;
+            }
+
+            #top-bar {
+                flex-direction: row;
+                gap: 8px;
+                right: 8px;
+            }
+
+            #auth-container {
+                margin: 24px auto;
+                padding: 16px;
+            }
+        }
+
+        body.dark-mode {
+            --background-color: #0f172a;
+            --text-color: #e2e8f0;
+            --code-background: #1e293b;
+            --code-border: #334155;
+            --container-background: #1e293b;
+            --modal-background: #1e293b;
+        }
+
+        body.dark-mode .menu-item-description {
+            color: #94a3b8;
+        }
+
+        body.dark-mode .menu-item {
+            background: #334155;
+            border-color: #475569;
+        }
+
+        body.dark-mode #result {
+            color: var(--primary-hover-color);
+        }
+    </style>
+</head>
+<body>
+    <div id="auth-container">
+        <h1>Python Practice Test</h1>
+        <div id="auth-error"></div>
+        <div id="auth-form">
+            <input type="text" id="username" placeholder="Username" required>
+            <input type="password" id="password" placeholder="Password" required>
+            <button id="login-button">Login</button>
+            <button id="register-button" style="display: none;">Register</button>
+            <button id="switch-to-register">Create New Account</button>
+            <button id="switch-to-login" style="display: none;">Back to Login</button>
+        </div>
+    </div>
+
+    <div class="container">
+        <h1>Python Practice Test</h1>
+        <div id="menu">
+            <h2>Select a section to study:</h2>
+            <div id="menu-items"></div>
+        </div>
+        <div id="quiz">
+            <div id="timer"></div>
+            <div id="question"></div>
+            <div id="code"></div>
+            <div id="options"></div>
+            <button id="submit">Submit</button>
+            <button id="next" style="display:none;">Next Question</button>
+            <button id="back-to-menu" style="display:none;">Back to Menu</button>
+            <button id="return-to-menu">Return to Main Menu</button>
+            <div id="result"></div>
+            <div id="explanation" style="display:none;"></div>
+            <div id="progress"></div>
+        </div>
+    </div>
+
+    <div id="warningModal" class="modal">
+        <div class="modal-content">
+            <p>Are you sure you want to return to the main menu? Your progress in this section will be lost.</p>
+            <div class="modal-buttons">
+                <button id="resumeButton" class="modal-button">Resume Practice Test</button>
+                <button id="confirmReturnButton" class="modal-button">Return to Main Menu</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="top-bar">
+        <button id="dark-mode-toggle">Toggle Dark Mode</button>
+        <button id="logout-button">Logout</button>
+    </div>
+
+    <script>
+        const authContainer = document.getElementById('auth-container');
+        const authForm = document.getElementById('auth-form');
+        const usernameInput = document.getElementById('username');
+        const passwordInput = document.getElementById('password');
+        const loginButton = document.getElementById('login-button');
+        const registerButton = document.getElementById('register-button');
+        const logoutButton = document.getElementById('logout-button');
+        const switchToRegisterButton = document.getElementById('switch-to-register');
+        const switchToLoginButton = document.getElementById('switch-to-login');
+        const authError = document.getElementById('auth-error');
+        const menuElement = document.getElementById('menu');
+        const menuItemsElement = document.getElementById('menu-items');
+        const quizElement = document.getElementById('quiz');
+        const questionElement = document.getElementById('question');
+        const codeElement = document.getElementById('code');
+        const optionsElement = document.getElementById('options');
+        const submitButton = document.getElementById('submit');
+        const nextButton = document.getElementById('next');
+        const backToMenuButton = document.getElementById('back-to-menu');
+        const returnToMenuButton = document.getElementById('return-to-menu');
+        const resultElement = document.getElementById('result');
+        const progressElement = document.getElementById('progress');
+        const timerElement = document.getElementById('timer');
+        const warningModal = document.getElementById('warningModal');
+        const resumeButton = document.getElementById('resumeButton');
+        const confirmReturnButton = document.getElementById('confirmReturnButton');
+        const darkModeToggle = document.getElementById('dark-mode-toggle');
+        const body = document.body;
+
+        let token = localStorage.getItem('token');
+        let currentQuestionIndex = 0;
+        let currentFileIndex = 0;
+        let questions = [];
+        let userScore = 0;
+        let timerInterval;
+        let timeLeft;
+        let isRegisterMode = false;
+
+        darkModeToggle.addEventListener('click', () => {
+            body.classList.toggle('dark-mode');
+            localStorage.setItem('darkMode', body.classList.contains('dark-mode'));
+        });
+
+        if (localStorage.getItem('darkMode') === 'true') {
+            body.classList.add('dark-mode');
+        }
+
+        async function checkAuth() {
+            if (token) {
+                try {
+                    const response = await fetch('/verify-token', {
+                        headers: { 'Authorization': `Bearer ${token}` }
+                    });
+                    if (response.ok) {
+                        showApp();
+                        return true;
+                    }
+                } catch (error) {
+                    console.error('Token verification failed:', error);
+                }
+                localStorage.removeItem('token');
+                token = null;
+            }
+            showLogin();
+            return false;
+        }
+
+        function showLogin() {
+            authContainer.style.display = 'block';
+            menuElement.style.display = 'none';
+            quizElement.style.display = 'none';
+            logoutButton.style.display = 'none';
+            loginButton.style.display = 'inline-block';
+            registerButton.style.display = 'none';
+            switchToRegisterButton.style.display = 'inline-block';
+            switchToLoginButton.style.display = 'none';
+            isRegisterMode = false;
+        }
+
+        function showRegister() {
+            authContainer.style.display = 'block';
+            menuElement.style.display = 'none';
+            quizElement.style.display = 'none';
+            logoutButton.style.display = 'none';
+            loginButton.style.display = 'none';
+            registerButton.style.display = 'inline-block';
+            switchToRegisterButton.style.display = 'none';
+            switchToLoginButton.style.display = 'inline-block';
+            isRegisterMode = true;
+        }
+
+        function showApp() {
+            authContainer.style.display = 'none';
+            logoutButton.style.display = 'inline-block';
+            showMenu();
+        }
+
+        loginButton.addEventListener('click', async () => {
+            const username = usernameInput.value.trim();
+            const password = passwordInput.value.trim();
+            
+            if (!username || !password) {
+                showAuthError('Please enter both username and password');
+                return;
+            }
+
+            try {
+                const response = await fetch('/login', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ username, password })
+                });
+
+                const data = await response.json();
+                
+                if (response.ok) {
+                    token = data.token;
+                    localStorage.setItem('token', token);
+                    showApp();
+                } else {
+                    showAuthError(data.error || 'Invalid credentials');
+                }
+            } catch (error) {
+                console.error('Login error:', error);
+                showAuthError('An error occurred during login');
+            }
+        });
+
+        registerButton.addEventListener('click', async () => {
+            const username = usernameInput.value.trim();
+            const password = passwordInput.value.trim();
+            
+            if (!username || !password) {
+                showAuthError('Please enter both username and password');
+                return;
+            }
+
+            try {
+                const response = await fetch('/register', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ username, password })
+                });
+
+                const data = await response.json();
+                
+                if (response.ok) {
+                    token = data.token;
+                    localStorage.setItem('token', token);
+                    showApp();
+                } else {
+                    showAuthError(data.error || 'Registration failed');
+                }
+            } catch (error) {
+                console.error('Registration error:', error);
+                showAuthError('An error occurred during registration');
+            }
+        });
+
+        switchToRegisterButton.addEventListener('click', () => {
+            showRegister();
+            authError.style.display = 'none';
+            usernameInput.value = '';
+            passwordInput.value = '';
+        });
+
+        switchToLoginButton.addEventListener('click', () => {
+            showLogin();
+            authError.style.display = 'none';
+            usernameInput.value = '';
+            passwordInput.value = '';
+        });
+
+        logoutButton.addEventListener('click', () => {
+            localStorage.removeItem('token');
+            token = null;
+            showLogin();
+            usernameInput.value = '';
+            passwordInput.value = '';
+        });
+
+        function showAuthError(message) {
+            authError.textContent = message;
+            authError.style.display = 'block';
+        }
+
+        const files = [
+            'PCEP-30-02 1.1 fundamental terms an.txt',
+            'PCEP-30-02 1.2 Python\'s logic and s.txt',
+            'PCEP-30-02 1.3 literals, variables,.txt',
+            'PCEP-30-02 1.4 operators and data t.txt',
+            'PCEP-30-02 1.5 InputOutput console.txt',
+            'PCEP-30-02 2.1 decision-making and.txt',
+            'PCEP-30-02 2.2 iterations in Python.txt',
+            'PCEP-30-02 3.1 collecting and proce.txt',
+            'PCEP-30-02 3.2 tuple indexing, slic.txt',
+            'PCEP-30-02 3.3 working with diction.txt',
+            'PCEP-30-02 3.4 working with strings.txt',
+            'PCEP-30-02 4.1 working with functio.txt',
+            'PCEP-30-02 4.2 section, covering pa.txt',
+            'PCEP-30-02 4.3 Python\'s Built-In Ex.txt',
+            'PCEP-30-02 4.4 Basics of Python E.txt'
+        ];
+
+        async function loadFile(index) {
+            if (index < 0 || index >= files.length) {
+                throw new Error('Invalid file index');
+            }
+
+            try {
+                console.log('Attempting to fetch file:', files[index]);
+                const response = await fetch(files[index], {
+                    method: 'GET',
+                    headers: {
+                        'Cache-Control': 'no-cache',
+                        'Pragma': 'no-cache'
+                    }
+                });
+
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+
+                const content = await response.text();
+                console.log('Raw content loaded:', content);
+
+                if (content === undefined) {
+                    throw new Error('Content is undefined after fetch');
+                }
+
+                if (content === null) {
+                    throw new Error('Content is null after fetch');
+                }
+
+                if (typeof content !== 'string') {
+                    throw new Error(`Invalid content type: ${typeof content}`);
+                }
+
+                console.log('Content type:', typeof content);
+                console.log('Content length:', content.length);
+
+                if (content && typeof content === 'string') {
+                    const trimmedContent = content.trim();
+                    if (trimmedContent.length === 0) {
+                        throw new Error('File is empty (only whitespace)');
+                    }
+
+                    console.log("File content loaded successfully");
+
+                    const questions = await loadQuestions(trimmedContent);
+
+                    if (questions.length === 0) {
+                        throw new Error('No valid questions found in the file');
+                    }
+
+                    return questions;
+                } else {
+                    throw new Error('Invalid or empty content');
+                }
+            } catch (error) {
+                console.error('Error loading file:', error);
+                displayError(`Failed to load questions: ${error.message}`);
+                throw error;
+            }
+        }
+
+        async function loadQuestions(content) {
+            console.log('Content received in loadQuestions:', content);
+            console.log('Content type in loadQuestions:', typeof content);
+            console.log('Content length in loadQuestions:', content.length);
+        
+            if (!content || typeof content !== 'string') {
+                console.error('Invalid content provided to loadQuestions');
+                return [];
+            }
+        
+            const lines = content.split('\n');
+            const questions = [];
+            let currentQuestion = null;
+            let currentSection = '';
+            let inCodeBlock = false;
+            let explanationLines = [];
+        
+            for (let i = 0; i < lines.length; i++) {
+                const line = lines[i].trim();
+                if (line) {
+                    if (line.startsWith('#SECTION:')) {
+                        currentSection = line.substring(9).trim();
+                    } else if (line.startsWith('==QUESTION')) {
+                        if (currentQuestion) {
+                            currentQuestion.explanation = explanationLines.join('\n').trim();
+                            questions.push(currentQuestion);
+                            explanationLines = [];
+                        }
+                        currentQuestion = {
+                            section: currentSection,
+                            question: '',
+                            options: [],
+                            correct: '',
+                            explanation: ''
+                        };
+                    } else if (line.startsWith('[') && currentQuestion) {
+                        currentQuestion.options.push(line);
+                    } else if (currentQuestion && currentQuestion.options.length > 0 && !line.startsWith('CORRECT:') && !line.startsWith('EXPLANATION:')) {
+                        currentQuestion.options[currentQuestion.options.length - 1] += '\n' + line;
+                    } else if (line.startsWith('CORRECT:') && currentQuestion) {
+                        currentQuestion.correct = line.substring(8).trim();
+                    } else if (line.startsWith('EXPLANATION:') && currentQuestion) {
+                        explanationLines = [line.substring(12).trim()];
+                    } else if (line.startsWith('```')) {
+                        inCodeBlock = !inCodeBlock;
+                        if (currentQuestion) {
+                            currentQuestion.question += line + '\n';
+                        }
+                    } else if (currentQuestion) {
+                        if (inCodeBlock || !line.startsWith('==QUESTION')) {
+                            if (explanationLines.length > 0) {
+                                explanationLines.push(line);
+                            } else {
+                                currentQuestion.question += line + '\n';
+                            }
+                        }
+                    }
+                }
+            }
+        
+            if (currentQuestion) {
+                currentQuestion.explanation = explanationLines.join('\n').trim();
+                questions.push(currentQuestion);
+            }
+        
+            questions.forEach(q => {
+                q.question = q.question.trim();
+                q.options = q.options.map(opt => opt.trim());
+            });
+        
+            console.log('Processed questions:', questions);
+            return questions;
+        }
+
+        function displayQuestion() {
+            try {
+                if (!questions || currentQuestionIndex < 0 || currentQuestionIndex >= questions.length) {
+                    throw new Error('Invalid question index or questions not loaded');
+                }
+        
+                const question = questions[currentQuestionIndex];
+                if (!question || !question.question) {
+                    throw new Error('Invalid question data');
+                }
+        
+                questionElement.innerHTML = '';
+                optionsElement.innerHTML = '';
+                resultElement.textContent = '';
+                document.getElementById('explanation').style.display = 'none';
+        
+                const sectionElement = document.createElement('h2');
+                sectionElement.textContent = question.section;
+                questionElement.appendChild(sectionElement);
+        
+                displayQuestionText(question.question);
+        
+                displayOptions(question.options);
+        
+                submitButton.style.display = 'inline-block';
+                nextButton.style.display = 'none';
+                backToMenuButton.style.display = 'none';
+        
+                updateProgress();
+        
+                window.scrollTo(0, 0);
+        
+            } catch (error) {
+                console.error('Error displaying question:', error);
+                displayError(`Failed to display question: ${error.message}`);
+            }
+        }
+        
+        function displayQuestionText(questionText) {
+            const parts = questionText.split('```');
+            
+            parts.forEach((part, index) => {
+                if (index % 2 === 0) {
+                    const textElement = document.createElement('p');
+                    textElement.textContent = part.trim();
+                    questionElement.appendChild(textElement);
+                } else {
+                    const preElement = document.createElement('pre');
+                    const codeElement = document.createElement('code');
+                    codeElement.className = 'language-python';
+                    codeElement.textContent = part.trim();
+                    preElement.appendChild(codeElement);
+                    questionElement.appendChild(preElement);
+        
+                    if (typeof hljs !== 'undefined') {
+                        hljs.highlightElement(codeElement);
+                    }
+                }
+            });
+        }
+        
+        function displayOptions(options) {
+            options.forEach((option, index) => {
+                const optionDiv = document.createElement('div');
+                optionDiv.classList.add('option-container');
+        
+                const button = document.createElement('button');
+                button.textContent = option.trim().substring(1, 2);
+                button.classList.add('option-letter');
+                button.addEventListener('click', () => selectOption(index));
+                optionDiv.appendChild(button);
+        
+                const optionText = document.createElement('pre');
+                optionText.classList.add('option-text');
+                optionText.textContent = option.trim().substring(3).trim();
+                optionDiv.appendChild(optionText);
+        
+                optionsElement.appendChild(optionDiv);
+            });
+        }
+
+        function displayError(message) {
+            const errorElement = document.getElementById('error-message') || document.createElement('div');
+            errorElement.id = 'error-message';
+            errorElement.textContent = message;
+            errorElement.style.cssText = 'color: red; padding: 10px; margin-bottom: 10px;';
+            questionElement.parentNode.insertBefore(errorElement, questionElement);
+        }
+        
+        function updateProgress() {
+            const totalQuestions = questions.length;
+            progressElement.textContent = `Question ${currentQuestionIndex + 1} of ${totalQuestions} | Score: ${userScore}`;
+        }
+        
+        async function submitAnswer() {
+            try {
+                const selectedOption = optionsElement.querySelector('.option-container.selected');
+                if (!selectedOption) {
+                    displayError('Please select an answer');
+                    return;
+                }
+        
+                const currentQuestion = questions[currentQuestionIndex];
+                if (!currentQuestion) {
+                    throw new Error('Current question not found');
+                }
+        
+                const userAnswer = selectedOption.querySelector('.option-letter').textContent;
+                const correctAnswer = currentQuestion.correct;
+        
+                if (!correctAnswer) {
+                    throw new Error('Correct answer not defined for this question');
+                }
+        
+                const isCorrect = userAnswer === correctAnswer;
+        
+                if (isCorrect) {
+                    userScore++;
+                }
+        
+                updateUIAfterSubmission(selectedOption, isCorrect, correctAnswer);
+        
+                displayExplanation(currentQuestion.explanation);
+        
+                stopTimer();
+        
+                await saveResults(currentFileIndex, userScore, questions.length);
+        
+                disableOptionButtons();
+        
+            } catch (error) {
+                console.error('Error submitting answer:', error);
+                displayError(error.message);
+            }
+        }
+        
+        function updateUIAfterSubmission(selectedOption, isCorrect, correctAnswer) {
+            selectedOption.classList.add(isCorrect ? 'correct' : 'incorrect');
+            if (!isCorrect) {
+                const correctOptionIndex = correctAnswer.charCodeAt(0) - 65;
+                const correctOption = optionsElement.children[correctOptionIndex];
+                if (correctOption) {
+                    correctOption.classList.add('correct');
+                }
+            }
+        
+            resultElement.textContent = isCorrect ? 'Correct!' : `Incorrect. The correct answer is ${correctAnswer}.`;
+            submitButton.style.display = 'none';
+            nextButton.style.display = 'inline-block';
+        }
+        
+        function displayExplanation(explanation) {
+            const explanationElement = document.getElementById('explanation');
+            explanationElement.textContent = explanation || 'No explanation provided.';
+            explanationElement.style.display = 'block';
+        }
+        
+        function disableOptionButtons() {
+            Array.from(optionsElement.querySelectorAll('.option-letter')).forEach(button => button.disabled = true);
+        }
+
+        function selectOption(index) {
+            try {
+                const options = optionsElement.getElementsByClassName('option-container');
+                if (index < 0 || index >= options.length) {
+                    throw new Error('Invalid option index');
+                }
+                for (let i = 0; i < options.length; i++) {
+                    const optionContainer = options[i];
+                    const button = optionContainer.querySelector('.option-letter');
+                    if (button) {
+                        button.style.backgroundColor = i === index ? '#45a049' : '';
+                        button.setAttribute('aria-selected', i === index ? 'true' : 'false');
+                    }
+                    optionContainer.classList.toggle('selected', i === index);
+                }
+            } catch (error) {
+                console.error('Error selecting option:', error);
+                displayError(error.message);
+            }
+        }
+
+        async function nextQuestion() {
+            try {
+                currentQuestionIndex++;
+                if (currentQuestionIndex >= questions.length) {
+                    await finishQuiz();
+                } else {
+                    await displayQuestion();
+                    startTimer();
+                }
+            } catch (error) {
+                console.error('Error moving to next question:', error);
+                displayError('Failed to load next question. Please try again.');
+            }
+        }
+
+        async function saveResults(sectionIndex, score, totalQuestions) {
+            if (!token) return;
+
+            const result = {
+                section: sectionIndex,
+                score: score,
+                total: totalQuestions,
+                timestamp: new Date().toISOString()
+            };
+
+            try {
+                const response = await fetch('/save-results', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${token}`
+                    },
+                    body: JSON.stringify(result),
+                });
+
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+
+                const data = await response.json();
+                console.log('Result saved:', data);
+                return data;
+            } catch (error) {
+                console.error('Error saving result:', error);
+                displayError('Failed to save results. Your progress may not be recorded.');
+                throw error;
+            }
+        }
+
+        async function finishQuiz() {
+            try {
+                questionElement.textContent = 'Quiz completed!';
+                codeElement.innerHTML = '';
+                optionsElement.innerHTML = '';
+                resultElement.textContent = `Final Score: ${userScore} out of ${questions.length}`;
+                nextButton.style.display = 'none';
+                backToMenuButton.style.display = 'inline-block';
+                returnToMenuButton.style.display = 'none';
+                progressElement.textContent = '';
+                stopTimer();
+
+                await saveResults(currentFileIndex, userScore, questions.length);
+            } catch (error) {
+                console.error('Error finishing quiz:', error);
+                displayError('An error occurred while finishing the quiz. Your results may not be saved.');
+            }
+        }
+
+        async function getResults() {
+            if (!token) return [];
+
+            try {
+                const response = await fetch('/get-results', {
+                    headers: { 'Authorization': `Bearer ${token}` }
+                });
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                return await response.json();
+            } catch (error) {
+                console.error('Error fetching results:', error);
+                displayError('Failed to fetch previous results. Please try again later.');
+                return [];
+            }
+        }
+
+        async function showMenu() {
+            menuElement.style.display = 'block';
+            quizElement.style.display = 'none';
+            menuItemsElement.innerHTML = '';
+        
+            try {
+                const [descriptions, results] = await Promise.all([
+                    getFileDescriptions(),
+                    getResults()
+                ]);
+        
+                descriptions.forEach((description, index) => {
+                    const menuItem = createMenuItem(description, index, results);
+                    menuItemsElement.appendChild(menuItem);
+                });
+            } catch (error) {
+                console.error('Error loading menu:', error);
+                menuItemsElement.innerHTML = '<p>Error loading menu. Please try again later.</p>';
+            }
+        }
+        
+        async function getFileDescriptions() {
+            return Promise.all(files.map(async (file, index) => {
+                const response = await fetch(file);
+                const content = await response.text();
+                const firstLine = content.split('\n')[0].trim();
+                return { index, description: firstLine };
+            }));
+        }
+        
+        function createMenuItem(description, index, results) {
+            const button = document.createElement('button');
+            button.classList.add('menu-item');
+        
+            const sectionResult = getLatestSectionResult(results, index);
+            const resultText = sectionResult ? `Last score: ${sectionResult.score}/${sectionResult.total}` : '';
+        
+            button.innerHTML = `
+                <div class="menu-item-title">Section ${index + 1}</div>
+                <div class="menu-item-description">${description.description}</div>
+                <div class="menu-item-result">${resultText}</div>
+            `;
+            button.addEventListener('click', () => startQuiz(index));
+            return button;
+        }
+        
+        function getLatestSectionResult(results, sectionIndex) {
+            return results
+                .filter(r => r.section === sectionIndex)
+                .sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp))[0];
+        }
+
+        async function startQuiz(fileIndex) {
+            try {
+                currentFileIndex = fileIndex;
+                currentQuestionIndex = 0;
+                userScore = 0;
+                const loadedQuestions = await loadFile(fileIndex);
+                console.log('Loaded questions:', loadedQuestions);
+                if (!Array.isArray(loadedQuestions) || loadedQuestions.length === 0) {
+                    throw new Error('No valid questions loaded');
+                }
+                questions = loadedQuestions;
+                menuElement.style.display = 'none';
+                quizElement.style.display = 'block';
+                await displayQuestion();
+                startTimer();
+            } catch (error) {
+                console.error('Error starting quiz:', error);
+                displayError('Failed to start the quiz. Please try again.');
+            }
+        }
+
+        function startTimer() {
+            stopTimer();
+            timeLeft = 15 * 60;
+            updateTimerDisplay();
+            timerInterval = setInterval(() => {
+                timeLeft--;
+                updateTimerDisplay();
+                if (timeLeft <= 0) {
+                    stopTimer();
+                    finishQuiz();
+                }
+            }, 1000);
+        }
+
+        function stopTimer() {
+            clearInterval(timerInterval);
+        }
+
+        function updateTimerDisplay() {
+            const minutes = Math.floor(timeLeft / 60);
+            const seconds = timeLeft % 60;
+            timerElement.textContent = `Time remaining: ${minutes}:${seconds.toString().padStart(2, '0')}`;
+        }
+
+        function showWarningModal() {
+            warningModal.style.display = 'block';
+        }
+
+        function hideWarningModal() {
+            warningModal.style.display = 'none';
+        }
+
+        submitButton.addEventListener('click', submitAnswer);
+        nextButton.addEventListener('click', nextQuestion);
+        backToMenuButton.addEventListener('click', showMenu);
+        returnToMenuButton.addEventListener('click', showWarningModal);
+        resumeButton.addEventListener('click', hideWarningModal);
+        confirmReturnButton.addEventListener('click', async () => {
+            hideWarningModal();
+            stopTimer();
+            await showMenu();
+        });
+
+        checkAuth();
+    </script>
+</body>
+</html>

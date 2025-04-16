@@ -1,0 +1,48 @@
+# Node.js dependencies
+node_modules/
+
+# Logs
+*.log
+
+# Environment files
+.env
+
+# System files
+.DS_Store
+Thumbs.db
+
+# OS-generated files
+ehthumbs.db
+Icon?
+Desktop.ini
+
+# Docker
+*.pid
+*.seed
+docker-compose.override.yml
+
+# Optional npm cache and debug folders
+.npm/
+.cache/
+
+# Compiled output (if you use TypeScript or build tools)
+dist/
+build/
+
+# JSON data (if generated or sensitive)
+results.json
+users.json
+
+# Ignore editor settings
+.vscode/
+.idea/
+
+# Ignore temp files and backups
+*~
+*.swp
+*.tmp
+*.bak
+
+# Ignore exam/study materials if unnecessary in version control
+*.pdf
+*.txt

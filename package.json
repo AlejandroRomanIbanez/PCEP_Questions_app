@@ -1,0 +1,19 @@
+{
+    "name": "pcep-practice-questions",
+    "version": "1.0.0",
+    "description": "Python Practice Test Application",
+    "main": "server.js",
+    "scripts": {
+      "start": "node server.js"
+    },
+    "dependencies": {
+      "express": "^4.18.2",
+      "cors": "^2.8.5",
+      "jsonwebtoken": "^9.0.2",
+      "bcryptjs": "^2.4.3",
+      "pg": "^8.11.3",
+      "dotenv": "^16.4.5"
+    },
+    "author": "",
+    "license": "ISC"
+  }
