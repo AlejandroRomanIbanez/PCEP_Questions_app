@@ -8,6 +8,7 @@ const bcrypt = require('bcryptjs');
 const app = express();
 app.use(cors());
 app.use(express.json());
+app.set('trust proxy', 1);
 
 // Load environment variables
 const SECRET_KEY = process.env.JWT_SECRET || 'your-secret-key';
