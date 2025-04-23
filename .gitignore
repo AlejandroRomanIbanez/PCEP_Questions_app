@@ -45,3 +45,13 @@ users.json
 
 # Ignore exam/study materials if unnecessary in version control
 *.pdf
+
+# Ignore certificate files and directories
+/etc/letsencrypt/
+letsencrypt/
+*.pem
+*.key
+*.cert
+
+# Ignore stray system files
+ystemctl
