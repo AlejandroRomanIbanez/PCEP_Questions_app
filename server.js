@@ -4,6 +4,8 @@ const cors = require('cors');
 const { Pool } = require('pg');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
+const fs = require('fs');
+const path = require('path');
 
 const app = express();
 app.use(cors());
@@ -128,6 +130,139 @@ app.get('/get-results', async (req, res) => {
       res.status(500).json({ error: 'Failed to read results' });
     }
   }
+});
+
+function loadQuestions(content) {
+    if (!content || typeof content !== 'string') {
+        console.error('Invalid content provided to loadQuestions');
+        return [];
+    }
+    const lines = content.split('\n');
+    const questions = [];
+    let currentQuestion = null;
+    let currentSection = '';
+    let inCodeBlock = false;
+    let explanationLines = [];
+    for (let i = 0; i < lines.length; i++) {
+        const line = lines[i]; // No trim here to preserve code formatting
+        if (line.trim().startsWith('#SECTION:')) {
+            currentSection = line.substring(line.indexOf(':') + 1).trim();
+        } else if (line.trim().startsWith('==QUESTION')) {
+            if (currentQuestion) {
+                currentQuestion.explanation = explanationLines.join('\n').trim();
+                questions.push(currentQuestion);
+            }
+            currentQuestion = { question: '', options: [], correct: '', explanation: '', section: currentSection };
+            explanationLines = [];
+        } else if (line.trim().startsWith('[') && currentQuestion) {
+            currentQuestion.options.push(line.trim());
+        } else if (line.trim().startsWith('CORRECT:') && currentQuestion) {
+            currentQuestion.correct = line.substring(line.indexOf(':') + 1).trim();
+        } else if (line.trim().startsWith('EXPLANATION:') && currentQuestion) {
+            explanationLines.push(line.substring(line.indexOf(':') + 1).trim());
+        } else if (currentQuestion) {
+            if (explanationLines.length > 0) {
+                explanationLines.push(line);
+            } else {
+                currentQuestion.question += line + '\n';
+            }
+        }
+    }
+    if (currentQuestion) {
+        currentQuestion.explanation = explanationLines.join('\n').trim();
+        questions.push(currentQuestion);
+    }
+    return questions.map(q => ({ ...q, question: q.question.trim() }));
+}
+
+
+const files = [
+    'PCEP-30-02 1.1 fundamental terms an.txt', 'PCEP-30-02 1.2 Python\'s logic and s.txt',
+    'PCEP-30-02 1.3 literals, variables,.txt', 'PCEP-30-02 1.4 operators and data t.txt',
+    'PCEP-30-02 1.5 InputOutput console.txt', 'PCEP-30-02 2.1 decision-making and.txt',
+    'PCEP-30-02 2.2 iterations in Python.txt', 'PCEP-30-02 3.1 collecting and proce.txt',
+    'PCEP-30-02 3.2 tuple indexing, slic.txt', 'PCEP-30-02 3.3 working with diction.txt',
+    'PCEP-30-02 3.4 working with strings.txt', 'PCEP-30-02 4.1 working with functio.txt',
+    'PCEP-30-02 4.2 section, covering pa.txt', 'PCEP-30-02 4.3 Python\'s Built-In Ex.txt',
+    'PCEP-30-02 4.4 Basics of Python E.txt'
+];
+
+// NEW ENDPOINT: Get questions for a specific section
+app.get('/questions/:sectionIndex', (req, res) => {
+    try {
+        const sectionIndex = parseInt(req.params.sectionIndex, 10);
+        if (isNaN(sectionIndex) || sectionIndex < 0 || sectionIndex >= files.length) {
+            return res.status(404).json({ error: 'Section not found' });
+        }
+
+        const filePath = path.join(__dirname, files[sectionIndex]);
+        const fileContent = fs.readFileSync(filePath, 'utf-8');
+        const allQuestions = loadQuestions(fileContent);
+
+        // Send questions WITHOUT correct answers or explanations
+        const questionsForClient = allQuestions.map(q => {
+            const { correct, explanation, ...questionData } = q;
+            return questionData;
+        });
+
+        res.json(questionsForClient);
+    } catch (error) {
+        console.error('Error loading questions:', error);
+        res.status(500).json({ error: 'Failed to load questions' });
+    }
+});
+
+app.get('/sections', (req, res) => {
+    try {
+        const descriptions = files.map((fileName, index) => {
+            const filePath = path.join(__dirname, fileName);
+            // Read only the first line of the file for efficiency
+            const fileContent = fs.readFileSync(filePath, 'utf-8');
+            const firstLine = fileContent.split('\n')[0].trim();
+            const description = firstLine.startsWith('#SECTION:') 
+                ? firstLine.substring(9).trim() 
+                : 'Unnamed Section';
+            
+            return { index, description };
+        });
+        res.json(descriptions);
+    } catch (error) {
+        console.error('Error loading section descriptions:', error);
+        res.status(500).json({ error: 'Failed to load section descriptions' });
+    }
+});
+
+
+// NEW ENDPOINT: Check a submitted answer
+app.post('/check-answer', (req, res) => {
+    try {
+        const { sectionIndex, questionIndex, userAnswer } = req.body;
+
+        if (isNaN(sectionIndex) || sectionIndex < 0 || sectionIndex >= files.length) {
+            return res.status(400).json({ error: 'Invalid section' });
+        }
+
+        const filePath = path.join(__dirname, files[sectionIndex]);
+        const fileContent = fs.readFileSync(filePath, 'utf-8');
+        const allQuestions = loadQuestions(fileContent);
+
+        if (isNaN(questionIndex) || questionIndex < 0 || questionIndex >= allQuestions.length) {
+            return res.status(400).json({ error: 'Invalid question' });
+        }
+
+        const question = allQuestions[questionIndex];
+        const isCorrect = question.correct === userAnswer;
+
+        res.json({
+            isCorrect,
+            correctAnswer: question.correct,
+            explanation: question.explanation
+        });
+
+    } catch (error) {
+        console.error('Error checking answer:', error);
+        res.status(500).json({ error: 'Failed to check answer' });
+    }
 });
 
 app.get('/verify-token', async (req, res) => {
