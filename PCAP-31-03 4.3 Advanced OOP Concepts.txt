@@ -1,0 +1,364 @@
+#SECTION: PCAP-31-03 4.3 Advanced OOP Concepts
+
+==QUESTION 1==
+What is a key characteristic of a Python generator?
+[A] It stores all its values in memory at once.
+[B] It uses the `yield` keyword to produce a series of values lazily, one at a time.
+[C] It can only be iterated over once.
+[D] It is a special type of list that cannot be modified.
+
+CORRECT: B
+EXPLANATION: Generators are memory-efficient because they produce items on demand. The `yield` statement pauses the function's execution and saves its state, resuming from where it left off on the next iteration.
+
+==QUESTION 2==
+What is the primary difference between an iterator and an iterable?
+[A] An iterable can be looped over, while an iterator is the object that performs the actual iteration.
+[B] An iterator can be looped over, while an iterable cannot.
+[C] They are the same thing.
+[D] An iterable has a `__next__` method, and an iterator has an `__iter__` method.
+
+CORRECT: A
+EXPLANATION: An iterable is any object that can return an iterator (i.e., it has an `__iter__` method, like a list). An iterator is an object with a `__next__` method that keeps track of the state and produces the next value in a sequence.
+
+==QUESTION 3==
+Which methods must a class implement to be considered an iterator?
+[A] `__init__` and `__next__`
+[B] `__iter__` and `__next__`
+[C] `__iter__` and `__len__`
+[D] `__start__` and `__stop__`
+
+CORRECT: B
+EXPLANATION: To conform to the iterator protocol, an object must have an `__iter__` method (which should return `self`) and a `__next__` method to return the subsequent item.
+
+==QUESTION 4==
+What is a closure in Python?
+[A] The process of closing a file automatically.
+[B] A class that has no methods.
+[C] A function object that remembers values in the enclosing lexical scope even when they are not present in memory.
+[D] A way to make class attributes private.
+
+CORRECT: C
+EXPLANATION: A closure is created when a nested function references a value from its containing function's scope. The inner function "closes over" that variable, retaining access to it even after the outer function has finished executing.
+
+==QUESTION 5==
+What will be printed when the following code is executed?
+```python
+def my_generator():
+    yield 1
+    yield 2
+
+g = my_generator()
+print(next(g))
+print(next(g))
+```
+[A] 1 followed by 2
+[B] 1 followed by 1
+[C] 2 followed by 1
+[D] It will print the generator object itself twice.
+
+CORRECT: A
+EXPLANATION: Calling `my_generator()` creates a generator object. The first `next(g)` executes the function until the first `yield`, producing `1`. The second `next(g)` resumes execution and runs until the next `yield`, producing `2`.
+
+==QUESTION 6==
+What happens when a generator function completes or a `return` statement is executed?
+[A] It raises a `StopIteration` exception on the next `next()` call.
+[B] It starts over from the beginning.
+[C] It raises a `ValueError`.
+[D] It returns `None` indefinitely.
+
+CORRECT: A
+EXPLANATION: The `StopIteration` exception is the standard way for an iterator to signal that it has no more values to produce. `for` loops automatically catch this exception to terminate.
+
+==QUESTION 7==
+Consider the following closure:
+```python
+def outer(x):
+    def inner(y):
+        return x + y
+    return inner
+
+add_five = outer(5)
+print(add_five(10))
+```
+[A] 5
+[B] 10
+[C] 15
+[D] It raises a `NameError`.
+
+CORRECT: C
+EXPLANATION: The `outer(5)` call creates a closure where `x` is bound to `5`. The returned `inner` function (now named `add_five`) remembers this value. When `add_five(10)` is called, it calculates `5 + 10`.
+
+==QUESTION 8==
+What is a decorator in Python?
+[A] A special syntax for comments.
+[B] A function that takes another function as an argument, adds some functionality, and returns another function.
+[C] A method that is automatically called when an object is created.
+[D] A way to define class variables.
+
+CORRECT: B
+EXPLANATION: Decorators provide a way to modify or enhance functions or methods without permanently altering their source code. They are a form of metaprogramming and are syntactically applied with the `@` symbol.
+
+==QUESTION 9==
+How is a generator expression different from a list comprehension?
+[A] A generator expression uses parentheses `()` while a list comprehension uses square brackets `[]`.
+[B] A generator expression creates a generator object that produces items on demand, while a list comprehension creates the entire list in memory at once.
+[C] A list comprehension is generally more memory-efficient.
+[D] Both A and B are correct.
+
+CORRECT: D
+EXPLANATION: The syntax is the key visual difference. Functionally, the generator expression is memory-efficient for large sequences as it doesn't build the full list, making it an iterator.
+
+==QUESTION 10==
+What is the output of this code?
+```python
+g = (i * 2 for i in range(3))
+for value in g:
+    print(value, end=' ')
+for value in g:
+    print(value, end=' ')
+```
+[A] `0 2 4 0 2 4`
+[B] `0 2 4`
+[C] `0 2 4` followed by a `StopIteration` error.
+[D] `0 0 2 2 4 4`
+
+CORRECT: B
+EXPLANATION: Generators can only be exhausted once. The first `for` loop iterates through the generator and consumes all its values. The second `for` loop has nothing to iterate over, so it terminates immediately without printing anything.
+
+==QUESTION 11==
+Which of the following defines a class method?
+[A] A method that does not take `self` as the first argument.
+[B] A method decorated with `@classmethod` that takes the class (`cls`) as its first argument.
+[C] A method decorated with `@staticmethod`.
+[D] Any method defined inside a class.
+
+CORRECT: B
+EXPLANATION: A class method operates on the class itself rather than an instance. It is marked with the `@classmethod` decorator, and its first parameter is conventionally named `cls`.
+
+==QUESTION 12==
+What is a key feature of a static method?
+[A] It must be called on an instance of the class.
+[B] It has access to the instance's `self` variable.
+[C] It is essentially a regular function namespaced within the class; it has no access to `self` or `cls`.
+[D] It can modify class state but not instance state.
+
+CORRECT: C
+EXPLANATION: A static method, decorated with `@staticmethod`, doesn't receive an implicit first argument. It's like a normal function but belongs to the class's namespace, often used for utility functions that relate to the class.
+
+==QUESTION 13==
+Why might you use a closure?
+[A] To avoid using global variables by creating functions with persistent local state.
+[B] To improve the performance of loops.
+[C] As a replacement for classes when you only need one method.
+[D] Both A and C are valid reasons.
+
+CORRECT: D
+EXPLANATION: Closures are excellent for data hiding and creating function factories. They provide a way to maintain state without creating a full class, which can be useful for simpler cases.
+
+==QUESTION 14==
+What is the purpose of the `yield from` statement?
+[A] To yield a value from a specific variable.
+[B] To delegate part of the iteration to another generator or iterable.
+[C] To create a generator from a list.
+[D] It is a syntax error.
+
+CORRECT: B
+EXPLANATION: `yield from` provides a convenient way to chain iterables. It transparently passes all the items from a sub-generator to the caller, saving the need for an explicit `for` loop inside the delegating generator.
+
+==QUESTION 15==
+What exception is raised when you try to get the next item from an exhausted iterator?
+[A] `IndexError`
+[B] `StopIteration`
+[C] `KeyError`
+[D] `EndOfIterator`
+
+CORRECT: B
+EXPLANATION: `StopIteration` is the conventional signal used by iterators to indicate that the iteration is complete. `for` loops handle this exception automatically.
+
+==QUESTION 16==
+What is the value of `c` after this code executes?
+```python
+def counter(start):
+    count = start
+    def increment():
+        nonlocal count
+        count += 1
+        return count
+    return increment
+c = counter(5)
+c()
+c()
+```
+[A] `5`
+[B] `6`
+[C] `7`
+[D] It raises an error.
+
+CORRECT: C
+EXPLANATION: This is a closure where `increment` has access to the `count` variable from its enclosing scope. The `nonlocal` keyword is crucial for allowing `increment` to modify `count`. The last call to `c()` returns 7.
+
+==QUESTION 17==
+Which special method is used to get an iterator from an iterable object?
+[A] `__next__`
+[B] `__iter__`
+[C] `__get__`
+[D] `__iterator__`
+
+CORRECT: B
+EXPLANATION: The `iter()` built-in function calls the object's `__iter__` method to obtain an iterator. All iterables, like lists, tuples, and strings, must implement this method.
+
+==QUESTION 18==
+How can you send a value into a generator?
+[A] `next(g, value)`
+[B] `g.send(value)`
+[C] `yield value to g`
+[D] You cannot send values into a generator.
+
+CORRECT: B
+EXPLANATION: The `.send()` method resumes the generator's execution and "sends" a value that becomes the result of the current `yield` expression. The first call to start the generator must be `next(g)` or `g.send(None)`.
+
+==QUESTION 19==
+A decorator is "syntactic sugar" for what operation?
+[A] `my_func = decorator(my_func)`
+[B] `decorator(my_func())`
+[C] `decorator.apply(my_func)`
+[D] `my_func.decorate(decorator)`
+
+CORRECT: A
+EXPLANATION: The `@decorator` syntax above a function `def my_func(): ...` is equivalent to defining `my_func` and then immediately reassigning its name to the result of calling the decorator with the function object.
+
+==QUESTION 20==
+What is the output of this code?
+```python
+g = (i for i in range(10))
+print(g.__next__())
+print(next(g))
+```
+[A] `0` followed by `0`
+[B] `0` followed by `1`
+[C] `1` followed by `1`
+[D] It raises a `TypeError`.
+
+CORRECT: B
+EXPLANATION: `g` is a generator. Calling its `__next__` method directly or using the `next()` built-in function both advance the iterator and return the next item. They do the same thing.
+
+==QUESTION 21==
+What is true about the variables in a closure's enclosing scope?
+[A] They must be immutable.
+[B] They are copied into the inner function's scope.
+[C] They are bound to the inner function, and their state persists between calls to the inner function.
+[D] They are converted to global variables.
+
+CORRECT: C
+EXPLANATION: The closure doesn't just get the value of the outer variables; it gets a reference to them. This is why modifications made by the inner function (using `nonlocal`) persist across calls.
+
+==QUESTION 22==
+If you have a class `MyIterator` that correctly implements the iterator protocol, what will `list(MyIterator())` do?
+[A] It will create a list containing a single `MyIterator` object.
+[B] It will raise a `TypeError`.
+[C] It will iterate through the `MyIterator` object until it's exhausted and create a list of the yielded values.
+[D] It will call the `__list__` method of the iterator.
+
+CORRECT: C
+EXPLANATION: The `list()` constructor can take any iterable as an argument. Since any iterator is also an iterable, it will call `iter()` on the iterator, then repeatedly call `next()` to build a list of all its items.
+
+==QUESTION 23==
+What is the purpose of the `nonlocal` keyword?
+[A] To declare that a variable is global.
+[B] To indicate that a variable is not local to the current function but is in the nearest enclosing scope.
+[C] To prevent a variable from being modified.
+[D] To import a variable from another module.
+
+CORRECT: B
+EXPLANATION: `nonlocal` is used in nested functions to allow the inner function to modify a variable from the outer (but non-global) function's scope.
+
+==QUESTION 24==
+Can a generator function contain a `return` statement?
+[A] No, it is a syntax error.
+[B] Yes, but it cannot return a value.
+[C] Yes, a `return value` will cause a `StopIteration(value)` to be raised.
+[D] Yes, it works just like in a normal function.
+
+CORRECT: C
+EXPLANATION: In a generator, `return value` is a way to terminate the generator and provide a final value as part of the `StopIteration` exception. This can be captured in more advanced generator usage. A bare `return` also raises `StopIteration`.
+
+==QUESTION 25==
+What is the output of this code?
+```python
+def my_decorator(func):
+    def wrapper():
+        print("Before")
+        func()
+        print("After")
+    return wrapper
+
+@my_decorator
+def say_hello():
+    print("Hello")
+
+say_hello()
+```
+[A] Hello
+[B] Before, Hello, After
+[C] Before, After, Hello
+[D] It prints the `wrapper` function object.
+
+CORRECT: B
+EXPLANATION: The `@my_decorator` syntax redefines `say_hello` to be the `wrapper` function. When `say_hello()` is called, it's actually the `wrapper` that executes, which prints "Before", calls the original function, and then prints "After".
+
+==QUESTION 26==
+Which of the following creates an iterator?
+[A] `[x for x in range(5)]`
+[B] `iter([1, 2, 3])`
+[C] `def my_func(): return 5`
+[D] `{1, 2, 3}`
+
+CORRECT: B
+EXPLANATION: The built-in `iter()` function takes an iterable (like a list) and returns an iterator object for it. The other options create a list, a function, and a set, respectively.
+
+==QUESTION 27==
+What does a class need to be considered an "iterable"?
+[A] A `__next__` method.
+[B] A `__len__` method.
+[C] An `__iter__` method that returns an iterator.
+[D] It must inherit from `list`.
+
+CORRECT: C
+EXPLANATION: This is the definition of the iterable protocol. An object is iterable if it can produce an iterator when `iter()` is called on it.
+
+==QUESTION 28==
+What is printed?
+```python
+my_list = [1, 2, 3]
+my_iter = iter(my_list)
+print(next(my_iter))
+my_list.append(4)
+print(next(my_iter))
+```
+[A] 1, 2
+[B] 1, 4
+[C] 1, then an error.
+[D] 1, 3
+
+CORRECT: A
+EXPLANATION: The iterator `my_iter` is tied to the `my_list` object. The first `next` call yields 1. Modifying the original list is generally not recommended during iteration, but in this case, the iterator continues from its last position and the next item is 2.
+
+==QUESTION 29==
+Which statement about static methods is false?
+[A] They are defined with the `@staticmethod` decorator.
+[B] They do not have access to the class (`cls`) or instance (`self`).
+[C] They can be called on the class or on an instance.
+[D] They must be called before any instance of the class is created.
+
+CORRECT: D
+EXPLANATION: Static methods can be called at any time. They can be called on the class itself (`MyClass.static_method()`) or on an instance (`my_instance.static_method()`), though the latter is less common.
+
+==QUESTION 30==
+When is a closure created?
+[A] Whenever a function is defined.
+[B] Only when a `lambda` function is used.
+[C] When a nested function is returned from its enclosing function and the nested function references variables from the enclosing scope.
+[D] When a class is instantiated.
+
+CORRECT: C
+EXPLANATION: The key elements are a nested function, that nested function referencing a variable from its parent's scope, and the parent function returning the nested function.

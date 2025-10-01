@@ -1,0 +1,328 @@
+#SECTION: PCAP-31-03 5.1 Lambdas and List Comprehensions
+
+==QUESTION 1==
+What is a key characteristic of a `lambda` function?
+[A] It can contain multiple expressions.
+[B] It is an anonymous function restricted to a single expression.
+[C] It must be assigned to a variable before it can be used.
+[D] It supports complex statements like loops and `if-else` blocks.
+
+CORRECT: B
+EXPLANATION: A `lambda` function is a small, anonymous function defined with the `lambda` keyword. Its body must be a single expression, and the result of this expression is what the function returns.
+
+==QUESTION 2==
+What is the output of the following list comprehension?
+`[x * 2 for x in range(3)]`
+[A] `[0, 1, 2]`
+[B] `[2, 4, 6]`
+[C] `[0, 2, 4]`
+[D] `(0, 2, 4)`
+
+CORRECT: C
+EXPLANATION: The list comprehension iterates through `range(3)` (which yields 0, 1, 2), multiplies each element `x` by 2, and collects the results in a new list.
+
+==QUESTION 3==
+How would you rewrite the following code using the `map()` function?
+```python
+numbers = [1, 2, 3]
+result = []
+for n in numbers:
+    result.append(n * n)
+```
+[A] `map(lambda n: n * n, numbers)`
+[B] `map(n * n, numbers)`
+[C] `map(numbers, lambda n: n * n)`
+[D] `lambda n: n * n, map(numbers)`
+
+CORRECT: A
+EXPLANATION: `map(function, iterable)` applies the given function to every item of the iterable. A `lambda` is commonly used to define the function inline. Note that `map` returns a map object (an iterator), not a list.
+
+==QUESTION 4==
+What is the purpose of the `filter()` function?
+[A] To transform each element in an iterable.
+[B] To construct a new list from an iterable.
+[C] To construct an iterator from elements of an iterable for which a function returns true.
+[D] To combine elements of an iterable into a single value.
+
+CORRECT: C
+EXPLANATION: `filter(function, iterable)` tests each element from the iterable with the function. It creates an iterator that yields only those elements for which the function returns a truthy value.
+
+==QUESTION 5==
+What is the output of this code?
+`numbers = [1, 2, 3, 4, 5]`
+`evens = list(filter(lambda x: x % 2 == 0, numbers))`
+`print(evens)`
+[A] `[1, 3, 5]`
+[B] `[2, 4]`
+[C] `[False, True, False, True, False]`
+[D] `[True, False, True, False, True]`
+
+CORRECT: B
+EXPLANATION: The `lambda` function `lambda x: x % 2 == 0` returns `True` for even numbers. `filter()` selects only these elements, and `list()` converts the resulting filter object into a list.
+
+==QUESTION 6==
+Which of the following is equivalent to this list comprehension?
+`[x for x in range(10) if x > 5]`
+[A] `map(lambda x: x > 5, range(10))`
+[B] `filter(lambda x: x > 5, range(10))`
+[C] `[x > 5 for x in range(10)]`
+[D] `[x if x > 5 for x in range(10)]`
+
+CORRECT: B
+EXPLANATION: A list comprehension with an `if` clause at the end acts as a filter. It iterates through the sequence and includes only those elements that satisfy the condition. This is the direct equivalent of the `filter()` function.
+
+==QUESTION 7==
+What is the value of `result`?
+`pairs = [(1, 'one'), (3, 'three'), (2, 'two')]`
+`pairs.sort(key=lambda p: p[0])`
+`result = pairs[0]`
+[A] `(1, 'one')`
+[B] `(3, 'three')`
+[C] `(2, 'two')`
+[D] It raises a `TypeError`.
+
+CORRECT: A
+EXPLANATION: The `key` argument of `sort()` specifies a function to be called on each list element prior to making comparisons. The `lambda p: p[0]` tells `sort` to use the first element of each tuple for sorting, so `(1, 'one')` becomes the first element.
+
+==QUESTION 8==
+What is a nested list comprehension?
+[A] A list that contains other lists.
+[B] A list comprehension that is used inside a `lambda` function.
+[C] A list comprehension that contains one or more `for` clauses.
+[D] A list comprehension used as an argument to another function.
+
+CORRECT: C
+EXPLANATION: A nested list comprehension involves multiple `for` loops, allowing you to iterate over nested iterables. For example, `[item for row in matrix for item in row]` flattens a matrix.
+
+==QUESTION 9==
+What is the output of `list(map(lambda x, y: x + y, [1, 2], [3, 4]))`?
+[A] `[1, 2, 3, 4]`
+[B] `[4, 6]`
+[C] `[1, 3, 2, 4]`
+[D] It raises a `TypeError`.
+
+CORRECT: B
+EXPLANATION: When `map()` is given multiple iterables, the provided function must accept that many arguments. `map` iterates over them in parallel, so the lambda receives `(1, 3)` first, then `(2, 4)`.
+
+==QUESTION 10==
+How does a list comprehension with an `if-else` ternary operator work?
+`[x if x > 2 else 0 for x in range(5)]`
+[A] `[3, 4]`
+[B] `[0, 1, 2, 3, 4]`
+[C] `[0, 0, 0, 3, 4]`
+[D] It is a syntax error.
+
+CORRECT: C
+EXPLANATION: When using a ternary `if-else` operator in a list comprehension, it must be placed before the `for` loop. It acts as a transformation on each element, not a filter.
+
+==QUESTION 11==
+What is the main limitation of `lambda` functions?
+[A] They cannot be used with `map` or `filter`.
+[B] They cannot access variables outside their own scope.
+[C] Their body is restricted to a single expression.
+[D] They are slower than regular functions defined with `def`.
+
+CORRECT: C
+EXPLANATION: This is the defining characteristic. Lambdas cannot contain statements like assignments (`=`), `for`, `while`, `try`, etc. They can only contain an expression whose result is returned.
+
+==QUESTION 12==
+What is the output?
+`matrix = [[1, 2], [3, 4]]`
+`flat = [num for row in matrix for num in row]`
+`print(flat)`
+[A] `[[1, 2], [3, 4]]`
+[B] `[1, 3, 2, 4]`
+[C] `[1, 2, 3, 4]`
+[D] `([1, 2], [3, 4])`
+
+CORRECT: C
+EXPLANATION: This is a nested list comprehension. The outer loop `for row in matrix` iterates through `[[1, 2], [3, 4]]`. The inner loop `for num in row` then iterates through each sublist, collecting the numbers into a single new list.
+
+==QUESTION 13==
+Which statement about `map` and `filter` is correct in Python 3?
+[A] They both return lists.
+[B] They are not functions but keywords.
+[C] They both return iterator objects.
+[D] `map` returns a list, but `filter` returns an iterator.
+
+CORRECT: C
+EXPLANATION: In Python 3, for memory efficiency, both `map` and `filter` return iterators (specifically, `map` and `filter` objects). To get a list, you must explicitly convert the result, e.g., `list(map(...))`.
+
+==QUESTION 14==
+What does this `lambda` function do?
+`f = lambda x: x % 2 == 0 and x % 3 == 0`
+[A] Checks if a number is divisible by 2 or 3.
+[B] Checks if a number is divisible by both 2 and 3.
+[C] Checks if a number is odd.
+[D] Returns the number if it is divisible by 6.
+
+CORRECT: B
+EXPLANATION: The `and` operator requires both conditions to be true. A number divisible by both 2 and 3 is, by definition, divisible by 6. The function returns a boolean `True` or `False`.
+
+==QUESTION 15==
+What is created by this expression?
+`(x for x in range(10))`
+[A] A list
+[B] A tuple
+[C] A generator object
+[D] A set
+
+CORRECT: C
+EXPLANATION: Using parentheses instead of square brackets creates a generator expression. This is memory-efficient as it produces values on demand rather than building a full list in memory.
+
+==QUESTION 16==
+What is a dictionary comprehension?
+[A] A list of dictionaries.
+[B] A syntax for creating dictionaries from iterables, e.g., `{k: v for k, v in ...}`.
+[C] A method for compressing dictionaries to save memory.
+[D] A way to iterate over the keys of a dictionary.
+
+CORRECT: B
+EXPLANATION: Similar to list comprehensions, dictionary comprehensions provide a concise way to create dictionaries. They use curly braces `{}` and specify key-value pairs.
+
+==QUESTION 17==
+What is the result of the following code?
+`{x: x**2 for x in (2, 4, 6)}`
+[A] `{2, 4, 6}`
+[B] `(4, 16, 36)`
+[C] `[4, 16, 36]`
+[D] `{2: 4, 4: 16, 6: 36}`
+
+CORRECT: D
+EXPLANATION: This is a dictionary comprehension. It iterates through the tuple `(2, 4, 6)` and for each number `x`, it creates a key-value pair `x: x**2` in the new dictionary.
+
+==QUESTION 18==
+What will be the output of `list(map(len, ['apple', 'banana', 'cat']))`?
+[A] `[5, 6, 3]`
+[B] `[a, b, c]`
+[C] `(5, 6, 3)`
+[D] It will raise a `TypeError`.
+
+CORRECT: A
+EXPLANATION: The `map` function applies the `len` function to each string in the list. `len('apple')` is 5, `len('banana')` is 6, and `len('cat')` is 3. `list()` converts the map object to a list.
+
+==QUESTION 19==
+What is the scope of a variable used in a list comprehension?
+[A] It becomes a global variable.
+[B] It is local to the list comprehension and does not "leak" into the surrounding scope in Python 3.
+[C] It overwrites any existing variable with the same name in the local scope.
+[D] It is only accessible within the `for` loop part of the comprehension.
+
+CORRECT: B
+EXPLANATION: In Python 3, list comprehensions have their own scope. The iteration variable (e.g., `x` in `[x for x in ...]`) does not exist outside the comprehension once it is finished.
+
+==QUESTION 20==
+What does a set comprehension look like?
+[A] `[x for x in 'abc']`
+[B] `(x for x in 'abc')`
+[C] `{'a', 'b', 'c'}`
+[D] `{x for x in 'abracadabra'}`
+
+CORRECT: D
+EXPLANATION: A set comprehension uses curly braces `{}` like a dictionary comprehension but specifies only one value. It creates a set, which automatically handles uniqueness. The result would be `{'a', 'b', 'r', 'c', 'd'}`.
+
+==QUESTION 21==
+What is the value of `x` after this code runs?
+`x = 10`
+`_ = [x for x in range(3)]`
+`print(x)`
+[A] `0`
+[B] `1`
+[C] `2`
+[D] `10`
+
+CORRECT: D
+EXPLANATION: Due to the separate scope of list comprehensions in Python 3, the iteration variable `x` inside the comprehension does not affect the `x` variable in the outer scope.
+
+==QUESTION 22==
+Which function would you use from the `functools` module to apply a function of two arguments cumulatively to the items of a sequence?
+[A] `map`
+[B] `reduce`
+[C] `accumulate`
+[D] `filter`
+
+CORRECT: B
+EXPLANATION: `functools.reduce(function, iterable)` applies the function repeatedly to the items, reducing the sequence to a single value. For example, `reduce(lambda x, y: x+y, [1, 2, 3])` calculates `(1+2)+3`.
+
+==QUESTION 23==
+What is the result of this `lambda` expression?
+`greet = lambda name='guest': f'Hello, {name}'`
+`print(greet())`
+[A] `Hello, name`
+[B] `Hello, guest`
+[C] It raises a `TypeError`.
+[D] `Hello, `
+
+CORRECT: B
+EXPLANATION: Lambda functions can have default arguments, just like regular functions defined with `def`. When called with no arguments, the default value `'guest'` is used.
+
+==QUESTION 24==
+If you pass `None` as the first argument to `filter()`, what does it do?
+[A] It raises a `TypeError`.
+[B] It returns an empty iterator.
+[C] It filters out all items from the iterable.
+[D] It removes all items from the iterable that are considered "falsy" (e.g., `False`, `0`, `""`, `None`).
+
+CORRECT: D
+EXPLANATION: `filter(None, iterable)` is a shortcut for `filter(bool, iterable)`. It uses the identity function, effectively testing the truthiness of each item.
+
+==QUESTION 25==
+What is the output of `list(filter(None, [0, 1, 'hello', '', None, []]))`?
+[A] `[0, 1, 'hello', '', None, []]`
+[B] `[1, 'hello']`
+[C] `[0, '', None, []]`
+[D] `[True, False, True, False, False, False]`
+
+CORRECT: B
+EXPLANATION: `filter` with `None` as the function will keep only the truthy values. `1` and `'hello'` are truthy; `0`, `''`, `None`, and `[]` are all falsy.
+
+==QUESTION 26==
+Can a lambda function contain a conditional expression?
+[A] No, `if-else` is a statement, not an expression.
+[B] Yes, using the ternary operator `value_if_true if condition else value_if_false`.
+[C] Yes, but only a simple `if` without an `else`.
+[D] Only if it's nested inside another `lambda`.
+
+CORRECT: B
+EXPLANATION: The ternary `if-else` operator is an expression, and since a lambda's body must be a single expression, it can be used. For example: `lambda x: 'even' if x % 2 == 0 else 'odd'`.
+
+==QUESTION 27==
+What does the `any()` function do with an iterable?
+[A] Returns `True` if any element is `True`.
+[B] Returns `True` if at least one element is truthy; `False` otherwise.
+[C] Returns `True` if all elements are truthy.
+[D] Returns a random truthy element from the iterable.
+
+CORRECT: B
+EXPLANATION: `any()` is a useful built-in that short-circuits: it stops processing and returns `True` as soon as it finds a truthy element. It returns `False` for an empty iterable.
+
+==QUESTION 28==
+What does the `all()` function do with an iterable?
+[A] Returns `True` if all elements are truthy; `False` otherwise.
+[B] Returns a list of all elements.
+[C] Returns `True` if any element is truthy.
+[D] Returns `True` if the iterable is not empty.
+
+CORRECT: A
+EXPLANATION: `all()` also short-circuits: it stops and returns `False` as soon as it finds a falsy element. It returns `True` for an empty iterable.
+
+==QUESTION 29==
+What is the output of this expression?
+`sum([x for x in range(10) if x % 2 != 0])`
+[A] `20`
+[B] `25`
+[C] `30`
+[D] `45`
+
+CORRECT: B
+EXPLANATION: The list comprehension generates a list of odd numbers from 0 to 9, which is `[1, 3, 5, 7, 9]`. The `sum()` of these numbers is 25.
+
+==QUESTION 30==
+Why might you choose `map` over a list comprehension?
+[A] `map` is always faster.
+[B] When you already have an existing function to apply to the sequence.
+[C] List comprehensions cannot have `if` conditions.
+[D] `map` can handle multiple iterables at once.
+
+CORRECT: D
+EXPLANATION: While list comprehensions are often more readable for simple transformations and filtering, `map`'s ability to process multiple iterables in parallel (`map(pow, [2,3], [2,3])` -> 2**2, 3**3) is a unique feature. Also, if a complex function is already defined, passing it to `map` can be cleaner than rewriting it as a comprehension.

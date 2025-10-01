@@ -1,0 +1,368 @@
+#SECTION: PCAP-31-03 4.1 OOP Fundamentals
+
+==QUESTION 1==
+What is the role of the `self` parameter in a class method?
+[A] It is a reference to the class itself.
+[B] It is a reference to the specific instance of the class on which the method is called.
+[C] It is optional and can be omitted.
+[D] It is used to create a new instance of the class.
+
+CORRECT: B
+EXPLANATION: The `self` parameter conventionally holds the reference to the instance, allowing the method to access and modify the instance's attributes.
+
+==QUESTION 2==
+What is the purpose of the `__init__` method in a Python class?
+[A] To destroy an instance of the class.
+[B] To be the first method executed when the module is loaded.
+[C] To initialize the state of a new instance when it is created.
+[D] To return a string representation of the object.
+
+CORRECT: C
+EXPLANATION: The `__init__` method is the constructor. It is automatically called when a new object is instantiated, and it is used to set up the initial attributes of that object.
+
+==QUESTION 3==
+What is the difference between a class variable and an instance variable?
+[A] Class variables can only be accessed by class methods, while instance variables can be accessed by instance methods.
+[B] Class variables are shared among all instances of a class, while instance variables are unique to each instance.
+[C] Class variables are defined inside the `__init__` method, and instance variables are defined outside.
+[D] There is no difference; the terms are interchangeable.
+
+CORRECT: B
+EXPLANATION: A class variable belongs to the class and is shared by all objects created from it. An instance variable is created for and belongs only to a specific instance.
+
+==QUESTION 4==
+Consider the following class:
+```python
+class Dog:
+    kind = 'canine'
+    def __init__(self, name):
+        self.name = name
+d1 = Dog('Buddy')
+d2 = Dog('Lucy')
+```
+How would you access the `kind` variable?
+[A] Only via an instance, e.g., `d1.kind`.
+[B] Only via the class, e.g., `Dog.kind`.
+[C] Via both the class (`Dog.kind`) and any instance (`d1.kind`).
+[D] It cannot be accessed from outside the class.
+
+CORRECT: C
+EXPLANATION: Class variables can be accessed directly through the class name or through any instance of the class.
+
+==QUESTION 5==
+In object-oriented programming, what is encapsulation?
+[A] The ability of an object to take on many forms.
+[B] The process of creating a new class from an existing class.
+[C] The bundling of data (attributes) and the methods that operate on that data into a single unit (a class).
+[D] The act of hiding the implementation details of a class from the outside world.
+
+CORRECT: C
+EXPLANATION: Encapsulation is the concept of bundling data and methods together. Hiding implementation details (information hiding) is a related concept often achieved through encapsulation.
+
+==QUESTION 6==
+What is the effect of prefixing an attribute name with a double underscore (e.g., `self.__value`)?
+[A] It makes the attribute a class variable.
+[B] It makes the attribute strictly private and inaccessible from outside the class.
+[C] It invokes name mangling, making it harder to access from outside the class but not impossible.
+[D] It marks the attribute as a constant.
+
+CORRECT: C
+EXPLANATION: The double underscore triggers name mangling. Python renames the attribute to `_ClassName__attributeName`, which prevents accidental access from subclasses or outside the class.
+
+==QUESTION 7==
+What does the `hasattr(obj, 'name')` function do?
+[A] It retrieves the value of the 'name' attribute from `obj`.
+[B] It sets the value of the 'name' attribute on `obj`.
+[C] It returns `True` if `obj` has an attribute named 'name', otherwise `False`.
+[D] It deletes the 'name' attribute from `obj`.
+
+CORRECT: C
+EXPLANATION: `hasattr()` is an introspective function used to check for the existence of an attribute on an object without causing an `AttributeError` if it doesn't exist.
+
+==QUESTION 8==
+What is the output of the following code?
+```python
+class Test:
+    def __init__(self):
+        self.x = 1
+        self.__y = 2
+
+t = Test()
+print(t.x)
+print(t.__y)
+```
+[A] It prints `1` and `2`.
+[B] It prints `1` and then raises an `AttributeError`.
+[C] It prints `1` and then raises a `NameError`.
+[D] It prints `1` and then prints `None`.
+
+CORRECT: B
+EXPLANATION: `self.x` is a public attribute and can be accessed. `self.__y` is name-mangled to `_Test__y`, so accessing it directly as `t.__y` will result in an `AttributeError`.
+
+==QUESTION 9==
+Which special method is called to provide the "official" string representation of an object, often used for debugging?
+[A] `__str__()`
+[B] `__repr__()`
+[C] `__string__()`
+[D] `__format__()`
+
+CORRECT: B
+EXPLANATION: `__repr__()` should return an unambiguous string representation of an object, which ideally can be used to recreate the object. `__str__()` is for creating a user-friendly, readable output.
+
+==QUESTION 10==
+What is a method in the context of OOP?
+[A] A standalone function that operates on objects.
+[B] A variable that belongs to a class.
+[C] A function that is defined inside a class and operates on instances of that class.
+[D] The process of creating an object.
+
+CORRECT: C
+EXPLANATION: A method is essentially a function that is bound to a class. When called on an instance, that instance is passed as the first argument (conventionally `self`).
+
+==QUESTION 11==
+What is the output of this code?
+```python
+class Counter:
+    count = 0
+    def __init__(self):
+        Counter.count += 1
+c1 = Counter()
+c2 = Counter()
+print(Counter.count)
+```
+[A] 0
+[B] 1
+[C] 2
+[D] It raises an `AttributeError`.
+
+CORRECT: C
+EXPLANATION: `count` is a class variable. Each time the `__init__` method is called (once for `c1` and once for `c2`), the class variable `Counter.count` is incremented.
+
+==QUESTION 12==
+If a class does not have an `__init__` method defined, what happens when you instantiate it?
+[A] It raises a `TypeError`.
+[B] The object is created, but it has no attributes.
+[C] The `__init__` method from the parent `object` class is called, which does nothing.
+[D] The first method defined in the class is called instead.
+
+CORRECT: C
+EXPLANATION: If a class doesn't define its own `__init__`, Python looks for one in its parent classes. All classes implicitly inherit from `object`, whose `__init__` method takes no arguments and does nothing, so the instantiation succeeds.
+
+==QUESTION 13==
+How do you check if an object `obj` is an instance of a class `MyClass`?
+[A] `type(obj) == MyClass`
+[B] `isinstance(obj, MyClass)`
+[C] `obj.__class__ is MyClass`
+[D] All of the above are valid ways.
+
+CORRECT: B
+EXPLANATION: `isinstance()` is the recommended way because it also correctly handles inheritance (it returns `True` if `obj` is an instance of a subclass of `MyClass`). `type()` only checks for an exact match.
+
+==QUESTION 14==
+What is the `__dict__` attribute of an object?
+[A] A dictionary containing the object's methods.
+[B] A dictionary containing the object's instance attributes.
+[C] A string describing the object.
+[D] The object's class documentation.
+
+CORRECT: B
+EXPLANATION: The `__dict__` attribute stores the instance's writable attributes as a dictionary of name-value pairs.
+
+==QUESTION 15==
+What is the output of the following code?
+```python
+class A:
+    val = 1
+class B(A):
+    pass
+class C(A):
+    pass
+print(A.val, B.val, C.val)
+B.val = 2
+print(A.val, B.val, C.val)
+```
+[A] 1 1 1 and then 1 2 1
+[B] 1 1 1 and then 2 2 2
+[C] 1 1 1 and then 1 2 2
+[D] 1 1 1 and then 2 2 1
+
+CORRECT: A
+EXPLANATION: Initially, `B` and `C` inherit `val` from `A`. When `B.val = 2` is executed, it creates a new class attribute `val` specifically for class `B`. This does not affect the `val` attribute in `A` or the inherited `val` in `C`.
+
+==QUESTION 16==
+What is the special method `__str__` used for?
+[A] To convert an object to a string for debugging.
+[B] To return a user-friendly, readable string representation of an object, used by `print()` and `str()`.
+[C] To define the structure of the class.
+[D] To initialize the string attributes of an object.
+
+CORRECT: B
+EXPLANATION: `__str__` is intended to provide a nice string representation for end-users. If `__str__` is not defined, `print()` and `str()` will fall back to using `__repr__`.
+
+==QUESTION 17==
+What is the purpose of the `__del__` method?
+[A] It is called to delete an attribute from an object.
+[B] It is a destructor, called just before an object is garbage collected.
+[C] It is a guaranteed way to perform cleanup actions.
+[D] It must be called manually to free memory.
+
+CORRECT: B
+EXPLANATION: `__del__` is a finalizer. However, it's not guaranteed to be called if the object is part of a reference cycle, so it's not reliable for cleanup. Using `with` statements or `finally` blocks is preferred.
+
+==QUESTION 18==
+What is the output?
+```python
+class Item:
+    def __init__(self, name):
+        self.name = name
+
+item1 = Item("CPU")
+item2 = item1
+item2.name = "GPU"
+print(item1.name)
+```
+[A] `CPU`
+[B] `GPU`
+[C] It raises an `AttributeError`.
+[D] `None`
+
+CORRECT: B
+EXPLANATION: `item2 = item1` does not create a new object. It makes `item2` refer to the same object as `item1`. Therefore, modifying the `name` attribute through `item2` also changes what `item1.name` refers to.
+
+==QUESTION 19==
+Which function can be used to get the value of an attribute from an object using a string name?
+[A] `hasattr(obj, 'name')`
+[B] `setattr(obj, 'name', val)`
+[C] `getattr(obj, 'name')`
+[D] `getattribute(obj, 'name')`
+
+CORRECT: C
+EXPLANATION: `getattr(object, name[, default])` returns the value of the named attribute of an object. It is useful when the attribute name is stored in a variable.
+
+==QUESTION 20==
+A single underscore prefix for an attribute name (e.g., `_my_var`) signifies what by convention?
+[A] The attribute is strictly private.
+[B] The attribute should be treated as a non-public part of the API, intended for internal use.
+[C] The attribute is a constant.
+[D] The attribute is read-only.
+
+CORRECT: B
+EXPLANATION: This is a convention only. It does not trigger any special behavior in Python. It's a hint to other programmers that the attribute is not part of the public interface of the class.
+
+==QUESTION 21==
+What is an "object" in the context of Python OOP?
+[A] The class definition itself.
+[B] The source code file containing a class.
+[C] A specific instance of a class, with its own state (attributes) and behavior (methods).
+[D] A synonym for a method.
+
+CORRECT: C
+EXPLANATION: A class is the blueprint, while an object (or instance) is the actual thing created from that blueprint, existing in memory with its own data.
+
+==QUESTION 22==
+What is the output of the code below?
+```python
+class MyClass:
+    data = []
+    def add(self, x):
+        self.data.append(x)
+a = MyClass()
+b = MyClass()
+a.add(1)
+b.add(2)
+print(a.data)
+```
+[A] `[1]`
+[B] `[2]`
+[C] `[1, 2]`
+[D] `[]`
+
+CORRECT: C
+EXPLANATION: `data` is a class variable (a list). Since lists are mutable, when `a.add(1)` and `b.add(2)` are called, both instances are modifying the *same* shared list.
+
+==QUESTION 23==
+How do you define a method that can be called on the class itself, rather than on an instance?
+[A] Define it outside the class.
+[B] Use the `@staticmethod` decorator.
+[C] Use the `@classmethod` decorator.
+[D] Omit the `self` parameter.
+
+CORRECT: C
+EXPLANATION: A class method receives the class as its first argument (conventionally `cls`) and is defined with the `@classmethod` decorator. It can be used to work with the class, for example, to create factory methods.
+
+==QUESTION 24==
+What is `__slots__` used for in a class definition?
+[A] To define the available methods for the class.
+[B] To provide a more memory-efficient way of storing instance attributes by preventing the creation of `__dict__`.
+[C] To specify the order in which attributes should be printed.
+[D] To create a list of class variables.
+
+CORRECT: B
+EXPLANATION: By defining `__slots__`, you declare a fixed set of instance attributes. This saves memory because Python doesn't create a `__dict__` for each instance, using a more compact internal structure instead.
+
+==QUESTION 25==
+If `print(obj)` is called, which special method does Python look for first?
+[A] `__repr__`
+[B] `__print__`
+[C] `__str__`
+[D] `__output__`
+
+CORRECT: C
+EXPLANATION: The `print()` function (and `str()`) will first try to call the object's `__str__` method. If that is not defined, it will fall back to using `__repr__`.
+
+==QUESTION 26==
+What is the output?
+```python
+class Thing:
+    pass
+thing = Thing()
+thing.name = "Sprocket"
+print(Thing.name)
+```
+[A] `Sprocket`
+[B] `None`
+[C] It raises an `AttributeError`.
+[D] It raises a `NameError`.
+
+CORRECT: C
+EXPLANATION: `thing.name` creates an instance attribute on the `thing` object. It does not create a class attribute on the `Thing` class. Therefore, trying to access `Thing.name` results in an `AttributeError`.
+
+==QUESTION 27==
+The attributes of a Python object are stored in its...
+[A] `__methods__` attribute.
+[B] `__attributes__` attribute.
+[C] `__dict__` attribute (unless `__slots__` is used).
+[D] `__class__` attribute.
+
+CORRECT: C
+EXPLANATION: An object's namespace for its attributes is stored in the `__dict__` dictionary, which allows for dynamic addition and removal of attributes at runtime.
+
+==QUESTION 28==
+What does a method defined with `@staticmethod` do?
+[A] It behaves like a normal function but belongs to the class's namespace. It doesn't receive the instance or class as an implicit first argument.
+[B] It automatically makes an instance variable static (shared).
+[C] It can only be called from other static methods.
+[D] It is a method that cannot be changed after it is defined.
+
+CORRECT: A
+EXPLANATION: Static methods are used for utility functions that are logically related to the class but do not depend on the state of either the class or a specific instance.
+
+==QUESTION 29==
+What is the correct way to instantiate an object of the class `Car`?
+[A] `my_car = new Car()`
+[B] `my_car = Car.create()`
+[C] `my_car = Car()`
+[D] `my_car = Car`
+
+CORRECT: C
+EXPLANATION: In Python, you instantiate a class by calling the class name as if it were a function. This triggers the call to `__new__` and then `__init__`.
+
+==QUESTION 30==
+What is the `__class__` attribute of an object?
+[A] A string containing the name of the class.
+[B] A reference to the class that the object is an instance of.
+[C] A list of all parent classes.
+[D] The object's `__init__` method.
+
+CORRECT: B
+EXPLANATION: `obj.__class__` returns the actual class object itself, from which you can access class variables, other methods, etc. This is what `type(obj)` also returns.

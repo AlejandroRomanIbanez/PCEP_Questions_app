@@ -177,14 +177,14 @@ function loadQuestions(content) {
 
 
 const files = [
-    'PCEP-30-02 1.1 fundamental terms an.txt', 'PCEP-30-02 1.2 Python\'s logic and s.txt',
-    'PCEP-30-02 1.3 literals, variables,.txt', 'PCEP-30-02 1.4 operators and data t.txt',
-    'PCEP-30-02 1.5 InputOutput console.txt', 'PCEP-30-02 2.1 decision-making and.txt',
-    'PCEP-30-02 2.2 iterations in Python.txt', 'PCEP-30-02 3.1 collecting and proce.txt',
-    'PCEP-30-02 3.2 tuple indexing, slic.txt', 'PCEP-30-02 3.3 working with diction.txt',
-    'PCEP-30-02 3.4 working with strings.txt', 'PCEP-30-02 4.1 working with functio.txt',
-    'PCEP-30-02 4.2 section, covering pa.txt', 'PCEP-30-02 4.3 Python\'s Built-In Ex.txt',
-    'PCEP-30-02 4.4 Basics of Python E.txt'
+    'PCAP-31-03 1.1 Modules and Packages.txt',
+    'PCAP-31-03 2.1 Exceptions.txt',
+    'PCAP-31-03 3.1 Strings.txt',
+    'PCAP-31-03 4.1 OOP Fundamentals.txt',
+    'PCAP-31-03 4.2 OOP Inheritance and Polymorphism.txt',
+    'PCAP-31-03 4.3 Advanced OOP Concepts.txt',
+    'PCAP-31-03 5.1 Lambdas and List Comprehensions.txt',
+    'PCAP-31-03 5.2 File Processing.txt'
 ];
 
 // NEW ENDPOINT: Get questions for a specific section

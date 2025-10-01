@@ -1,0 +1,302 @@
+#SECTION: PCAP-31-03 3.1 Strings
+
+==QUESTION 1==
+Which of the following statements about Python strings is true?
+[A] They are mutable and can be changed in-place.
+[B] They are immutable, and any method that "changes" a string returns a new string.
+[C] They can only be created using single quotes.
+[D] String methods like `.upper()` modify the string directly.
+
+CORRECT: B
+EXPLANATION: Strings in Python are immutable. This means that once a string is created, it cannot be changed. Methods like `.upper()`, `.replace()`, etc., do not alter the original string; they create and return a new, modified string.
+
+==QUESTION 2==
+What is the output of the following code?
+`print("python".find('p'))`
+[A] `True`
+[B] `1`
+[C] `-1`
+[D] `0`
+
+CORRECT: D
+EXPLANATION: The `.find()` method returns the lowest index of the substring if found. Since 'p' is the first character, its index is 0.
+
+==QUESTION 3==
+What is the result of `'Hello'.replace('l', 'p', 1)`?
+[A] `'Heppo'`
+[B] `'Heplo'`
+[C] `'Heppoworld'`
+[D] `'Hepllo'`
+
+CORRECT: D
+EXPLANATION: The `.replace()` method can take an optional third argument, `count`, which limits the number of replacements. In this case, only the first occurrence of 'l' is replaced with 'p'.
+
+==QUESTION 4==
+Which method is the most appropriate for checking if a string starts with a specific prefix?
+[A] `string.find(prefix) == 0`
+[B] `string.startswith(prefix)`
+[C] `string.isprefix(prefix)`
+[D] `prefix in string`
+
+CORRECT: B
+EXPLANATION: The `.startswith()` method is specifically designed for this purpose. It is more readable and explicit than using slicing or `.find()`.
+
+==QUESTION 5==
+What is the output of `print(','.join(['a', 'b', 'c']))`?
+[A] `('a', 'b', 'c')`
+[B] `[a,b,c]`
+[C] `a,b,c`
+[D] It will raise a `TypeError`.
+
+CORRECT: C
+EXPLANATION: The `join()` method is called on a separator string and takes an iterable (like a list) as an argument. It concatenates the elements of the iterable, separated by the string.
+
+==QUESTION 6==
+What does the `str.isnumeric()` method check for?
+[A] If the string contains only digits (0-9).
+[B] If the string can be converted to a float.
+[C] If all characters in the string are numeric characters (e.g., digits, fractions, subscripts).
+[D] If the string represents a valid integer, including negative numbers.
+
+CORRECT: C
+EXPLANATION: `isnumeric()` has a broader definition of "numeric" than `isdigit()`. It returns `True` for digits, Unicode characters representing fractions, subscripts, superscripts, etc.
+
+==QUESTION 7==
+How do you remove leading and trailing whitespace from a string `s`?
+[A] `s.trim()`
+[B] `s.remove_whitespace()`
+[C] `s.strip()`
+[D] `s.clean()`
+
+CORRECT: C
+EXPLANATION: The `.strip()` method returns a copy of the string with leading and trailing whitespace characters removed. `.lstrip()` and `.rstrip()` remove only leading or trailing whitespace, respectively.
+
+==QUESTION 8==
+What is the output of `print("exam".center(8, '*'))`?
+[A] `**exam**`
+[B] `*exam*`
+[C] `exam****`
+[D] `****exam`
+
+CORRECT: A
+EXPLANATION: `.center(width, fillchar)` returns a new string of the specified `width`, centered, and padded with the `fillchar`. With a width of 8 for a 4-character string, 4 padding characters are needed, 2 on each side.
+
+==QUESTION 9==
+What does the `split()` method do when called without arguments on a string?
+[A] It splits the string by every character.
+[B] It raises a `ValueError`.
+[C] It splits the string by any sequence of whitespace and discards empty strings.
+[D] It splits the string by single spaces only.
+
+CORRECT: C
+EXPLANATION: When called without a separator, `.split()` treats any consecutive whitespace as a single delimiter and removes any empty strings from the result, which is very useful for parsing text.
+
+==QUESTION 10==
+Which of the following is NOT a valid way to format a string in Python 3?
+[A] `'My name is %s' % name`
+[B] `'My name is {}'.format(name)`
+[C] `f'My name is {name}'`
+[D] `'My name is' + name`
+
+CORRECT: D
+EXPLANATION: While string concatenation with `+` works, it is not considered a string formatting method. The other three are all valid formatting techniques: %-formatting, the `.format()` method, and f-strings.
+
+==QUESTION 11==
+What is the result of `'Python'[::-1]`?
+[A] `'nohtyP'`
+[B] `'P'`
+[C] `'n'`
+[D] It raises an `IndexError`.
+
+CORRECT: A
+EXPLANATION: This is a common idiom for reversing a string using slicing. The slice `[:: -1]` means start at the beginning, go to the end, with a step of -1, which effectively iterates backward.
+
+==QUESTION 12==
+Which method would you use to find the highest index of a substring in a string?
+[A] `.find()`
+[B] `.index()`
+[C] `.rfind()`
+[D] `.search()`
+
+CORRECT: C
+EXPLANATION: The `.rfind()` method (right find) searches for the substring starting from the end of the string and returns the highest index where it is found, or -1 if not found.
+
+==QUESTION 13==
+Given `s = 'abc'`, what is the result of `s.upper().lower() == s`?
+[A] `True`
+[B] `False`
+[C] `None`
+[D] It raises an `AttributeError`.
+
+CORRECT: A
+EXPLANATION: `s.upper()` produces `'ABC'`. Calling `.lower()` on that result produces `'abc'`, which is equal to the original string `s`.
+
+==QUESTION 14==
+What is the output of `print("alpha-beta-gamma".split('-', 1))`?
+[A] `['alpha', 'beta', 'gamma']`
+[B] `['alpha', 'beta-gamma']`
+[C] `['alpha-beta', 'gamma']`
+[D] `['alpha']`
+
+CORRECT: B
+EXPLANATION: The optional second argument to `.split()` is `maxsplit`. When set to 1, it will perform at most one split, leaving the rest of the string intact.
+
+==QUESTION 15==
+Which of these methods returns `-1` if the substring is not found?
+[A] `.index()`
+[B] `.find()`
+[C] Both `.index()` and `.find()`
+[D] Neither `.index()` nor `.find()`
+
+CORRECT: B
+EXPLANATION: `.find()` returns -1 when the substring is not found. In contrast, `.index()` raises a `ValueError` in the same situation.
+
+==QUESTION 16==
+What is the result of `'   '.isspace()`?
+[A] `True`
+[B] `False`
+[C] It raises a `ValueError`.
+[D] `None`
+
+CORRECT: A
+EXPLANATION: The `.isspace()` method returns `True` if all characters in the string are whitespace characters and there is at least one character, `False` otherwise.
+
+==QUESTION 17==
+What is the output of `print("Title Case".istitle())`?
+[A] `False`
+[B] `True`
+[C] `None`
+[D] It raises an `AttributeError`.
+
+CORRECT: B
+EXPLANATION: The `.istitle()` method returns `True` if the string is in title case, which means all words start with an uppercase letter and are followed by lowercase letters.
+
+==QUESTION 18==
+Which method is the reverse of `.split()`?
+[A] `.concat()`
+[B] `.merge()`
+[C] `.join()`
+[D] `.combine()`
+
+CORRECT: C
+EXPLANATION: The `.join()` method is used to combine elements of an iterable into a single string, using the string it's called on as a separator, effectively reversing the action of `.split()`.
+
+==QUESTION 19==
+What is the output of `f'The value is {123.456:.2f}'`?
+[A] `'The value is 123.45'`
+[B] `'The value is 123.46'`
+[C] `'The value is 123.456'`
+[D] It raises a `ValueError`.
+
+CORRECT: B
+EXPLANATION: The format specifier `:.2f` in an f-string formats the number as a floating-point number with exactly two digits after the decimal point, performing rounding if necessary.
+
+==QUESTION 20==
+What does the `str.partition(sep)` method return?
+[A] A list of two strings, split at the first occurrence of `sep`.
+[B] A tuple of three strings: the part before `sep`, `sep` itself, and the part after `sep`.
+[C] The part of the string before the `sep`.
+[D] A boolean indicating if `sep` was found.
+
+CORRECT: B
+EXPLANATION: `partition()` always returns a 3-tuple. If the separator is not found, it returns the original string followed by two empty strings.
+
+==QUESTION 21==
+What is the result of `'apple'.lstrip('ap')`?
+[A] `'le'`
+[B] `'ple'`
+[C] `'l'`
+[D] `'apple'`
+
+CORRECT: C
+EXPLANATION: `lstrip()` removes all characters from the left that are present in the argument string, not the argument string as a whole prefix. It removes 'a', then 'p', then 'p', then stops at 'l' because 'l' is not in 'ap'.
+
+==QUESTION 22==
+How can you check if a string contains only alphabetic characters?
+[A] `s.isalpha()`
+[B] `s.ischar()`
+[C] `s.isletter()`
+[D] `s.isalphabetic()`
+
+CORRECT: A
+EXPLANATION: The `.isalpha()` method returns `True` if all characters in the string are alphabetic (a-z, A-Z) and there is at least one character.
+
+==QUESTION 23==
+What is the output of `print("py" in "python")`?
+[A] `0`
+[B] `-1`
+[C] `False`
+[D] `True`
+
+CORRECT: D
+EXPLANATION: The `in` operator is used for membership testing. It returns `True` if the left operand (substring) is found anywhere within the right operand (string).
+
+==QUESTION 24==
+What does `ord('A')` return?
+[A] `'B'`
+[B] `65`
+[C] `'a'`
+[D] It raises a `TypeError`.
+
+CORRECT: B
+EXPLANATION: The `ord()` function returns an integer representing the Unicode code point of a single-character string. The code point for 'A' is 65 in ASCII and Unicode.
+
+==QUESTION 25==
+What is the result of `chr(65)`?
+[A] `65`
+[B] `'A'`
+[C] `66`
+[D] It raises a `ValueError`.
+
+CORRECT: B
+EXPLANATION: The `chr()` function is the inverse of `ord()`. It takes an integer code point and returns the corresponding single-character string.
+
+==QUESTION 26==
+What does the string method `zfill(width)` do?
+[A] It centers the string with zeros.
+[B] It pads the string on the left with zeros to reach the specified width.
+[C] It replaces all whitespace with zeros.
+[D] It removes all zeros from the string.
+
+CORRECT: B
+EXPLANATION: `zfill()` (zero-fill) is useful for formatting numbers. It pads a numeric string with leading zeros. It correctly handles sign characters (`+` or `-`). For example, `'-42'.zfill(5)` results in `'-0042'`.
+
+==QUESTION 27==
+What is the difference between `s.splitlines()` and `s.split('\n')`?
+[A] `splitlines()` includes the newline characters in the result.
+[B] `splitlines()` can handle different types of line breaks (like `\r\n`), while `split('\n')` only splits on `\n`.
+[C] `split('\n')` is faster.
+[D] There is no difference.
+
+CORRECT: B
+EXPLANATION: `splitlines()` is more robust for splitting text into lines because it recognizes the universal newline standard.
+
+==QUESTION 28==
+What is the result of `'123'.isdigit()` and `'123.45'.isdigit()`?
+[A] `True`, `True`
+[B] `True`, `False`
+[C] `False`, `True`
+[D] `False`, `False`
+
+CORRECT: B
+EXPLANATION: `isdigit()` returns `True` only if all characters in the string are digits (0-9). The decimal point `.` is not a digit, so `'123.45'.isdigit()` is `False`.
+
+==QUESTION 29==
+Which string formatting method is generally considered the most modern and readable in Python 3.6+?
+[A] %-formatting (e.g., `'%s' % val`)
+[B] `str.format()` method (e.g., `'{}'.format(val)`)
+[C] f-strings (e.g., `f'{val}'`)
+[D] `string.Template` class
+
+CORRECT: C
+EXPLANATION: F-strings (formatted string literals) were introduced in Python 3.6 and are praised for their conciseness and performance, as they embed expressions directly inside string literals.
+
+==QUESTION 30==
+What is the result of the comparison `'apple' > 'Apple'`?
+[A] `True`
+[B] `False`
+[C] It raises a `TypeError`.
+[D] It depends on the operating system.
+
+CORRECT: A
+EXPLANATION: String comparison is done lexicographically based on the Unicode code points of the characters. In ASCII/Unicode, lowercase letters have higher code points than uppercase letters (`ord('a')` is 97, `ord('A')` is 65), so `'apple'` is "greater than" `'Apple'`.

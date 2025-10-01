@@ -1,0 +1,374 @@
+SECTION: PCAP-31-03 2.1 Exceptions
+
+==QUESTION 1==
+In a `try...except` block, what is the purpose of the `else` clause?
+[A] It is executed if any exception occurs.
+[B] It is always executed, regardless of whether an exception occurred.
+[C] It is executed only if no exceptions are raised in the `try` block.
+[D] It is an alternative syntax for the `except` block.
+
+CORRECT: C
+EXPLANATION: The `else` block is optional and, if present, is executed after the `try` block completes successfully without raising any exceptions.
+
+==QUESTION 2==
+Which statement is true about the `finally` clause?
+[A] It is executed only when an exception is caught by an `except` block.
+[B] It is executed only if no exception occurs.
+[C] It is always executed before the program terminates, whether an exception occurred or not.
+[D] It is mandatory in every `try...except` structure.
+
+CORRECT: C
+EXPLANATION: The `finally` block is used for cleanup actions and is guaranteed to be executed, regardless of whether an exception was raised, caught, or if the `try` block completed successfully.
+
+==QUESTION 3==
+What is the output of the following code?
+```python
+try:
+    print(1)
+    x = 1 / 0
+    print(2)
+except ZeroDivisionError:
+    print(3)
+finally:
+    print(4)
+print(5)
+```
+[A] 1 3 4 5
+[B] 1 2 4
+[C] 1 3 4
+[D] 1 2 3 4 5
+
+CORRECT: A
+EXPLANATION: The code prints `1`, then a `ZeroDivisionError` occurs. `print(2)` is skipped. The `except` block for `ZeroDivisionError` is executed, printing `3`. The `finally` block is executed, printing `4`. The program continues after the block, printing `5`.
+
+==QUESTION 4==
+Which of the following is the most specific built-in exception for an error caused by a calculation like `math.sqrt(-1)`?
+[A] `Exception`
+[B] `ArithmeticError`
+[C] `ValueError`
+[D] `TypeError`
+
+CORRECT: C
+EXPLANATION: A `ValueError` is raised when a function receives an argument of the correct type but an inappropriate value. A negative number is a valid float (`type` is correct) but an invalid value for `math.sqrt`.
+
+==QUESTION 5==
+How do you intentionally raise a `ValueError` with a custom message?
+[A] `assert ValueError("Invalid value")`
+[B] `return ValueError("Invalid value")`
+[C] `raise ValueError("Invalid value")`
+[D] `except ValueError("Invalid value")`
+
+CORRECT: C
+EXPLANATION: The `raise` keyword is used to explicitly trigger an exception. You follow it with an instance of an exception class.
+
+==QUESTION 6==
+What is the correct order of clauses in an exception handling block?
+[A] `try` -> `finally` -> `except` -> `else`
+[B] `try` -> `except` -> `else` -> `finally`
+[C] `try` -> `except` -> `finally` -> `else`
+[D] `except` -> `try` -> `else` -> `finally`
+
+CORRECT: B
+EXPLANATION: The correct syntax requires the `try` block first, followed by one or more `except` blocks, then an optional `else` block, and finally an optional `finally` block.
+
+==QUESTION 7==
+Consider the following code:
+```python
+def check_value(x):
+    try:
+        if x < 0:
+            raise ValueError
+        return "Positive"
+    except ValueError:
+        return "Negative"
+    finally:
+        return "Done"
+
+print(check_value(-1))
+```
+[A] Negative
+[B] Done
+[C] Positive
+[D] It will print "Negative" and then "Done".
+
+CORRECT: B
+EXPLANATION: When an exception is raised, the `except` block is executed. However, if a `finally` block contains a `return` statement, it will override any `return` statement from the `try` or `except` blocks.
+
+==QUESTION 8==
+What is the purpose of the `assert` statement?
+[A] To handle expected errors in production code.
+[B] To create a custom exception.
+[C] To check for a condition that should always be true, raising an `AssertionError` if it is false.
+[D] To define a block of code that might raise an exception.
+
+CORRECT: C
+EXPLANATION: `assert` is a debugging aid. It tests a condition and triggers an `AssertionError` if the condition is not met, helping developers find bugs early. It can be disabled in production for performance.
+
+==QUESTION 9==
+Which `except` clause will catch `TypeError`, `ValueError`, and `NameError`?
+[A] `except (TypeError, ValueError, NameError):`
+[B] `except TypeError, ValueError, NameError:`
+[C] `except [TypeError, ValueError, NameError]:`
+[D] `except TypeError and ValueError and NameError:`
+
+CORRECT: A
+EXPLANATION: To catch multiple specific exceptions in a single block, you provide them as a tuple following the `except` keyword.
+
+==QUESTION 10==
+What is the base class for all built-in exceptions in Python?
+[A] `Exception`
+[B] `StandardError`
+[C] `BaseException`
+[D] `object`
+
+CORRECT: C
+EXPLANATION: `BaseException` is the ultimate base class for all built-in exceptions. `Exception` inherits from `BaseException` and is the base class for all non-system-exiting exceptions, which is what you should typically catch.
+
+==QUESTION 11==
+What happens if an exception is raised inside an `except` block?
+[A] The `finally` block is skipped.
+[B] The program terminates immediately.
+[C] The original exception is re-raised.
+[D] The new exception is propagated up, but the `finally` block (if present) is still executed.
+
+CORRECT: D
+EXPLANATION: The new exception will propagate up the call stack. However, the `finally` clause of the current `try...except` block will still be executed before the exception continues to propagate.
+
+==QUESTION 12==
+How do you create a custom exception class in Python?
+[A] `def MyError(Exception): pass`
+[B] `class MyError inherits Exception: pass`
+[C] `class MyError(Exception): pass`
+[D] `exception MyError: pass`
+
+CORRECT: C
+EXPLANATION: Custom exceptions are created by defining a new class that inherits (directly or indirectly) from the built-in `Exception` class.
+
+==QUESTION 13==
+What is the output of this code?
+```python
+try:
+    print("A")
+except:
+    print("B")
+else:
+    print("C")
+finally:
+    print("D")
+```
+[A] A C D
+[B] A B D
+[C] A C
+[D] A D
+
+CORRECT: A
+EXPLANATION: The `try` block executes successfully, printing "A". Since no exception occurred, the `except` block is skipped and the `else` block is executed, printing "C". The `finally` block is always executed, printing "D".
+
+==QUESTION 14==
+What does a bare `except:` clause do?
+[A] It catches only `SyntaxError`.
+[B] It is a syntax error itself.
+[C] It catches all exceptions, including system-exiting ones like `SystemExit` and `KeyboardInterrupt`.
+[D] It catches all exceptions that inherit from the `Exception` class.
+
+CORRECT: C
+EXPLANATION: A bare `except:` is equivalent to `except BaseException:`. It is generally discouraged because it catches system-exiting exceptions, making it hard to interrupt a program with Ctrl-C. It's better to use `except Exception:`.
+
+==QUESTION 15==
+How can you access the exception object itself within an `except` block?
+[A] `except ValueError as err:`
+[B] `except ValueError gets err:`
+[C] `except ValueError = err:`
+[D] The object is automatically assigned to a variable named `exception`.
+
+CORRECT: A
+EXPLANATION: The `as` keyword is used to assign the instance of the raised exception to a variable, allowing you to inspect it, log it, or access its arguments.
+
+==QUESTION 16==
+What is the output of the following code?
+```python
+def func():
+    try:
+        return 1
+    finally:
+        return 2
+
+print(func())
+```
+[A] `1`
+[B] `2`
+[C] `1` followed by `2`
+[D] A `SyntaxError` is raised.
+
+CORRECT: B
+EXPLANATION: A `return` statement in a `finally` block will always take precedence over a `return` statement in a `try` or `except` block. The function will immediately return `2`.
+
+==QUESTION 17==
+Which exception is a subclass of `LookupError`?
+[A] `TypeError`
+[B] `ValueError`
+[C] `IndexError`
+[D] `AttributeError`
+
+CORRECT: C
+EXPLANATION: `LookupError` is the base class for exceptions that are raised when a key or index used on a mapping or sequence is invalid. `IndexError` and `KeyError` are its main subclasses.
+
+==QUESTION 18==
+What is the purpose of using `raise` by itself inside an `except` block?
+[A] To raise a new, generic `Exception`.
+[B] To re-raise the exception that was just caught.
+[C] It is a syntax error.
+[D] To suppress the current exception.
+
+CORRECT: B
+EXPLANATION: Using `raise` without an exception object is only valid inside an `except` block. It allows you to perform some action (like logging) and then pass the original exception up the call stack without modification.
+
+==QUESTION 19==
+What is the output of this code?
+```python
+try:
+    print("start")
+    raise ValueError
+except ValueError:
+    print("caught")
+    # No re-raise
+else:
+    print("else")
+finally:
+    print("finally")
+print("end")
+```
+[A] start, caught, finally, end
+[B] start, caught, else, finally, end
+[C] start, caught, finally
+[D] start, caught
+
+CORRECT: A
+EXPLANATION: `start` is printed. `ValueError` is raised and caught, printing `caught`. The `else` block is skipped. The `finally` block always runs, printing `finally`. Since the exception was handled, execution continues, printing `end`.
+
+==QUESTION 20==
+Which exception would be raised by `int('abc')`?
+[A] `TypeError`
+[B] `SyntaxError`
+[C] `ValueError`
+[D] `IndexError`
+
+CORRECT: C
+EXPLANATION: A `ValueError` is raised because the string `'abc'` has the correct type (`str`) but an invalid value for conversion to an integer.
+
+==QUESTION 21==
+What is exception chaining?
+[A] Catching multiple exceptions in one `except` block.
+[B] A series of `if/elif/else` statements to check for errors.
+[C] Using `raise NewException from OriginalException` to indicate that one exception was caused directly by another.
+[D] Creating a custom exception that inherits from another custom exception.
+
+CORRECT: C
+EXPLANATION: The `raise ... from ...` syntax, introduced in Python 3, allows you to explicitly chain exceptions, which provides a more complete traceback showing the root cause of an error.
+
+==QUESTION 22==
+What is stored in the `args` attribute of an exception object?
+[A] A dictionary of arguments passed to the function that raised the exception.
+[B] A tuple of the arguments that were passed to the exception's constructor.
+[C] The line number where the exception occurred.
+[D] The name of the exception class.
+
+CORRECT: B
+EXPLANATION: The `args` attribute holds a tuple of the values given to the exception when it was instantiated, e.g., the message string in `ValueError("Invalid value")`.
+
+==QUESTION 23==
+What is the output of the code below?
+```python
+try:
+    d = {'key': 'value'}
+    print(d['other_key'])
+except KeyError as e:
+    print(type(e).__name__)
+```
+[A] `Exception`
+[B] `KeyError`
+[C] `LookupError`
+[D] It raises an unhandled `KeyError`.
+
+CORRECT: B
+EXPLANATION: Accessing a non-existent dictionary key raises a `KeyError`. The `except` block catches it, and `type(e).__name__` retrieves the name of the exception's class as a string, which is `'KeyError'`.
+
+==QUESTION 24==
+If you have `except A:` and `except B:` where `B` is a subclass of `A`, which order is correct to ensure both can be caught specifically?
+[A] `except A: ... except B: ...`
+[B] `except B: ... except A: ...`
+[C] The order does not matter.
+[D] You cannot catch both in the same `try` block.
+
+CORRECT: B
+EXPLANATION: The more specific exception (`B`) must come first. If the base class exception (`A`) came first, it would catch instances of `B` as well, and the `except B:` block would never be reached.
+
+==QUESTION 25==
+What does `KeyboardInterrupt` inherit from?
+[A] `Exception`
+[B] `BaseException`
+[C] `SystemExit`
+[D] `object`
+
+CORRECT: B
+EXPLANATION: `KeyboardInterrupt` (raised when the user hits Ctrl-C) inherits directly from `BaseException`, not `Exception`. This is why a bare `except Exception:` will not catch it, allowing users to exit a script.
+
+==QUESTION 26==
+What is the output?
+```python
+def f():
+    try:
+        1/0
+    finally:
+        print("Done")
+print("Calling f")
+f()
+print("Called f")
+```
+[A] Calling f, Done, Called f
+[B] Calling f, Done, and then a `ZeroDivisionError` traceback.
+[C] Calling f, and then a `ZeroDivisionError` traceback.
+[D] Calling f, Called f
+
+CORRECT: B
+EXPLANATION: The `finally` block is executed before the unhandled exception propagates. The program will print "Calling f", then call `f()`. Inside `f`, the exception occurs, the `finally` block prints "Done", and then the uncaught `ZeroDivisionError` is raised, terminating the program.
+
+==QUESTION 27==
+An error occurs when an operation is performed on an object of an inappropriate type. Which exception is raised?
+[A] `ValueError`
+[B] `AttributeError`
+[C] `TypeError`
+[D] `RuntimeError`
+
+CORRECT: C
+EXPLANATION: A `TypeError` is raised when an operation or function is applied to an object of a type that does not support it, for example, `'5' + 2`.
+
+==QUESTION 28==
+What is the purpose of the `with_traceback()` method on an exception object?
+[A] To print the traceback to the console.
+[B] To attach a new traceback object to the exception, often used when re-raising.
+[C] To convert the traceback into a string.
+[D] To check if the exception has a traceback.
+
+CORRECT: B
+EXPLANATION: This method allows a developer to programmatically set the traceback for an exception object, which can be useful in advanced error handling and logging scenarios.
+
+==QUESTION 29==
+Which exception is raised when an import statement fails to find the specified module?
+[A] `ImportError` or `ModuleNotFoundError`
+[B] `NameError`
+[C] `FileNotFoundError`
+[D] `SystemError`
+
+CORRECT: A
+EXPLANATION: `ModuleNotFoundError` is a subclass of `ImportError` and is specifically raised when a module cannot be located. A generic `ImportError` can be raised for other import-related issues.
+
+==QUESTION 30==
+What happens if no `except` block matches a raised exception?
+[A] The `else` block is executed.
+[B] The `finally` block is executed, and then the program continues normally.
+[C] The `finally` block is executed, and then the exception propagates up the call stack.
+[D] The program terminates immediately.
+
+CORRECT: C
+EXPLANATION: If an exception is not caught by any `except` clause in the current `try` statement, it continues to propagate up. The `finally` block will execute before this propagation continues. If it reaches the top level without being handled, the program terminates.

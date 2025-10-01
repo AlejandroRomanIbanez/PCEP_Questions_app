@@ -1,0 +1,346 @@
+#SECTION: PCAP-31-03 4.2 OOP Inheritance and Polymorphism
+
+==QUESTION 1==
+In OOP, what is inheritance?
+[A] The ability for a class to contain objects of another class.
+[B] The mechanism of basing a new class (subclass) on an existing class (superclass), inheriting its attributes and methods.
+[C] The ability of a method to behave differently based on the object it is called on.
+[D] The bundling of data and methods into a single unit.
+
+CORRECT: B
+EXPLANATION: Inheritance is a core OOP principle that allows for code reuse and the creation of a hierarchy of classes, where subclasses can specialize the behavior of their superclasses.
+
+==QUESTION 2==
+What is the primary purpose of the `super()` function in Python?
+[A] To call a method in the base class from a method in the derived class.
+[B] To check if a class is a superclass of another.
+[C] To create an instance of the superclass.
+[D] To define a method that cannot be overridden.
+
+CORRECT: A
+EXPLANATION: `super()` provides a way to access methods of a parent class, which is particularly useful for extending, rather than completely replacing, the functionality of an inherited method (like `__init__`).
+
+==QUESTION 3==
+What is polymorphism in the context of Python?
+[A] The ability of different classes to be treated as instances of a common superclass.
+[B] The ability for different objects to respond to the same method call in a way specific to their class.
+[C] Having multiple methods with the same name but different parameters within a single class.
+[D] The process of inheriting from multiple base classes.
+
+CORRECT: B
+EXPLANATION: Polymorphism allows objects of different classes to be handled via a uniform interface. For example, a `draw()` method can be called on various shape objects (`Circle`, `Square`), and each will execute its own specific version of `draw()`.
+
+==QUESTION 4==
+Consider the following code:
+```python
+class A:
+    def greet(self):
+        print("Hello from A")
+class B(A):
+    def greet(self):
+        print("Hello from B")
+        super().greet()
+b = B()
+b.greet()
+```
+What is the output?
+[A] Hello from A
+[B] Hello from B
+[C] Hello from B followed by Hello from A
+[D] Hello from A followed by Hello from B
+
+CORRECT: C
+EXPLANATION: The `greet` method in class `B` is called first, printing "Hello from B". The `super().greet()` line then explicitly calls the `greet` method from the parent class `A`, which prints "Hello from A".
+
+==QUESTION 5==
+What is Method Resolution Order (MRO) in Python?
+[A] The order in which methods are defined within a class.
+[B] The rule that determines the order in which base classes are searched when looking for a method.
+[C] The specific order for calling `super()` in the `__init__` method.
+[D] The priority of instance methods over class methods.
+
+CORRECT: B
+EXPLANATION: MRO defines the sequence in which parent classes are traversed when searching for a method. Python uses the C3 linearization algorithm to determine this order, which is crucial in multiple inheritance scenarios.
+
+==QUESTION 6==
+What is the main difference between `isinstance(obj, Class)` and `type(obj) is Class`?
+[A] There is no difference; they are functionally identical.
+[B] `isinstance()` returns `True` if `obj` is an instance of `Class` or any of its subclasses, while `type()` only checks for an exact match.
+[C] `type()` is faster than `isinstance()`.
+[D] `isinstance()` can only be used with built-in types.
+
+CORRECT: B
+EXPLANATION: `isinstance()` is polymorphic. It respects the class hierarchy. `type()` is not polymorphic; it returns the exact class of an object, making it less flexible for checking object types in an inheritance hierarchy.
+
+==QUESTION 7==
+Given the setup: `class A: pass`, `class B(A): pass`, `class C(B): pass`. What is the result of `issubclass(C, A)`?
+[A] `True`
+[B] `False`
+[C] `None`
+[D] It raises a `TypeError`.
+
+CORRECT: A
+EXPLANATION: `issubclass()` checks for both direct and indirect inheritance. Since `C` inherits from `B`, and `B` inherits from `A`, `C` is considered a subclass of `A`.
+
+==QUESTION 8==
+What happens if a subclass overrides a method from its superclass but still needs to call the original implementation?
+[A] It must create an instance of the superclass to call the method.
+[B] It should use the `super()` function.
+[C] The original implementation is permanently lost and cannot be called.
+[D] It must use the `parent()` function.
+
+CORRECT: B
+EXPLANATION: This is the primary use case for `super()`. It allows a subclass to extend the behavior of a superclass method without having to completely duplicate its code.
+
+==QUESTION 9==
+What is "duck typing"?
+[A] A type system where an object's suitability is determined by the presence of certain methods and attributes, rather than its explicit type.
+[B] A strict type system where inheritance must be explicitly declared.
+[C] A feature that allows methods to be renamed at runtime.
+[D] A way to create private methods in a class.
+
+CORRECT: A
+EXPLANATION: Duck typing follows the principle: "If it walks like a duck and it quacks like a duck, then it must be a duck." In Python, this means you can use any object in a particular context as long as it has the required methods, regardless of its class.
+
+==QUESTION 10==
+How do you prevent a method from being overridden in a subclass in Python?
+[A] Use the `@final` decorator.
+[B] There is no built-in, enforced way to do this in Python.
+[C] Prefix the method name with a double underscore.
+[D] Use the `private` keyword.
+
+CORRECT: B
+EXPLANATION: Unlike languages like Java or C#, Python does not have a `final` keyword to prevent method overriding. While name mangling (`__`) makes overriding harder, it doesn't prevent it. The convention is to rely on documentation.
+
+==QUESTION 11==
+What is multiple inheritance?
+[A] When a single class has multiple `__init__` methods.
+[B] When an object is an instance of multiple classes at the same time.
+[C] When a class inherits from more than one base class.
+[D] When a method can be called with different numbers of arguments.
+
+CORRECT: C
+EXPLANATION: Multiple inheritance allows a class to inherit attributes and methods from several parent classes, combining their functionalities.
+
+==QUESTION 12==
+What is the "diamond problem" in multiple inheritance?
+[A] A problem where a class has exactly four parent classes.
+[B] An ambiguity that arises when a class inherits from two superclasses that both inherit from the same grandparent class, which can lead to confusion about which version of a method to inherit.
+[C] A performance issue caused by deep inheritance chains.
+[D] A syntax error that occurs when a class tries to inherit from itself.
+
+CORRECT: B
+EXPLANATION: The diamond problem occurs when a method in the grandparent class is overridden by the two parent classes. Python's MRO is designed to resolve this ambiguity in a predictable way.
+
+==QUESTION 13==
+If `class D(B, C):` and both `B` and `C` have a method named `run()`, which one will be called by an instance of `D`?
+[A] The one from `B`, because it is listed first.
+[B] The one from `C`, because it is listed last.
+[C] It will raise an error due to the ambiguity.
+[D] Neither, `D` must define its own `run()` method.
+
+CORRECT: A
+EXPLANATION: According to Python's MRO, the search for a method goes from left to right in the list of base classes. Therefore, `B` is checked before `C`.
+
+==QUESTION 14==
+What is an abstract base class (ABC)?
+[A] A class that cannot be instantiated and is designed to be subclassed.
+[B] A class that has no methods or attributes.
+[C] Any class that inherits from `object`.
+[D] A class used to create mock objects for testing.
+
+CORRECT: A
+EXPLANATION: ABCs define an interface that concrete subclasses must implement. They are a way to enforce that certain methods are implemented by subclasses, formalizing the principles of polymorphism.
+
+==QUESTION 15==
+What is the output of the following code?
+```python
+class Animal:
+    def make_sound(self):
+        raise NotImplementedError
+
+class Cat(Animal):
+    def make_sound(self):
+        return "Meow"
+
+class Dog(Animal):
+    def make_sound(self):
+        return "Woof"
+
+animals = [Cat(), Dog()]
+for animal in animals:
+    print(animal.make_sound())
+```
+[A] It raises a `NotImplementedError`.
+[B] Meow followed by Woof.
+[C] It raises a `TypeError`.
+[D] Nothing is printed.
+
+CORRECT: B
+EXPLANATION: This is an example of polymorphism. Both `Cat` and `Dog` are treated as `Animal` types, but when `make_sound()` is called, Python executes the specific version of the method defined in each subclass.
+
+==QUESTION 16==
+What does the `object` class represent in Python's class hierarchy?
+[A] It is the base class for all data types except classes.
+[B] It is the ultimate base class for all other classes.
+[C] It is a special class that cannot be inherited from.
+[D] It is an abstract class for defining new objects.
+
+CORRECT: B
+EXPLANATION: In Python 3, every class implicitly inherits from `object`, making it the root of the class hierarchy.
+
+==QUESTION 17==
+How can you view the Method Resolution Order of a class `MyClass`?
+[A] `MyClass.mro()`
+[B] `MyClass.__mro__`
+[C] `help(MyClass)`
+[D] All of the above.
+
+CORRECT: D
+EXPLANATION: All three methods can show you the MRO. `MyClass.mro()` returns the MRO as a list of classes, `MyClass.__mro__` provides it as a tuple, and `help(MyClass)` displays it in a readable format in the help text.
+
+==QUESTION 18==
+What is composition in OOP?
+[A] The same as inheritance.
+[B] The principle that classes should be composed of smaller, simpler parts.
+[C] A design principle where a class contains an instance of another class to delegate work to ("has-a" relationship).
+[D] A way to combine multiple methods into one.
+
+CORRECT: C
+EXPLANATION: Composition is an alternative to inheritance for code reuse. Instead of a class being a specialized version of another class (is-a), it has another class as a component to fulfill some of its responsibilities.
+
+==QUESTION 19==
+In the code below, `Point` is related to `Line` by:
+```python
+class Point:
+    def __init__(self, x, y):
+        self.x, self.y = x, y
+class Line:
+    def __init__(self, p1, p2):
+        self.p1 = p1
+        self.p2 = p2
+```
+[A] Inheritance (Line is-a Point)
+[B] Polymorphism
+[C] Composition (Line has-a Point)
+[D] Abstraction
+
+CORRECT: C
+EXPLANATION: The `Line` class does not inherit from `Point`. Instead, it contains two instances of the `Point` class as its attributes. This is a classic "has-a" relationship, which is composition.
+
+==QUESTION 20==
+Which special method would you implement to allow the `+` operator to work on instances of your custom class?
+[A] `__add__`
+[B] `__plus__`
+[C] `__sum__`
+[D] `__concat__`
+
+CORRECT: A
+EXPLANATION: Implementing the `__add__(self, other)` method allows you to define the behavior of the `+` operator for your objects. This is a form of operator overloading.
+
+==QUESTION 21==
+Given `class B(A): pass` and `b = B()`, what is the result of `type(b) is A`?
+[A] `True`
+[B] `False`
+[C] It raises an error.
+[D] `None`
+
+CORRECT: B
+EXPLANATION: `type()` checks for the exact class of the object. The exact class of `b` is `B`, not `A`, so the comparison `is` returns `False`. `isinstance(b, A)` would have returned `True`.
+
+==QUESTION 22==
+What is method overriding?
+[A] A subclass providing a specific implementation of a method that is already provided by one of its superclasses.
+[B] A class having multiple methods with the same name but different signatures.
+[C] Calling a method from a parent class using `super()`.
+[D] Preventing a method from being inherited.
+
+CORRECT: A
+EXPLANATION: Overriding allows a subclass to modify or completely replace the behavior of a method inherited from its parent, which is a key part of specialization and polymorphism.
+
+==QUESTION 23==
+What is the output?
+```python
+class X: v = 1
+class Y(X): v = 2
+class Z(Y): pass
+z = Z()
+print(z.v)
+```
+[A] `1`
+[B] `2`
+[C] `None`
+[D] `AttributeError`
+
+CORRECT: B
+EXPLANATION: When `z.v` is accessed, Python follows the MRO. It first checks class `Z`. Not finding `v`, it checks `Z`'s parent, `Y`. It finds `v` in `Y` with a value of 2 and stops searching.
+
+==QUESTION 24==
+If a class inherits from two parent classes, and the `__init__` method of both needs to be called, how should this be done?
+[A] It's not possible to call both.
+[B] `super().__init__()` will call both automatically.
+[C] Call each parent's `__init__` explicitly, e.g., `Parent1.__init__(self)`, `Parent2.__init__(self)`.
+[D] `super()` will only call the `__init__` of the first parent in the MRO.
+
+CORRECT: D
+EXPLANATION: A call to `super().__init__()` will follow the MRO and call the `__init__` of the next class in the chain. To call multiple disconnected parents, you must often call them explicitly.
+
+==QUESTION 25==
+What is the purpose of the `abc` module in Python?
+[A] To provide tools for creating Abstract Base Classes (ABCs).
+[B] To list all classes in alphabetical order.
+[C] To handle character encoding.
+[D] To create basic class templates.
+
+CORRECT: A
+EXPLANATION: The `abc` module provides the `ABC` class and the `@abstractmethod` decorator, which are used to define formal interfaces and create abstract base classes.
+
+==QUESTION 26==
+What happens if you try to instantiate a class that has an abstract method that has not been implemented?
+[A] The object is created, but calling the method raises an error.
+[B] It raises a `TypeError`.
+[C] The program continues without issues.
+[D] It raises a `NotImplementedError`.
+
+CORRECT: B
+EXPLANATION: You cannot create an instance of an abstract class unless all of its abstract methods have been overridden in the subclass. Attempting to do so will result in a `TypeError`.
+
+==QUESTION 27==
+What does it mean for a class to be a "mixin"?
+[A] It is a class that cannot be instantiated.
+[B] It is a class designed to provide specific functionality to be inherited by other classes, but not intended to stand on its own.
+[C] It is another name for a superclass.
+[D] It is a class that inherits from `object`.
+
+CORRECT: B
+EXPLANATION: Mixin classes are used in multiple inheritance to add a particular set of methods to a class. For example, a `LoggingMixin` could be inherited by various classes to give them logging capabilities.
+
+==QUESTION 28==
+Given `class Car(Vehicle):`, what is the relationship?
+[A] `Car` has-a `Vehicle`.
+[B] `Car` is-a `Vehicle`.
+[C] `Vehicle` is-a `Car`.
+[D] `Vehicle` has-a `Car`.
+
+CORRECT: B
+EXPLANATION: Inheritance represents an "is-a" relationship. A `Car` is a more specific type of `Vehicle`.
+
+==QUESTION 29==
+In a single inheritance hierarchy, what does `super()` refer to?
+[A] The `object` class.
+[B] The current class.
+[C] The direct parent class.
+[D] The child class.
+
+CORRECT: C
+EXPLANATION: In a simple parent-child inheritance, `super()` provides a proxy to the immediate parent, allowing you to call its methods.
+
+==QUESTION 30==
+Polymorphism is most closely associated with which other OOP concept?
+[A] Encapsulation
+[B] Inheritance
+[C] Data hiding
+[D] Class variables
+
+CORRECT: B
+EXPLANATION: Polymorphism often relies on inheritance. A base class defines a common interface (a set of methods), and subclasses provide their specific implementations of that interface. You can then operate on a list of base class objects without knowing their specific subclass type.

@@ -1,0 +1,320 @@
+#SECTION: PCAP-31-03 5.2 File Processing
+
+==QUESTION 1==
+What is the main advantage of using the `with open(...) as f:` statement for file handling?
+[A] It opens files in a more secure mode.
+[B] It automatically closes the file, even if errors occur inside the block.
+[C] It reads the entire file into memory at once.
+[D] It is the only way to write to a file.
+
+CORRECT: B
+EXPLANATION: The `with` statement creates a context manager. For files, this ensures that the file's `close()` method is automatically called upon exiting the block, which prevents resource leaks.
+
+==QUESTION 2==
+Which mode is used to open a file for writing, but only if the file does not already exist?
+[A] `'w'` (write mode)
+[B] `'a'` (append mode)
+[C] `'x'` (exclusive creation mode)
+[D] `'w+'` (write and read mode)
+
+CORRECT: C
+EXPLANATION: The `'x'` mode is for exclusive creation. It will create and open a file for writing, but if the file already exists, it will raise a `FileExistsError`.
+
+==QUESTION 3==
+What does the `f.read()` method return if called without an argument?
+[A] The first line of the file.
+[B] A list of all lines in the file.
+[C] A single string containing the entire content of the file from the current position.
+[D] It raises a `ValueError`.
+
+CORRECT: C
+EXPLANATION: `f.read()` reads from the current file cursor position until the end of the file and returns the content as a single string.
+
+==QUESTION 4==
+After executing `f.write("hello")`, what does the `f.tell()` method return, assuming the file was opened in `'w'` mode and was initially empty?
+[A] `0`
+[B] `4`
+[C] `5`
+[D] `None`
+
+CORRECT: C
+EXPLANATION: The file cursor moves to the position after the last written byte. Since "hello" has 5 characters (and thus 5 bytes in standard encoding), `tell()` will return 5.
+
+==QUESTION 5==
+What is the difference between `'w'` mode and `'a'` mode for opening files?
+[A] `'w'` can only write strings, while `'a'` can write bytes.
+[B] `'w'` creates the file if it doesn't exist, while `'a'` raises an error.
+[C] `'w'` overwrites the existing file content, while `'a'` appends new content to the end of the file.
+[D] There is no difference.
+
+CORRECT: C
+EXPLANATION: `'w'` (write) mode will truncate the file if it exists, deleting all previous content. `'a'` (append) mode will place the file cursor at the very end of the file, preserving existing content.
+
+==QUESTION 6==
+What does the `f.readlines()` method return?
+[A] A single string with newline characters.
+[B] An iterator that yields lines one by one.
+[C] A list of strings, where each string is a line from the file including the newline character.
+[D] The number of lines in the file.
+
+CORRECT: C
+EXPLANATION: `readlines()` reads the entire file and splits it by lines, returning a list. This can consume a lot of memory for large files.
+
+==QUESTION 7==
+How do you open a file for both reading and writing?
+[A] `'rw'`
+[B] `'r+'` or `'w+'`
+[C] `'wr'`
+[D] You must open it twice, once for reading and once for writing.
+
+CORRECT: B
+EXPLANATION: The `+` sign adds the opposite capability. `'r+'` opens for reading and writing (file must exist). `'w+'` opens for writing and reading (truncates the file if it exists).
+
+==QUESTION 8==
+What is the most memory-efficient way to process a large text file line by line?
+[A] `for line in open('large.txt'): process(line)`
+[B] `lines = open('large.txt').readlines(); for line in lines: process(line)`
+[C] `content = open('large.txt').read(); lines = content.split('\n'); for line in lines: process(line)`
+[D] All are equally efficient.
+
+CORRECT: A
+EXPLANATION: Iterating directly over the file object (`for line in f:`) is the most efficient method because it reads the file line by line without loading the entire file into memory.
+
+==QUESTION 9==
+What is the purpose of the `os.path.join()` function?
+[A] To merge two files together.
+[B] To concatenate two strings representing path components using the correct path separator for the current operating system.
+[C] To create a symbolic link between two paths.
+[D] To check if two paths point to the same file.
+
+CORRECT: B
+EXPLANATION: This function correctly handles path separators (e.g., `/` for Linux/macOS, `\` for Windows), making code more portable. For example, `os.path.join('data', 'file.txt')` is safer than `'data/' + 'file.txt'`.
+
+==QUESTION 10==
+What happens if you try to open a non-existent file in `'r'` mode?
+[A] An empty file is created.
+[B] A `FileExistsError` is raised.
+[C] A `FileNotFoundError` is raised.
+[D] The `open` function returns `None`.
+
+CORRECT: C
+EXPLANATION: Read mode (`'r'`) requires the file to exist. If it cannot be found, a `FileNotFoundError` is raised.
+
+==QUESTION 11==
+What does the `f.seek(0)` method do to a file object `f`?
+[A] It reads the first byte of the file.
+[B] It moves the file cursor to the beginning of the file.
+[C] It closes and reopens the file.
+[D] It truncates the file to 0 bytes.
+
+CORRECT: B
+EXPLANATION: `seek()` changes the position of the file cursor. `seek(0)` specifically moves it to the start (byte offset 0).
+
+==QUESTION 12==
+What kind of exception should you typically handle when performing file I/O operations?
+[A] `TypeError`
+[B] `NameError`
+[C] `OSError` (or its subclasses like `FileNotFoundError`, `PermissionError`)
+[D] `ValueError`
+
+CORRECT: C
+EXPLANATION: `OSError` is the base class for exceptions related to operating system errors, which includes most file I/O problems like the file not being found, not having permission to read/write, etc.
+
+==QUESTION 13==
+How would you open a file to handle text with a specific encoding like UTF-8?
+[A] `open('file.txt', 'r', encoding='utf-8')`
+[B] `open('file.txt', 'r').set_encoding('utf-8')`
+[C] `open('file.txt', 'r-utf8')`
+[D] The encoding is detected automatically.
+
+CORRECT: A
+EXPLANATION: The `open` function has an `encoding` parameter. It is best practice to always specify it when working with text files to avoid issues with platform-dependent default encodings.
+
+==QUESTION 14==
+What is the difference between text mode (`'t'`) and binary mode (`'b'`) when opening a file?
+[A] Text mode is for reading, binary mode is for writing.
+[B] In text mode, Python performs encoding/decoding of strings, while in binary mode, it reads/writes raw bytes.
+[C] Binary mode is faster than text mode.
+[D] There is no functional difference, it is just for documentation.
+
+CORRECT: B
+EXPLANATION: Text mode (the default) handles string encoding and platform-specific newline conversions. Binary mode deals with data as-is, byte for byte, which is necessary for non-text files like images or executables.
+
+==QUESTION 15==
+What will the content of `data.txt` be after this code runs?
+```python
+with open('data.txt', 'w') as f:
+    f.write('123')
+with open('data.txt', 'a') as f:
+    f.write('456')
+```
+[A] `456`
+[B] `123`
+[C] `123456`
+[D] `456123`
+
+CORRECT: C
+EXPLANATION: The first `with` block opens the file in write mode (`'w'`), which creates it and writes '123'. The second block opens the same file in append mode (`'a'`), which moves the cursor to the end and writes '456', resulting in the combined content.
+
+==QUESTION 16==
+What does the `f.readline()` method do?
+[A] It reads the entire file into a single string.
+[B] It reads one line from the file, from the current cursor position up to and including the next newline character.
+[C] It reads all lines from the file into a list.
+[D] It returns the number of lines in the file.
+
+CORRECT: B
+EXPLANATION: `readline()` reads a single line. If called repeatedly, it will read subsequent lines until the end of the file, where it will return an empty string.
+
+==QUESTION 17==
+To open a file for reading and writing in binary mode, which mode would you use?
+[A] `'rwb'`
+[B] `'brw'`
+[C] `'rb+'`
+[D] `'b+'`
+
+CORRECT: C
+EXPLANATION: The mode string components have an order. The primary mode (`r`, `w`, `a`, `x`) comes first, followed by `b` for binary, and then `+` for updating (read/write). `'rb+'` is a common and valid combination.
+
+==QUESTION 18==
+What does the `os.path.exists(path)` function return?
+[A] `True` if `path` refers to an existing path (file or directory), `False` otherwise.
+[B] The size of the file at `path`.
+[C] `True` only if `path` is a file.
+[D] It raises an error if the path does not exist.
+
+CORRECT: A
+EXPLANATION: This is a fundamental function for checking if a file or directory exists before trying to operate on it.
+
+==QUESTION 19==
+What is buffered I/O?
+[A] A method of reading files backwards.
+[B] Reading/writing data in chunks (a buffer) to improve performance, rather than one byte at a time.
+[C] A way to open multiple files at once.
+[D] Encrypting file content as it is written.
+
+CORRECT: B
+EXPLANATION: File I/O involves slow system calls. Buffering minimizes these calls by collecting data in a memory buffer and then reading/writing the entire buffer in a single operation, which is much more efficient. Python's file objects are buffered by default.
+
+==QUESTION 20==
+What does the `f.truncate(size)` method do?
+[A] It resizes the file to the given `size` in bytes. If `size` is not specified, it truncates at the current cursor position.
+[B] It deletes the file.
+[C] It renames the file.
+[D] It copies the first `size` bytes of the file to a new file.
+
+CORRECT: A
+EXPLANATION: `truncate()` is used to change the size of a file. It can be used to make a file smaller (cutting off content) or larger (padding with null bytes, depending on the OS).
+
+==QUESTION 21==
+How can you check if a path `p` points to a directory?
+[A] `os.path.isdir(p)`
+[B] `os.path.isfile(p) == False`
+[C] `p.isDirectory()`
+[D] `type(p) == 'directory'`
+
+CORRECT: A
+EXPLANATION: The `os.path` module provides `isdir()` to specifically check for directories and `isfile()` to check for files.
+
+==QUESTION 22==
+What does the `io.StringIO` class provide?
+[A] A way to handle very large strings on disk.
+[B] A secure string storage object.
+[C] An in-memory text buffer that behaves like a file (a "string file").
+[D] An interface for network string transmission.
+
+CORRECT: C
+EXPLANATION: `io.StringIO` allows you to treat a string as if it were a text file, supporting methods like `read()`, `write()`, `seek()`, and `tell()`. This is very useful for testing or for APIs that expect file objects.
+
+==QUESTION 23==
+What will be the content of `data.txt` after this code runs?
+```python
+with open('data.txt', 'w') as f:
+    f.write('Line 1\n')
+    f.seek(0)
+    f.write('Line 2')
+```
+[A] `Line 1\nLine 2`
+[B] `Line 2\n`
+[C] `Line 2ine 1\n`
+[D] `Line 2`
+
+CORRECT: B
+EXPLANATION: `f.write('Line 1\n')` writes 7 bytes and moves the cursor to position 7. `f.seek(0)` moves the cursor back to the beginning. `f.write('Line 2')` then writes 6 bytes, overwriting the first 6 bytes of the original content. The file now contains `Line 2\n`.
+
+==QUESTION 24==
+Which `os` module function can be used to create a directory?
+[A] `os.mkdir()`
+[B] `os.create_dir()`
+[C] `os.newdir()`
+[D] `os.path.mkdir()`
+
+CORRECT: A
+EXPLANATION: `os.mkdir(path)` creates a single directory. `os.makedirs(path)` can be used to create all intermediate directories in a path as well.
+
+==QUESTION 25==
+What is the `whence` argument in `f.seek(offset, whence)` used for?
+[A] To specify the file encoding.
+[B] It defines the reference point for the `offset`: `0` for start, `1` for current position, `2` for end of file.
+[C] It specifies the number of bytes to read after seeking.
+[D] It is an alternative way to provide the offset.
+
+CORRECT: B
+EXPLANATION: The `whence` parameter controls the seek operation's starting point. `f.seek(-10, 2)` would move the cursor to 10 bytes before the end of the file. The default `whence` is 0.
+
+==QUESTION 26==
+What does `os.path.getsize(path)` return?
+[A] The size of the file in kilobytes.
+[B] The size of the file in bytes.
+[C] The number of lines in the file.
+[D] The number of characters in the file.
+
+CORRECT: B
+EXPLANATION: This function returns the size of a file, reported by the operating system, as an integer representing the number of bytes.
+
+==QUESTION 27==
+What is the purpose of `io.BytesIO`?
+[A] It's an alias for `io.StringIO`.
+[B] It is an in-memory binary stream, treating a `bytes` object like a binary file.
+[C] It is used for converting `bytes` to `str`.
+[D] It is used to analyze the byte content of a string.
+
+CORRECT: B
+EXPLANATION: `io.BytesIO` is the binary equivalent of `io.StringIO`. It allows you to work with raw bytes in memory as if you were working with a binary file on disk.
+
+==QUESTION 28==
+What is the content of the file after running this code?
+```python
+with open('file.txt', 'w+') as f:
+    f.write('abc')
+    f.seek(0)
+    content = f.read()
+    f.write('def')
+```
+[A] `abcdef`
+[B] `def`
+[C] `defabc`
+[D] `abc`
+
+CORRECT: A
+EXPLANATION: `'w+'` truncates the file. `f.write('abc')` writes 'abc' (cursor is at position 3). `f.seek(0)` moves cursor to the start. `f.read()` reads 'abc' (cursor is back at position 3). `f.write('def')` writes 'def' at the current position 3. The final content is 'abcdef'.
+
+==QUESTION 29==
+Which exception is raised if you try to perform a write operation on a file opened in read-only mode (`'r'`)?
+[A] `io.UnsupportedOperation`
+[B] `ValueError`
+[C] `TypeError`
+[D] `FileModeError`
+
+CORRECT: A
+EXPLANATION: If a file stream does not support the attempted operation (like writing to a read-only stream), an `io.UnsupportedOperation` exception is raised.
+
+==QUESTION 30==
+How does `os.rename(src, dst)` behave?
+[A] It copies the file from `src` to `dst`.
+[B] It creates a symbolic link from `dst` to `src`.
+[C] It moves or renames the file or directory from `src` to `dst`.
+[D] It copies the content of `src` into `dst` if `dst` already exists.
+
+CORRECT: C
+EXPLANATION: `os.rename()` is the primary function for renaming a file or directory. If `src` and `dst` are on different filesystems, it may result in a move operation, but its main purpose is renaming within the same filesystem.
