@@ -1,4 +1,4 @@
-SECTION: PCAP-31-03 2.1 Exceptions
+#SECTION: PCAP-31-03 2.1 Exceptions
 
 ==QUESTION 1==
 In a `try...except` block, what is the purpose of the `else` clause?
