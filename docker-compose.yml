@@ -40,7 +40,7 @@ services:
       - ./nginx/nginx.conf:/etc/nginx/nginx.conf
       - ./nginx/conf.d:/etc/nginx/conf.d
       - /etc/letsencrypt:/etc/letsencrypt:ro
-      - ./html:/var/www/html
+      - /root/PCEP_Questions_app/html:/var/www/html:rw
     depends_on:
       - app
     networks:
