@@ -55,3 +55,6 @@ letsencrypt/
 
 # Ignore stray system files
 ystemctl
+db_backup_2025-08-02/
+nginx.conf
+nginx/
