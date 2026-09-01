@@ -75,7 +75,7 @@ In Python, what is responsible for converting source code into bytecode?
 [A] The operating system
 [B] The Python interpreter
 [C] The user's text editor
-[D] The Python compiler
+[D] A build tool you must run manually
 
 CORRECT: B
 EXPLANATION: In Python, the interpreter is responsible for converting source code into bytecode. This process happens automatically when a Python script is run.
@@ -212,7 +212,7 @@ EXPLANATION: The lexer in Python's code processing breaks the input source code 
 
 ==QUESTION 22==
 Which of the following is a semantic error in Python?
-[A] Using a variable before declaring it
+[A] Using inconsistent indentation
 [B] Forgetting to close a parenthesis
 [C] Using an undefined variable
 [D] Misspelling a keyword

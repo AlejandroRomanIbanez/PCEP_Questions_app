@@ -741,15 +741,19 @@
                 const optionDiv = document.createElement('div');
                 optionDiv.classList.add('option-container');
         
+                // Parse the "[A] text" prefix instead of assuming a fixed width,
+                // so option text is never clipped.
+                const parsed = option.trim().match(/^\[([A-Z])\]\s*([\s\S]*)$/);
+
                 const button = document.createElement('button');
-                button.textContent = option.trim().substring(1, 2);
+                button.textContent = parsed ? parsed[1] : '?';
                 button.classList.add('option-letter');
                 button.addEventListener('click', () => selectOption(index));
                 optionDiv.appendChild(button);
-        
+
                 const optionText = document.createElement('pre');
                 optionText.classList.add('option-text');
-                optionText.textContent = option.trim().substring(3).trim();
+                optionText.textContent = parsed ? parsed[2] : option.trim();
                 optionDiv.appendChild(optionText);
         
                 optionsElement.appendChild(optionDiv);
@@ -823,8 +827,10 @@
         function updateUIAfterSubmission(selectedOption, isCorrect, correctAnswer) {
             selectedOption.classList.add(isCorrect ? 'correct' : 'incorrect');
             if (!isCorrect) {
-                const correctOptionIndex = correctAnswer.charCodeAt(0) - 65;
-                const correctOption = optionsElement.children[correctOptionIndex];
+                // Match on the rendered letter rather than the row position, so a
+                // question is highlighted correctly however its options are laid out.
+                const correctOption = Array.from(optionsElement.children).find(
+                    el => el.querySelector('.option-letter')?.textContent === correctAnswer);
                 if (correctOption) {
                     correctOption.classList.add('correct');
                 }

@@ -51,14 +51,14 @@ CORRECT: B
 EXPLANATION: The % operator in Python returns the remainder of division. 10 divided by 3 is 3 with a remainder of 1.
 
 ==QUESTION 6==
-Which operator has higher precedence?
+Which of the following operators has higher precedence than all the others?
 [A] +
-[B] *
-[C] //
+[B] **
+[C] *
 [D] %
 
 CORRECT: B
-EXPLANATION: The * (multiplication) operator has higher precedence than + (addition), // (floor division), and % (modulo).
+EXPLANATION: The ** (exponentiation) operator binds more tightly than any of the others. Multiplication (*) and modulo (%) share the same precedence tier as each other, and addition (+) is lower still.
 
 ==QUESTION 7==
 What is the output of 5 & 3?
@@ -101,14 +101,14 @@ CORRECT: C
 EXPLANATION: <> is not a relational operator in Python. It was used in Python 2 as an alternative to !=, but it's not valid in Python 3.
 
 ==QUESTION 11==
-What is the output of 0.1 + 0.2 == 0.3?
-[A] True
-[B] False
-[C] Error
-[D] None
+What is the result of 7 // 2 * 2 + 7 % 2?
+[A] 7
+[B] 8
+[C] 6
+[D] 3.5
 
-CORRECT: B
-EXPLANATION: Due to the way floating-point numbers are represented in binary, 0.1 + 0.2 is not exactly equal to 0.3 in most programming languages, including Python.
+CORRECT: A
+EXPLANATION: //, * and % share the same precedence and evaluate left to right, so this is ((7 // 2) * 2) + (7 % 2) = (3 * 2) + 1 = 7.
 
 ==QUESTION 12==
 How do you convert an integer to a float in Python?
@@ -198,7 +198,7 @@ How do you perform integer division in Python 3?
 [D] int()
 
 CORRECT: B
-EXPLANATION: The // operator performs floor division (integer division) in Python 3, always returning an integer result.
+EXPLANATION: The // operator performs floor division in Python 3. It returns an int when both operands are ints, and a float when either operand is a float (10.0 // 3 is 3.0).
 
 ==QUESTION 21==
 What is the result of 2 << 2?
@@ -223,12 +223,12 @@ EXPLANATION: =+ is not a valid assignment operator in Python. It would be interp
 ==QUESTION 23==
 What is the output of 3 * "2" + "4"?
 [A] 10
-[B] 224
+[B] 2224
 [C] 222
 [D] Error
 
 CORRECT: B
-EXPLANATION: In Python, multiplying a string by an integer repeats the string. So 3 * "2" results in "222". Then "222" + "4" concatenates the strings, resulting in "224".
+EXPLANATION: In Python, multiplying a string by an integer repeats the string, so 3 * "2" results in "222". Then "222" + "4" concatenates the two strings, resulting in "2224".
 
 ==QUESTION 24==
 What is the result of 7 | 2?

@@ -41,14 +41,14 @@ CORRECT: B
 EXPLANATION: In Python 3, print is a function and requires parentheses. Therefore, print("Hello, World!") is the correct syntax.
 
 ==QUESTION 5==
-What happens if you mix tabs and spaces for indentation in Python?
+What happens if a Python 3 block indents inconsistently with a mix of tabs and spaces?
 [A] Nothing, it works fine
-[B] It raises an IndentationError
+[B] It raises a TabError
 [C] The code runs slower
 [D] It automatically converts all to spaces
 
 CORRECT: B
-EXPLANATION: Mixing tabs and spaces for indentation in Python can lead to an IndentationError. It's recommended to use either all tabs or all spaces (preferably spaces) for consistency.
+EXPLANATION: Python 3 raises a TabError (a subclass of IndentationError) when tabs and spaces are used inconsistently, because the indentation becomes ambiguous. Use either all tabs or all spaces (PEP 8 prefers spaces).
 
 ==QUESTION 6==
 Which keyword is used to define a function in Python?
@@ -78,17 +78,17 @@ How do you write a multi-line comment in Python?
 [D] <!-- Comment -->
 
 CORRECT: C
-EXPLANATION: Multi-line comments in Python are written using triple quotes (either ''' or """). This allows for comments that span multiple lines.
+EXPLANATION: Python has no dedicated multi-line comment syntax. The usual substitute is a triple-quoted string (''' or """), which spans multiple lines; it is a string literal that is evaluated and discarded, not true comment syntax.
 
 ==QUESTION 9==
-Which of the following is not a valid way to end a Python instruction?
+In Python, which of the following can legally terminate a simple instruction?
 [A] Newline
 [B] Semicolon
 [C] Colon
-[D] Both A and B are valid
+[D] Both A and B
 
-CORRECT: C
-EXPLANATION: In Python, instructions typically end with a newline. Semicolons can be used to separate multiple statements on one line, but are not required. Colons are used for starting new blocks, not ending instructions.
+CORRECT: D
+EXPLANATION: A newline normally ends an instruction, and a semicolon may also end one (it is what lets you put two statements on the same line, as in x = 1; y = 2). A colon opens a new block; it never ends an instruction.
 
 ==QUESTION 10==
 What does the `pass` keyword do in Python?

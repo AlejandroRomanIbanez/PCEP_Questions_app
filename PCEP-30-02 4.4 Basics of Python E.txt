@@ -87,8 +87,9 @@ CORRECT: A
 EXPLANATION: An except clause without any specified exception (i.e., 'except:') catches all exceptions. However, this is generally not recommended as it can mask unexpected errors.
 
 ==QUESTION 9==
-What does the following code print if x is 0?
+What does the following code print?
 ```python
+x = 0
 try:
     result = 10 / x
 except ZeroDivisionError:
@@ -125,14 +126,14 @@ CORRECT: C
 EXPLANATION: The purpose of the finally clause is to execute code regardless of whether an exception occurred or not. It's often used for cleanup operations that must be performed under all circumstances.
 
 ==QUESTION 12==
-How do you propagate an exception to the calling function?
+You have caught an exception in an except block. How do you pass it on to the calling function?
 [A] Use the propagate keyword
-[B] Re-raise the exception using raise
+[B] Re-raise it with a bare raise
 [C] Use the pass statement
-[D] Exceptions are automatically propagated
+[D] Return the exception object
 
 CORRECT: B
-EXPLANATION: To propagate an exception to the calling function, you can re-raise the exception using the 'raise' statement without arguments inside an except block.
+EXPLANATION: Once an except block has caught an exception, it stops propagating. A bare 'raise' inside that block re-raises the same exception, complete with its original traceback, so the caller sees it.
 
 ==QUESTION 13==
 What happens when an exception is not handled in a function?

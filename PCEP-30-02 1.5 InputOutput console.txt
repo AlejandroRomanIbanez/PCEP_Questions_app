@@ -77,14 +77,14 @@ CORRECT: C
 EXPLANATION: The float() function converts the string "3.14" to the floating-point number 3.14.
 
 ==QUESTION 8==
-How do you print the values 1, 2, and 3 separated by commas?
+Which call prints exactly 1,2,3 with no spaces?
 [A] print(1, 2, 3)
-[B] print(1, 2, 3, sep=",")
-[C] print("1,2,3")
-[D] print("1", "2", "3", sep=",")
+[B] print(1, 2, 3, sep=";")
+[C] print(1 + 2 + 3)
+[D] print(1, 2, 3, sep=",")
 
 CORRECT: D
-EXPLANATION: Using print("1", "2", "3", sep=",") will print the values as strings separated by commas.
+EXPLANATION: The sep parameter sets what goes between the arguments, so sep="," prints 1,2,3. Option A uses the default space separator, B uses semicolons, and C adds the numbers and prints 6.
 
 ==QUESTION 9==
 What does the sep parameter do in the print() function?
@@ -112,14 +112,14 @@ CORRECT: A
 EXPLANATION: The first print() outputs "abc" (no separator) followed by "**" (specified end). The second print() continues on the same line, outputting "def" with default separators.
 
 ==QUESTION 11==
-How do you convert user input to a float?
-[A] input("Enter a number: ")
-[B] int(input("Enter a number: "))
-[C] float(input("Enter a number: "))
-[D] str(input("Enter a number: "))
+How do you read two integers typed on a single line, separated by a space?
+[A] a, b = input().split()
+[B] a, b = map(int, input().split())
+[C] a, b = int(input().split())
+[D] a, b = input(2)
 
-CORRECT: C
-EXPLANATION: The float() function is used to convert the string input from input() to a floating-point number.
+CORRECT: B
+EXPLANATION: split() breaks the line into a list of strings, and map(int, ...) converts each one to an integer before it is unpacked. Option A would leave a and b as strings, and option C would call int() on a list, raising a TypeError.
 
 ==QUESTION 12==
 What is the output of print(1, 2, 3, sep="->", end=".")?

@@ -145,24 +145,36 @@ function loadQuestions(content) {
     let explanationLines = [];
     for (let i = 0; i < lines.length; i++) {
         const line = lines[i]; // No trim here to preserve code formatting
-        if (line.trim().startsWith('#SECTION:')) {
+        const trimmed = line.trim();
+        if (trimmed.startsWith('```')) {
+            // Track fenced code so list literals like [1, 2, 3] inside a snippet
+            // are never mistaken for answer options.
+            inCodeBlock = !inCodeBlock;
+            if (currentQuestion) {
+                currentQuestion.question += line + '\n';
+            }
+        } else if (!inCodeBlock && trimmed.startsWith('#SECTION:')) {
             currentSection = line.substring(line.indexOf(':') + 1).trim();
-        } else if (line.trim().startsWith('==QUESTION')) {
+        } else if (!inCodeBlock && trimmed.startsWith('==QUESTION')) {
             if (currentQuestion) {
                 currentQuestion.explanation = explanationLines.join('\n').trim();
                 questions.push(currentQuestion);
             }
             currentQuestion = { question: '', options: [], correct: '', explanation: '', section: currentSection };
             explanationLines = [];
-        } else if (line.trim().startsWith('[') && currentQuestion) {
-            currentQuestion.options.push(line.trim());
-        } else if (line.trim().startsWith('CORRECT:') && currentQuestion) {
+        } else if (!inCodeBlock && /^\[[A-Z]\]/.test(trimmed) && currentQuestion) {
+            currentQuestion.options.push(trimmed);
+        } else if (!inCodeBlock && trimmed.startsWith('CORRECT:') && currentQuestion) {
             currentQuestion.correct = line.substring(line.indexOf(':') + 1).trim();
-        } else if (line.trim().startsWith('EXPLANATION:') && currentQuestion) {
+        } else if (!inCodeBlock && trimmed.startsWith('EXPLANATION:') && currentQuestion) {
             explanationLines.push(line.substring(line.indexOf(':') + 1).trim());
         } else if (currentQuestion) {
             if (explanationLines.length > 0) {
                 explanationLines.push(line);
+            } else if (!inCodeBlock && currentQuestion.options.length > 0 && !currentQuestion.correct && trimmed) {
+                // Continuation of a multi-line option (an expected output spanning
+                // several lines) — keep it attached to the option it belongs to.
+                currentQuestion.options[currentQuestion.options.length - 1] += '\n' + trimmed;
             } else {
                 currentQuestion.question += line + '\n';
             }

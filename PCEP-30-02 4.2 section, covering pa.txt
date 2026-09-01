@@ -84,7 +84,7 @@ CORRECT: A
 EXPLANATION: Default parameter values allow a function to have optional parameters. If no value is provided for a parameter with a default value, the default value is used.
 
 ==QUESTION 8==
-What is the output of this code?
+What values are printed, in order?
 ```python
 x = 10
 def func():
@@ -169,7 +169,7 @@ CORRECT: B
 EXPLANATION: When used in a function definition, the * operator allows the function to accept any number of positional arguments, which are then collected into a tuple.
 
 ==QUESTION 15==
-What is the output of this code?
+What values are printed, in order?
 ```python
 x = 10
 def func():
@@ -195,8 +195,8 @@ Which of the following is true about default parameter values?
 [C] They can be any Python expression
 [D] They can only be used with keyword arguments
 
-CORRECT: A
-EXPLANATION: Default parameter values should be immutable objects to avoid unexpected behavior. Mutable default values are evaluated only once at function definition time, which can lead to surprising results.
+CORRECT: C
+EXPLANATION: A default value can be any Python expression. It is evaluated once, when the def statement runs - not on each call - which is why a mutable default is shared between calls and is discouraged, though Python allows it.
 
 ==QUESTION 17==
 What is the output of this code?
@@ -257,7 +257,7 @@ EXPLANATION: The 'nonlocal' keyword allows the inner function to modify the vari
 
 ==QUESTION 21==
 Which of the following is true about positional-only parameters?
-[A] They must be the first parameters in a function definition
+[A] They can also be passed by name at the call site
 [B] They can be mixed with keyword parameters
 [C] They are indicated by / in the function definition
 [D] They cannot have default values
@@ -282,7 +282,7 @@ CORRECT: A
 EXPLANATION: The function uses kwargs.get('c', 3) which returns 3 if 'c' is not in kwargs. Since no 'c' is passed, it returns the default value 3.
 
 ==QUESTION 23==
-What happens if you provide more positional arguments than parameters in a function call?
+What happens if you provide more positional arguments than parameters in a function call, when the function does not use *args?
 [A] The extra arguments are ignored
 [B] The function raises a TypeError
 [C] The extra arguments are packed into a tuple if *args is used
@@ -302,7 +302,7 @@ CORRECT: A
 EXPLANATION: When used in a function call, the * operator unpacks a list or tuple into separate positional arguments.
 
 ==QUESTION 25==
-What is the output of this code?
+What values are printed, in order?
 ```python
 x = 10
 def func():
@@ -321,5 +321,5 @@ print(x)
 [C] 30, 30
 [D] 20, 20
 
-CORRECT: C
-EXPLANATION: The inner function uses the 'global' keyword, so it modifies the global x. The outer function's local x remains 20, but the global x is changed to 30.
+CORRECT: A
+EXPLANATION: The inner function declares x global, so it never touches func's local x. func prints its own local 20, and the module-level print then shows the global, now 30.

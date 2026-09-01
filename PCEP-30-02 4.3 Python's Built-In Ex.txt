@@ -81,24 +81,24 @@ CORRECT: B
 EXPLANATION: Both IndexError and KeyError are subclasses of LookupError.
 
 ==QUESTION 9==
-Which exception is raised when a variable is referenced before it has been assigned a value?
+Which exception is raised when you use a name that has never been defined anywhere?
 [A] ReferenceError
 [B] NameError
 [C] ValueError
 [D] UnboundLocalError
 
 CORRECT: B
-EXPLANATION: NameError is raised when a local or global name is not found. UnboundLocalError is a subclass of NameError specifically for local variables.
+EXPLANATION: NameError is raised when a name cannot be found in any scope. UnboundLocalError, one of its subclasses, covers the narrower case of a local variable used before it is assigned inside a function.
 
 ==QUESTION 10==
-What exception is raised when an operation or function is applied to an object of inappropriate type?
-[A] TypeError
-[B] ValueError
-[C] AttributeError
-[D] OperationError
+What exception is raised when you access an attribute an object does not have?
+[A] AttributeError
+[B] NameError
+[C] KeyError
+[D] TypeError
 
 CORRECT: A
-EXPLANATION: TypeError is raised when an operation or function is applied to an object of inappropriate type.
+EXPLANATION: AttributeError is raised when an attribute reference or assignment fails, as in "hello".push("x") - strings have no push method.
 
 ==QUESTION 11==
 Which of the following is an abstract exception?
@@ -211,14 +211,14 @@ CORRECT: B
 EXPLANATION: ModuleNotFoundError is raised when an import statement fails to find the module definition. It's a subclass of ImportError.
 
 ==QUESTION 22==
-What exception is raised when a sequence subscript is out of range?
-[A] KeyError
+Which exception signals that an iterator has no further items?
+[A] StopIteration
 [B] IndexError
-[C] RangeError
-[D] SequenceError
+[C] EndOfLoopError
+[D] GeneratorExit
 
-CORRECT: B
-EXPLANATION: IndexError is raised when a sequence subscript is out of range.
+CORRECT: A
+EXPLANATION: StopIteration is raised by next() when an iterator is exhausted. A for loop catches it internally, which is how the loop knows to stop.
 
 ==QUESTION 23==
 Which of the following is true about SystemExit?

@@ -78,7 +78,7 @@ What is the hexadecimal representation of the decimal number 255?
 [A] 0xFF
 [B] 0xFE
 [C] 0x11
-[D] 0xFF
+[D] 0x100
 
 CORRECT: A
 EXPLANATION: The decimal number 255 is represented as FF in hexadecimal. In Python, hexadecimal literals are prefixed with '0x', so the correct representation is 0xFF.
@@ -179,8 +179,8 @@ According to PEP-8, what is the maximum line length recommended for Python code?
 [C] 100 characters
 [D] 120 characters
 
-CORRECT: B
-EXPLANATION: PEP-8 recommends limiting all lines to a maximum of 79 characters for code and 72 for comments and docstrings. However, the question asks for the maximum line length, which is typically interpreted as 80 characters.
+CORRECT: A
+EXPLANATION: PEP-8 recommends limiting all lines to a maximum of 79 characters for code, and 72 characters for comments and docstrings.
 
 ==QUESTION 18==
 Which of the following is a valid complex number literal in Python?
@@ -236,17 +236,14 @@ CORRECT: D
 EXPLANATION: In Python, scientific notation can be represented using either 'e' or 'E'. Both 1.23e-4 and 1.23E-4 are valid ways to represent 1.23 × 10^-4.
 
 ==QUESTION 23==
-What is the output of the following code?
-```python
-print(f"{3.14159:.2f}")
-```
-[A] 3.14
-[B] 3.14159
-[C] 3.142
-[D] Error
+Which of the following is NOT a valid integer literal in Python 3?
+[A] 0b1011
+[B] 0o17
+[C] 0xFace
+[D] 019
 
-CORRECT: A
-EXPLANATION: The f-string format specifier :.2f means to format the number as a float with 2 decimal places. Therefore, 3.14159 is rounded to 3.14.
+CORRECT: D
+EXPLANATION: Python 3 rejects a decimal literal with a leading zero, so 019 is a SyntaxError. The others are valid binary, octal and hexadecimal literals (hex digits are case-insensitive, so 0xFace is fine).
 
 ==QUESTION 24==
 According to PEP-8, how should module-level "dunders" (names with two leading and two trailing underscores) be placed in a module?

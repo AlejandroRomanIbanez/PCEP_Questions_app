@@ -2,13 +2,13 @@
 
 ==QUESTION 1==
 How do you create an empty tuple in Python?
-[A] tuple = ()
-[B] tuple = {}
-[C] tuple = []
-[D] tuple = tuple()
+[A] t = ()
+[B] t = {}
+[C] t = []
+[D] t = (,)
 
 CORRECT: A
-EXPLANATION: An empty tuple in Python is created using empty parentheses: tuple = ().
+EXPLANATION: An empty tuple is created with empty parentheses: t = (). {} creates a dict, [] creates a list, and (,) is a SyntaxError - a lone comma needs something before it.
 
 ==QUESTION 2==
 What is the output of the following code?
@@ -72,7 +72,7 @@ CORRECT: B
 EXPLANATION: Slicing in Python is inclusive of the start index and exclusive of the end index. So, t[1:4] includes elements at indices 1, 2, and 3.
 
 ==QUESTION 7==
-Which of the following will raise an error?
+Which of the following does NOT create a tuple?
 [A] t = (1, 2, 3)
 [B] t = (1,)
 [C] t = (1)
@@ -203,7 +203,7 @@ print(t)
 [A] ([1, 2], [3, 4])
 [B] ([5, 2], [3, 4])
 [C] TypeError
-[D] ([5, 2], [3, 4])
+[D] ([5, 2], [5, 4])
 
 CORRECT: B
 EXPLANATION: While tuples are immutable, their elements can be mutable (like lists). Here, we're modifying the list inside the tuple, which is allowed.
@@ -262,18 +262,18 @@ Which of the following is a correct way to create a nested tuple?
 [C] t = {(1, 2), (3, 4)}
 [D] Both A and B
 
-CORRECT: D
-EXPLANATION: Both A and B are correct ways to create nested structures. A creates a tuple of tuples, while B creates a list of tuples.
+CORRECT: A
+EXPLANATION: Only ((1, 2), (3, 4)) is a nested tuple. Option B is a list of tuples and option C is a set of tuples - neither one is itself a tuple.
 
 ==QUESTION 24==
-What happens when you try to sort a tuple?
+What happens when you call .sort() on a tuple?
 [A] The tuple is sorted in-place
 [B] A new sorted tuple is returned
-[C] A TypeError is raised
+[C] An AttributeError is raised
 [D] Nothing happens
 
 CORRECT: C
-EXPLANATION: Tuples don't have a sort method, and they can't be modified in-place. Attempting to sort a tuple will raise a TypeError.
+EXPLANATION: Tuples have no sort() method, so the call raises an AttributeError. To get a sorted version of a tuple, use sorted(t) - it returns a new list and leaves the tuple untouched.
 
 ==QUESTION 25==
 How can you concatenate two tuples t1 and t2?

@@ -17,8 +17,8 @@ Which of the following is a valid `while` loop in Python?
 [C] `while x < 10 do:`
 [D] Both A and B
 
-CORRECT: D
-EXPLANATION: In Python, both `while x < 10:` and `while (x < 10)` are valid syntax for a while loop. The parentheses are optional.
+CORRECT: A
+EXPLANATION: Only `while x < 10:` is valid. Option B is missing the colon that must end the loop header - parentheses around the condition are optional, but the colon is not - and `do:` is not Python syntax at all.
 
 ==QUESTION 3==
 How many times will the following loop iterate?
@@ -81,7 +81,7 @@ CORRECT: D
 EXPLANATION: Both `reversed(list)` and `list[::-1]` can be used to iterate through a list in reverse order.
 
 ==QUESTION 8==
-What will be the output of this nested loop?
+In what order are the pairs printed?
 ```python
 for i in range(3):
     for j in range(2):
@@ -187,7 +187,7 @@ else:
 [D] Done
 
 CORRECT: B
-EXPLANATION: The loop prints 0, 1, 2, and then the else clause prints "Done" because the loop completed normally.
+EXPLANATION: The loop prints 0, 1 and 2 on separate lines, and then the else clause prints "Done" because the loop completed without hitting a break.
 
 ==QUESTION 17==
 Which of the following is NOT a valid loop control statement in Python?
@@ -289,11 +289,20 @@ CORRECT: A
 EXPLANATION: When i is 1, both conditions (i == 1 and i + 1 == 2) are true, so "Yes" is printed once.
 
 ==QUESTION 25==
-Which of the following is true about the `pass` statement in Python?
-[A] It raises an exception
-[B] It terminates the program
-[C] It does nothing and is used as a placeholder
-[D] It skips to the next iteration of the loop
+What will be the output of this code?
+```python
+for i in range(5):
+    if i == 3:
+        break
+else:
+    print("Completed")
+print("End")
+```
+[A] Completed
+[B] End
+[C] Completed
+   End
+[D] Nothing
 
-CORRECT: C
-EXPLANATION: The `pass` statement in Python is a null operation; it does nothing and is typically used as a placeholder where syntactically some code is required.
+CORRECT: B
+EXPLANATION: A loop's `else` clause runs only when the loop finishes without a `break`. Here the loop breaks at i == 3, so `else` is skipped and only "End" is printed.
